@@ -65,4 +65,11 @@
         - conditiondetailed
         - conditiondetailed_1d
 
+  logger: !include logger.yaml
+
+  history:
+    include:
+      domains:
+        - device_tracker
+
   lovelace: !include lovelace.yaml
