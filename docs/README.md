@@ -19,8 +19,15 @@ To do...
 
 ## Useful links
 
+#### Reference
+
 - [Home Assistant cookbook](https://www.home-assistant.io/cookbook/)
 - [Home Assistant cheatsheet](https://github.com/arsaboo/homeassistant-config/blob/master/HASS%20Cheatsheet.md)
+
+#### Add-ons & tools
+
+- [HACS - Home Assistant Community Store](https://hacs.xyz/)
+- [lovelace card-mod](https://github.com/thomasloven/lovelace-card-mod)
 
 ## License
 
