@@ -44,14 +44,25 @@
     radius: 100
     icon: mdi:home
 
-  # Example configuration.yaml entry
+  weather:
+    - platform: buienradar
+      name: home
+
   sensor:
     - platform: buienradar
+      name: buienradar
+      timeframe: 60
       monitored_conditions:
-        - symbol
-        - humidity
+        - stationname
         - temperature
+        - feeltemperature
         - windspeed
+        - winddirection
+        - visibility
+        - humidity
         - pressure
+        - symbol
+        - conditiondetailed
+        - conditiondetailed_1d
 
   lovelace: !include lovelace.yaml
