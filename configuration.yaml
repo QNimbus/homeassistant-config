@@ -1,0 +1,57 @@
+---
+  # Configure a default setup of Home Assistant (frontend, api, etc)
+  default_config:
+
+  # Text to speech
+  tts:
+    - platform: google_translate
+
+  group: !include groups.yaml
+  automation: !include automations.yaml
+  script: !include scripts.yaml
+  scene: !include scenes.yaml
+
+  http:
+    ssl_certificate: /ssl/fullchain.pem
+    ssl_key: /ssl/privkey.pem
+    ip_ban_enabled: true
+    login_attempts_threshold: 5
+    
+  homeassistant:
+    name: Home
+
+    # Location required to calculate the time the sun rises and sets
+    latitude: !secret latitude_home
+    longitude: !secret longitude_home
+    elevation: !secret elevation_home
+    time_zone: Europe/Amsterdam
+    
+    unit_system: metric
+    internal_url: !secret internal_url
+
+    auth_providers:
+      - type: homeassistant
+      - type: trusted_networks
+        trusted_networks:
+          - 10.72.0.0/16
+
+    customize: !include customize.yaml
+
+  zone:
+  - name: Home
+    latitude: !secret latitude_home
+    longitude: !secret longitude_home
+    radius: 100
+    icon: mdi:home
+
+  # Example configuration.yaml entry
+  sensor:
+    - platform: buienradar
+      monitored_conditions:
+        - symbol
+        - humidity
+        - temperature
+        - windspeed
+        - pressure
+
+  lovelace: !include lovelace.yaml

@@ -1,0 +1,14 @@
+title: Home
+views:
+  - path: default_view
+    title: Home
+    badges:
+      - entity: person.bas_van_wetten
+    cards:
+      - type: 'custom:weather-card'
+        entity: weather.home
+        current: true
+        details: false
+        forecast: false
+        hourly_forecast: true
+        number_of_forecasts: 5
