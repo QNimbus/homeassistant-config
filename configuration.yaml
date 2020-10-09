@@ -2,21 +2,39 @@
   # Configure a default setup of Home Assistant (frontend, api, etc)
   default_config:
 
-  # Text to speech
+  # Text to speech. See https://www.home-assistant.io/integrations/tts/
   tts:
     - platform: google_translate
 
+    # See: https://www.home-assistant.io/integrations/group/
   group: !include groups.yaml
-  automation: !include automations.yaml
-  script: !include scripts.yaml
-  scene: !include scenes.yaml
 
+  # See: https://www.home-assistant.io/integrations/automation/
+  automation: !include automations.yaml
+
+  # See: https://www.home-assistant.io/integrations/script/
+  script: !include scripts.yaml
+
+  # See: https://www.home-assistant.io/integrations/scene/
+  scene: !include scenes.yaml
+  
+  # See: https://www.home-assistant.io/integrations/lovelace/
+  lovelace: !include lovelace.yaml
+
+  # See: https://www.home-assistant.io/integrations/logger/
+  logger: !include logger.yaml
+
+  # See: https://www.home-assistant.io/integrations/history/
+  history: !include history.yaml
+  
+  # https://www.home-assistant.io/integrations/http/
   http:
     ssl_certificate: /ssl/fullchain.pem
     ssl_key: /ssl/privkey.pem
     ip_ban_enabled: true
     login_attempts_threshold: 5
     
+  # https://www.home-assistant.io/integrations/homeassistant/
   homeassistant:
     name: Home
 
@@ -37,6 +55,7 @@
 
     customize: !include customize.yaml
 
+  # https://www.home-assistant.io/integrations/zone/
   zone:
   - name: Home
     latitude: !secret latitude_home
@@ -44,10 +63,12 @@
     radius: 100
     icon: mdi:home
 
+  # See: https://www.home-assistant.io/integrations/weather/
   weather:
     - platform: buienradar
       name: home
 
+  # https://www.home-assistant.io/integrations/sensor/
   sensor:
     - platform: buienradar
       name: buienradar
@@ -64,12 +85,3 @@
         - symbol
         - conditiondetailed
         - conditiondetailed_1d
-
-  logger: !include logger.yaml
-
-  history:
-    include:
-      domains:
-        - device_tracker
-
-  lovelace: !include lovelace.yaml
