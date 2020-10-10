@@ -1,10 +1,18 @@
 ---
   # Configure a default setup of Home Assistant (frontend, api, etc)
-  default_config:
+  # See https://www.home-assistant.io/integrations/default_config/
+  # default_config:
+
+  updater:
+    reporting: true
+    include_used_components: true
 
   # Text to speech. See https://www.home-assistant.io/integrations/tts/
   tts:
     - platform: google_translate
+    
+    # See: https://www.home-assistant.io/integrations/person/
+  person: !include person.yaml
 
     # See: https://www.home-assistant.io/integrations/group/
   group: !include groups.yaml
@@ -23,6 +31,9 @@
 
   # See: https://www.home-assistant.io/integrations/logger/
   logger: !include logger.yaml
+
+  # See: https://www.home-assistant.io/integrations/recorder/
+  recorder: !include recorder.yaml
 
   # See: https://www.home-assistant.io/integrations/history/
   history: !include history.yaml

@@ -1,0 +1,4 @@
+---
+  include:
+    domains:
+      - device_tracker
