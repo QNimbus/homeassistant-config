@@ -7,7 +7,7 @@
 .cloud/
 deps/
 tts/
-www/media/images/profile/
+www/images/profile/
 
 #
 # Sensitive data

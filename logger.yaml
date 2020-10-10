@@ -1,2 +1,8 @@
 ---
-  default: critical
+  default: error
+  logs:
+    # log level for HA core
+    homeassistant.core: fatal
+
+    # Log level for Text-To-Speech
+    homeassistant.components.tts: debug

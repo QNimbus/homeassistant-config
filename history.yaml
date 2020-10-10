@@ -1,4 +1,4 @@
 ---
-  include:
-    domains:
-      - device_tracker
+  # include:
+  #   domains:
+  #     - device_tracker
