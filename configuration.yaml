@@ -77,17 +77,7 @@
   ##################################################################
 
   # Text to speech. See: https://www.home-assistant.io/integrations/tts/
-  tts:
-    # - platform: amazon_polly        # See: https://www.home-assistant.io/integrations/amazon_polly/
-    #   aws_access_key_id: 'AKIATEELDYSLWSJE5FRV'
-    #   aws_secret_access_key: '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'
-    #   region_name: 'eu-central-1'
-    #   text_type: text
-    #   voice: Joanna
-    #   cache: True
-    - platform: google_translate
-      base_url: !secret tts_base_url
-      service_name: google_translate_say
+  tts: !include tts.yaml
 
     # See: https://www.home-assistant.io/integrations/group/
   group: !include groups.yaml
@@ -103,8 +93,8 @@
 
   # See: https://www.home-assistant.io/integrations/http/
   http:
-    # ssl_certificate: /ssl/fullchain.pem
-    # ssl_key: /ssl/privkey.pem
+    ssl_certificate: /ssl/fullchain.pem
+    ssl_key: /ssl/privkey.pem
     ip_ban_enabled: true
     login_attempts_threshold: 5
     
