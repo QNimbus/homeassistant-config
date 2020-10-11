@@ -1,14 +1,30 @@
-title: Home
+title: Scheidiuslaan 72
 views:
-  - path: default_view
-    title: Home
-    badges:
-      - entity: person.bas_van_wetten
+  - title: Home
+    path: home
+    icon: "mdi:home"
+    badges: []
     cards:
-      - type: 'custom:weather-card'
+      - type: "custom:weather-card"
         entity: weather.home
-        current: true
+        forecast: true
+        hourly_forecast: false
         details: false
-        forecast: false
-        hourly_forecast: true
-        number_of_forecasts: 5
+        number_of_forecasts: "3"
+  - icon: "mdi:home-floor-g"
+    badges: []
+    cards:
+      - type: media-control
+        entity: media_player.office
+      - type: media-control
+        entity: media_player.werkkamer_speaker
+      - type: media-control
+        entity: media_player.keuken_display
+      - type: media-control
+        entity: media_player.woonkamer_tv
+      - type: media-control
+        entity: media_player.slaapkamer_speaker
+      - type: media-control
+        entity: media_player.living_room
+  - icon: "mdi:home-floor-1"
+    badges: []

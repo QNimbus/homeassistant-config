@@ -1,0 +1,3 @@
+---
+# Zero-configuration networking (zeroconf) integration. See: https://www.home-assistant.io/integrations/zeroconf/
+zeroconf:

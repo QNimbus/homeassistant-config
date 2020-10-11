@@ -1,0 +1,3 @@
+---
+# System Health integration. See: https://www.home-assistant.io/integrations/system_health/
+system_health:

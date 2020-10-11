@@ -1,0 +1,7 @@
+---
+# Recorder integration. See: https://www.home-assistant.io/integrations/recorder/
+recorder:
+  db_url: !secret mariadb_url
+  # include:
+  #   domains:
+  #     - device_tracker

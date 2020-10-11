@@ -1,4 +1,6 @@
 ---
+# Logger integration. See: https://www.home-assistant.io/integrations/logger/
+logger:
   default: error
   logs:
     # log level for HA core

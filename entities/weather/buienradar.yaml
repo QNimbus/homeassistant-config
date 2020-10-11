@@ -1,0 +1,4 @@
+---
+# Weather integration. See: https://www.home-assistant.io/integrations/buienradar/
+platform: buienradar
+name: buienradar

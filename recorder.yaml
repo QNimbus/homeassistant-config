@@ -1,5 +1,0 @@
----
-  db_url: !secret mariadb_url
-  # include:
-  #   domains:
-  #     - device_tracker

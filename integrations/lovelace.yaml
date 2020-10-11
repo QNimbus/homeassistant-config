@@ -1,0 +1,11 @@
+---
+# Lovelace integration. See: https://www.home-assistant.io/integrations/lovelace/
+lovelace:
+  mode: yaml
+  resources:
+    - url: /hacsfiles/weather-card/weather-card.js
+      type: module
+    - url: /hacsfiles/lovelace-card-mod/card-mod.js
+      type: module
+    - url: /hacsfiles/stack-in-card/stack-in-card.js
+      type: module

@@ -1,0 +1,7 @@
+---
+# Person integration. See: https://www.home-assistant.io/integrations/person
+name: Bas van Wetten
+id: bas
+user_id: 11bb1c78c799438d9045c59c5c37dd4b
+device_trackers:
+  - device_tracker.oneplus_bas
