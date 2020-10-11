@@ -1,0 +1,12 @@
+---
+title: Homezzzz
+path: home
+icon: "mdi:home"
+badges: []
+cards:
+  - type: "custom:weather-card"
+    entity: weather.buienradar
+    forecast: true
+    hourly_forecast: false
+    details: false
+    number_of_forecasts: "3"

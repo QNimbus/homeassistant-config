@@ -6,5 +6,7 @@ logger:
     # log level for HA core
     homeassistant.core: fatal
 
+    homeassistant.loader: error
+
     # Log level for Text-To-Speech
     homeassistant.components.tts: debug

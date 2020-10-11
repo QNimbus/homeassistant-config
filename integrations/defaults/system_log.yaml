@@ -1,0 +1,4 @@
+---
+system_log:
+  max_entries: 100
+  fire_event: false
