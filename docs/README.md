@@ -1,8 +1,9 @@
 # Home Assistant Configuration <!-- omit in toc -->
 
+[![GitHub](https://img.shields.io/github/license/QNimbus/homeassistant-config?style=for-the-badge)](LICENSE)
 ![Maintenance](https://img.shields.io/maintenance/yes/2020?style=for-the-badge)
 ![GitHub last commit](https://img.shields.io/github/last-commit/QNimbus/homeassistant-config?style=for-the-badge)
-[![GitHub](https://img.shields.io/github/license/QNimbus/homeassistant-config?style=for-the-badge)](LICENSE)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/QNimbus/homeassistant-config?style=for-the-badge)
 
 - [Installation](#installation)
 - [To do](#to-do)
