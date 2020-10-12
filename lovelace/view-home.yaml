@@ -1,12 +1,122 @@
 ---
-title: Homezzzz
+anchors:
+  style: &custom-header-style |
+    ha-card {
+    }
+    .card-header {
+      font-size: 16px;
+      font-weight: 500;
+      font-variant: small-caps;
+      padding-top: 16px;
+      line-height: 16px;
+    }
+  custom-button-style: &custom-button-style
+    icon:
+      - color: var(--primary-color)
+    name:              
+      - font-variant: small-caps
+        font-size: 14px
+        color: var(--primary-color)
+  # Empty placeholder for correct positioning
+  # Button card. See: https://github.com/custom-cards/button-card
+  placeholder-card: &anchor-placeholder-card
+    - type: 'custom:button-card'
+      show_icon: false
+      show_name: false
+
+title: Home
 path: home
 icon: "mdi:home"
 badges: []
 cards:
-  - type: "custom:weather-card"
-    entity: weather.buienradar
+  ##########
+  # Scenes #
+  ##########
+  # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+  - type: 'custom:stack-in-card'
+    title: home scenes
+    style: *custom-header-style
+    mode: 'vertical'
+    cards:
+    # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack/
+    - type: horizontal-stack
+      cards:
+        # Button card. See: https://github.com/custom-cards/button-card
+        - type: 'custom:button-card'
+          name: home
+          icon: mdi:home-import-outline
+          show_icon: true
+          show_name: true
+          styles: *custom-button-style
+          tap_action:
+            action: call-service
+            haptic: success
+            service: persistent_notification.create
+            service_data:
+              title: "Test button"
+              message: "You pushed the 'back home' button"
+        # Button card. See: https://github.com/custom-cards/button-card
+        - type: 'custom:button-card'
+          name: away
+          icon: mdi:home-export-outline
+          show_icon: true
+          show_name: true
+          styles: *custom-button-style
+          tap_action:
+            action: call-service
+            haptic: success
+            service: persistent_notification.create
+            service_data:
+              title: "Test button"
+              message: "You pushed to 'away from home' button"
+        # Button card. See: https://github.com/custom-cards/button-card
+        - type: 'custom:button-card'
+          name: lights off
+          icon: mdi:power
+          show_icon: true
+          show_name: true
+          styles: *custom-button-style
+          tap_action:
+            action: call-service
+            haptic: success
+            service: persistent_notification.create
+            service_data:
+              title: "All lights"
+              message: "You switched all lights off"
+        - <<: *anchor-placeholder-card
+        - <<: *anchor-placeholder-card
+      style: *custom-header-style
+  ###########
+  # Weather #
+  ###########
+  # Lovelace anitmated weather card. See: https://github.com/bramkragten/weather-card
+  - type: 'custom:weather-card'
+    entity: weather.home
+    current: true
+    details: false
     forecast: true
     hourly_forecast: false
-    details: false
-    number_of_forecasts: "3"
+    number_of_forecasts: 3
+  ############
+  # Location #
+  ############
+  # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+  - type: 'custom:stack-in-card'
+    title: location
+    style: *custom-header-style
+    mode: vertical
+    cards:
+      # Map Card. See: https://www.home-assistant.io/lovelace/map/
+      - type: map
+        aspect_ratio: '16:9'
+        default_zoom: 16
+        geo_location_sources: []
+        hours_to_show: 0
+        entities:
+          - entity: zone.home
+          - entity: person.bas_van_wetten
+          - entity: person.vanessa_van_wetten
+      - type: entities
+        entities:
+          - entity: person.bas_van_wetten
+          - entity: person.vanessa_van_wetten
