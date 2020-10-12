@@ -1,0 +1,13 @@
+---
+# MQTT. See: https://www.home-assistant.io/integrations/mqtt/ & https://www.home-assistant.io/docs/mqtt/broker#run-your-own
+mqtt:
+  broker: !secret mqtt_broker
+  port: !secret mqtt_broker_port
+  client_id: homeassistant
+
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
