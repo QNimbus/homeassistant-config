@@ -1,7 +1,0 @@
----
-# Person integration. See: https://www.home-assistant.io/integrations/person
-name: Vanessa van Wetten
-id: vanessa
-user_id: 40e14b5972be44ecb88283fe90a1ff18
-device_trackers:
-  - device_tracker.oneplus_vanessa
