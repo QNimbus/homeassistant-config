@@ -1,0 +1,30 @@
+---
+anchors:
+  style: &custom-header-style |
+    ha-card {
+    }
+    .card-header {
+      font-size: 16px;
+      font-weight: 500;
+      font-variant: small-caps;
+      padding-top: 16px;
+      line-height: 16px;
+    }
+  custom-button-style: &custom-button-style
+    icon:
+      - color: var(--primary-color)
+    name:              
+      - font-variant: small-caps
+        font-size: 14px
+        color: var(--primary-color)
+  # Empty placeholder for correct positioning
+  # Button card. See: https://github.com/custom-cards/button-card
+  placeholder-card: &anchor-placeholder-card
+    - type: 'custom:button-card'
+      show_icon: false
+      show_name: false
+title: Outside
+path: outside
+icon: "mdi:flower"
+badges: []
+cards: []

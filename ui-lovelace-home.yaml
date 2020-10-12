@@ -2,3 +2,7 @@
 title: Home
 views:
   - !include lovelace/view-home.yaml
+  - !include lovelace/view-ground-floor.yaml
+  - !include lovelace/view-first-floor.yaml
+  - !include lovelace/view-second-floor.yaml
+  - !include lovelace/view-outside.yaml

@@ -23,7 +23,6 @@ anchors:
     - type: 'custom:button-card'
       show_icon: false
       show_name: false
-
 title: Home
 path: home
 icon: "mdi:home"
@@ -89,14 +88,21 @@ cards:
   ###########
   # Weather #
   ###########
-  # Lovelace anitmated weather card. See: https://github.com/bramkragten/weather-card
-  - type: 'custom:weather-card'
-    entity: weather.home
-    current: true
-    details: false
-    forecast: true
-    hourly_forecast: false
-    number_of_forecasts: 3
+  # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+  - type: 'custom:stack-in-card'
+    title: local weather
+    style: *custom-header-style
+    mode: 'horizontal'
+    cards:
+      # Lovelace anitmated weather card. See: https://github.com/bramkragten/weather-card
+      - type: 'custom:weather-card'
+
+        entity: weather.home
+        current: true
+        details: false
+        forecast: true
+        hourly_forecast: false
+        number_of_forecasts: 3
   ############
   # Location #
   ############
@@ -116,7 +122,9 @@ cards:
           - entity: zone.home
           - entity: person.bas_van_wetten
           - entity: person.vanessa_van_wetten
+          - entity: person.sophie_van_wetten
       - type: entities
         entities:
           - entity: person.bas_van_wetten
           - entity: person.vanessa_van_wetten
+          - entity: person.sophie_van_wetten
