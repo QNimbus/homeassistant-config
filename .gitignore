@@ -6,6 +6,7 @@
 .storage/
 .cloud/
 deps/
+image/
 tts/
 www/images/profile/
 
@@ -32,3 +33,5 @@ logs/
 #
 __pycache__/
 *.py[cod]
+
+!/**/.gitkeep
