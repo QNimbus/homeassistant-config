@@ -1,6 +1,18 @@
 ---
 anchors:
-  style: &custom-header-style |
+  custom-scenes-style: &custom-scenes-style |
+    ha-card {
+      background: var(--accent-color);
+    }
+    .card-header {
+      color: var(--text-primary-color);
+      font-size: 16px;
+      font-weight: 500;
+      font-variant: small-caps;
+      padding-top: 16px;
+      line-height: 16px;
+    }
+  custom-header-style: &custom-header-style |
     ha-card {
     }
     .card-header {
@@ -12,11 +24,11 @@ anchors:
     }
   custom-button-style: &custom-button-style
     icon:
-      - color: var(--primary-color)
+      - color: var(--text-primary-color)
     name:              
-      - font-variant: small-caps
+      - color: var(--text-primary-color)
+        font-variant: small-caps
         font-size: 14px
-        color: var(--primary-color)
   # Empty placeholder for correct positioning
   # Button card. See: https://github.com/custom-cards/button-card
   placeholder-card: &anchor-placeholder-card
@@ -34,7 +46,7 @@ cards:
   # Stack in Card. See: https://github.com/custom-cards/stack-in-card
   - type: 'custom:stack-in-card'
     title: home scenes
-    style: *custom-header-style
+    style: *custom-scenes-style
     mode: 'vertical'
     cards:
     # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack/
@@ -84,7 +96,6 @@ cards:
               message: "You switched all lights off"
         - <<: *anchor-placeholder-card
         - <<: *anchor-placeholder-card
-      style: *custom-header-style
   ###########
   # Weather #
   ###########
