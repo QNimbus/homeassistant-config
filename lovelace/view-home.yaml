@@ -139,3 +139,33 @@ cards:
           - entity: person.bas_van_wetten
           - entity: person.vanessa_van_wetten
           - entity: person.sophie_van_wetten
+  ###############
+  # Power usage #
+  ###############
+  # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+  - type: entities
+    title: power
+    style: *custom-header-style
+    show_header_toggle: true
+    entities:
+      - label: Current usage
+        type: section
+      - entity: sensor.dsmr_reading_electricity_currently_delivered_watts
+        name: Electricity
+      - entity: sensor.dsmr_consumption_gas_currently_delivered_liters
+        name: Gas
+      - label: Total usage (today)
+        type: section
+      - entity: sensor.dsmr_day_consumption_electricity_merged_watts
+        name: Electricity
+      - entity: sensor.dsmr_day_consumption_gas_liters
+        name: Gas
+      - label: Expenses (today)
+        type: section
+      - entity: sensor.dsmr_day_consumption_electricity_cost_merged
+        name: Electricity
+      - entity: sensor.dsmr_day_consumption_gas_cost
+        name: Gas
+      - type: divider
+      - entity: sensor.dsmr_day_consumption_total_cost
+        name: Total
