@@ -1,0 +1,10 @@
+---
+# Template. See: https://www.home-assistant.io/integrations/template/
+platform: template
+sensors:
+  dsmr_reading_electricity_currently_delivered_watts:
+    friendly_name: "Current power usage"
+    unit_of_measurement: 'W'
+    value_template: "{{ states('sensor.dsmr_reading_electricity_currently_delivered') | float * 1000 }}"
+    icon_template: mdi:flash
+  
