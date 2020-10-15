@@ -22,6 +22,18 @@ anchors:
       padding-top: 16px;
       line-height: 16px;
     }
+  custom-header-style: &custom-header-style2
+    .: |
+      ha-card {
+      }
+    "template-entity-row": |
+      $: |
+        :host {
+          background: blue;
+        }
+       .state {
+        font-size: 22px;
+        }
   custom-button-style: &custom-button-style
     icon:
       - color: var(--text-primary-color)
@@ -145,27 +157,44 @@ cards:
   # Stack in Card. See: https://github.com/custom-cards/stack-in-card
   - type: entities
     title: power
-    style: *custom-header-style
-    show_header_toggle: true
+    # style: *custom-header-style2
+    style:
+      "#states div:last-child":
+        template-entity-row:
+          $:
+            "#wrapper": |
+              div {
+                font-size: 1.1rem;
+                font-weight: bold;
+              }
     entities:
-      - label: Current usage
-        type: section
+      - type: section
+        label: Current usage
       - entity: sensor.dsmr_reading_electricity_currently_delivered_watts
         name: Electricity
       - entity: sensor.dsmr_consumption_gas_currently_delivered_liters
         name: Gas
       - label: Total usage (today)
         type: section
-      - entity: sensor.dsmr_day_consumption_electricity_merged_watts
-        name: Electricity
-      - entity: sensor.dsmr_day_consumption_gas_liters
-        name: Gas
+      - type: custom:template-entity-row
+        entity: sensor.dsmr_day_consumption_electricity_merged_watts
+        state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_electricity_merged_watts') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_merged_watts', 'unit_of_measurement') }}"
+      - type: custom:template-entity-row
+        entity: sensor.dsmr_day_consumption_gas_liters
+        state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_gas_liters') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas_liters', 'unit_of_measurement') }}"
       - label: Expenses (today)
         type: section
-      - entity: sensor.dsmr_day_consumption_electricity_cost_merged
-        name: Electricity
-      - entity: sensor.dsmr_day_consumption_gas_cost
-        name: Gas
+      - type: custom:template-entity-row
+        entity: sensor.dsmr_day_consumption_electricity_cost_merged
+        state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_electricity_cost_merged') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_cost_merged', 'unit_of_measurement') }}"
+      - type: custom:template-entity-row
+        entity: sensor.dsmr_day_consumption_gas_cost
+        state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_gas_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas_cost', 'unit_of_measurement') }}"
+      - type: custom:template-entity-row
+        name: Fixed cost
+        entity: sensor.dsmr_day_consumption_total_fixed_cost
+        state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_fixed_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_fixed_cost', 'unit_of_measurement') }}"
       - type: divider
-      - entity: sensor.dsmr_day_consumption_total_cost
-        name: Total
+      - type: custom:template-entity-row
+        entity: sensor.dsmr_day_consumption_total_cost
+        state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_cost', 'unit_of_measurement') }}"
