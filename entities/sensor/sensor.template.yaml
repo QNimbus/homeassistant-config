@@ -18,10 +18,10 @@ sensors:
 
   dsmr_day_consumption_electricity_merged_watts:
     friendly_name: "Power usage total"
-    unit_of_measurement: 'Wh'
+    unit_of_measurement: 'kWh'
     icon_template: mdi:counter
     value_template: >
-      {{ '{:,.0f}'.format(states('sensor.dsmr_day_consumption_electricity_merged') | float * 1000).replace(',', '.') }}
+      {{ '{:,.2f}'.format(states('sensor.dsmr_day_consumption_electricity_merged') | float).replace(',', '.') }}
 
   dsmr_day_consumption_gas_liters:
     friendly_name: "Gas usage total"
@@ -29,3 +29,12 @@ sensors:
     icon_template: mdi:counter
     value_template: >
       {{ '{:,.0f}'.format(states('sensor.dsmr_day_consumption_gas') | float * 1000).replace(',', '.') }}
+
+  dsmr_day_consumption_total_fixed_cost:
+    friendly_name: "Total cost"
+    unit_of_measurement: '€'
+    icon_template: mdi:currency-eur
+    value_template: >
+      {{ '{:.2f}'.format(states('sensor.dsmr_day_consumption_total_cost') | float - 
+          states('sensor.dsmr_day_consumption_gas_cost') | float - 
+          states('sensor.dsmr_day_consumption_electricity_cost_merged') | float) }}
