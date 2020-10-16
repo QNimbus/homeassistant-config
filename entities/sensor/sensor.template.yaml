@@ -23,13 +23,6 @@ sensors:
     value_template: >
       {{ states('sensor.dsmr_day_consumption_electricity_merged') | float }}
 
-  dsmr_day_consumption_gas_liters:
-    friendly_name: "Gas usage total"
-    unit_of_measurement: 'liters'
-    icon_template: mdi:counter
-    value_template: >
-      {{ states('sensor.dsmr_day_consumption_gas') | float * 1000 }}
-
   dsmr_day_consumption_total_fixed_cost:
     friendly_name: "Total cost"
     unit_of_measurement: '€'

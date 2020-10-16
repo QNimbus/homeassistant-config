@@ -22,18 +22,6 @@ anchors:
       padding-top: 16px;
       line-height: 16px;
     }
-  custom-header-style: &custom-header-style2
-    .: |
-      ha-card {
-      }
-    "template-entity-row": |
-      $: |
-        :host {
-          background: blue;
-        }
-       .state {
-        font-size: 22px;
-        }
   custom-button-style: &custom-button-style
     icon:
       - color: var(--text-primary-color)
@@ -41,6 +29,13 @@ anchors:
       - color: var(--text-primary-color)
         font-variant: small-caps
         font-size: 14px
+  custom-entity-row: &custom-entity-row
+    $:
+      "#wrapper": |
+        * {
+          color: var(--accent-color);
+          font-weight: bold;
+        }
   # Empty placeholder for correct positioning
   # Button card. See: https://github.com/custom-cards/button-card
   placeholder-card: &anchor-placeholder-card
@@ -160,13 +155,7 @@ cards:
     # style: *custom-header-style2
     style:
       "#states div:last-child":
-        template-entity-row:
-          $:
-            "#wrapper": |
-              div {
-                font-size: 1.1rem;
-                font-weight: bold;
-              }
+        template-entity-row: *custom-entity-row
     entities:
       - type: section
         label: Current usage
@@ -180,8 +169,8 @@ cards:
         entity: sensor.dsmr_day_consumption_electricity_merged_watts
         state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_electricity_merged_watts') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_merged_watts', 'unit_of_measurement') }}"
       - type: custom:template-entity-row
-        entity: sensor.dsmr_day_consumption_gas_liters
-        state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_gas_liters') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas_liters', 'unit_of_measurement') }}"
+        entity: sensor.dsmr_day_consumption_gas
+        state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_gas') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas', 'unit_of_measurement') }}"
       - label: Expenses (today)
         type: section
       - type: custom:template-entity-row
