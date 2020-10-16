@@ -21,6 +21,7 @@ Most integrations can be configured using YAML files. However some integration a
 
 - [Netatmo integration](https://www.home-assistant.io/integrations/netatmo/)
 - [Ubiquiti UniFi integration](https://www.home-assistant.io/integrations/unifi/)
+- [Plugwise integration](https://www.home-assistant.io/integrations/plugwise/)
 
 ## To do
 
@@ -30,6 +31,7 @@ To do...
 
 #### Reference
 
+- [List of Home Assistant builtin icons](https://gist.github.com/QNimbus/5fb74d8ab5b68db3731f06eefedda3f7)
 - [Home Assistant cookbook](https://www.home-assistant.io/cookbook/)
 - [Home Assistant cheatsheet](https://github.com/arsaboo/homeassistant-config/blob/master/HASS%20Cheatsheet.md)
 
