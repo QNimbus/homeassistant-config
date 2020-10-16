@@ -1,3 +1,4 @@
 ---
-person.example:
-  entity_picture: /local/images/profile/example_profile.png
+  # Person integration. See: https://www.home-assistant.io/integrations/person/
+  person.example:
+    entity_picture: /local/images/profile/example_profile.png
