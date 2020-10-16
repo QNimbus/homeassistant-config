@@ -146,6 +146,9 @@ cards:
           - entity: person.bas_van_wetten
           - entity: person.vanessa_van_wetten
           - entity: person.sophie_van_wetten
+          - type: custom:template-entity-row
+            entity: person.eva_van_wetten
+            state: Not tracking
   ###############
   # Power usage #
   ###############
