@@ -1,0 +1,11 @@
+---
+# Samsung TV Tizen integration. See: https://github.com/jaruba/ha-samsungtv-tizen
+media_player:
+  - platform: samsungtv_tizen
+    name: Samsung UE32K5600 TV kitchen
+    host: !secret samsungtv_kitchen_host
+    mac: !secret samsungtv_kitchen_host_mac
+    port: 8002
+    update_method: smartthings
+    device_id: 66a6ae62-c89f-4334-bfb9-b55aa4e091ab
+    api_key: 78096d5a-2c80-4984-8d24-3c8db1867914
