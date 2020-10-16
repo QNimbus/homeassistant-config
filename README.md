@@ -6,6 +6,7 @@
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/QNimbus/homeassistant-config?style=for-the-badge)
 
 - [Installation](#installation)
+- [Integrations](#integrations)
 - [To do](#to-do)
 - [Useful links](#useful-links)
 - [License](#license)
@@ -13,6 +14,13 @@
 ## Installation
 
 To do...
+
+## Integrations
+
+Most integrations can be configured using YAML files. However some integration are exclusively configured through to web UI. A list of integrations that need to be installed and configured through the web UI:
+
+- [Netatmo integration](https://www.home-assistant.io/integrations/netatmo/)
+- [Ubiquiti UniFi integration](https://www.home-assistant.io/integrations/unifi/)
 
 ## To do
 
