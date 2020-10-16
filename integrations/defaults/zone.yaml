@@ -1,3 +1,3 @@
 ---
 # Zone integration. See: https://www.home-assistant.io/integrations/zone/
-zone: !include_dir_list ../../entities/zones
+zone: !include_dir_merge_list ../../entities/zones

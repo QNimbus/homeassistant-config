@@ -1,0 +1,13 @@
+---
+# Zone integration. See: https://www.home-assistant.io/integrations/zone/
+- name: Kaj & Els
+  icon: mdi:account-multiple
+  latitude: !secret latitude_friends_kaj_els
+  longitude: !secret longtitude_friends_kaj_els
+  radius: 100
+  
+- name: Liesbeth & Chris
+  icon: mdi:account-multiple
+  latitude: !secret latitude_friends_chris_liesbeth
+  longitude: !secret longtitude_friends_chris_liesbeth
+  radius: 100
