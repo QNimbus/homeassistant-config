@@ -17,6 +17,7 @@
 - [Integrations](#integrations)
 - [To do](#to-do)
 - [Useful links](#useful-links)
+  - [ZWave in Home Assistant](#zwave-in-home-assistant)
 - [License](#license)
 
 ## Installation
@@ -145,6 +146,11 @@ Most integrations can be configured using YAML files. However some integration a
 To do...
 
 ## Useful links
+
+### ZWave in Home Assistant
+
+- [How to add ZWave devices in Home Assistant (community forum post) 1 of 2](https://community.home-assistant.io/t/aeon-labs-z-wave-door-window-sensor/403/27)
+- [How to add ZWave devices in Home Assistant (community forum post) 2 of 2](https://community.home-assistant.io/t/zwave-device-shows-10-entity-types-only-1-needed-to-show-best-way-to-hide/15755/8)
 
 #### Reference
 
