@@ -34,4 +34,11 @@ logs/
 __pycache__/
 *.py[cod]
 
+#
+# Other files
+#
+*.sqlite
+*.xml
+*.txt
+
 !/**/.gitkeep

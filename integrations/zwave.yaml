@@ -1,0 +1,9 @@
+---
+# https://www.home-assistant.io/docs/z-wave/installation/#configuration-variables
+# ZWave integration (see: https://www.home-assistant.io/integrations/zwave)
+zwave:
+  usb_path: /dev/ttyACM0
+  debug: false
+  autoheal: false
+  polling_interval: 60000
+  network_key: !secret zwave_network_key
