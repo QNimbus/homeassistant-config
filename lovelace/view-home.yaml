@@ -113,7 +113,7 @@ cards:
     cards:
       # Lovelace anitmated weather card. See: https://github.com/bramkragten/weather-card
       - type: 'custom:weather-card'
-        entity: weather.home
+        entity: weather.buienradar
         current: true
         details: false
         forecast: true
