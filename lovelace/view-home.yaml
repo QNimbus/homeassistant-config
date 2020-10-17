@@ -36,7 +36,7 @@ anchors:
         font-variant: small-caps
         font-size: 14px
 
-title: Home
+title: Thuis
 path: home
 icon: "mdi:home"
 badges: []
@@ -46,7 +46,7 @@ cards:
   ##########
   # Stack in Card. See: https://github.com/custom-cards/stack-in-card
   - type: 'custom:stack-in-card'
-    title: home scenes
+    title: huis scenes
     style:
       << : *custom-scenes-style
     mode: 'vertical'
@@ -56,7 +56,7 @@ cards:
       cards:
         # Button card. See: https://github.com/custom-cards/button-card
         - type: 'custom:button-card'
-          name: home
+          name: thuis
           icon: mdi:home-import-outline
           show_icon: true
           show_name: true
@@ -71,7 +71,7 @@ cards:
               message: "You pushed the 'back home' button"
         # Button card. See: https://github.com/custom-cards/button-card
         - type: 'custom:button-card'
-          name: away
+          name: afwezig
           icon: mdi:home-export-outline
           show_icon: true
           show_name: true
@@ -86,7 +86,7 @@ cards:
               message: "You pushed to 'away from home' button"
         # Button card. See: https://github.com/custom-cards/button-card
         - type: 'custom:button-card'
-          name: lights off
+          name: lighten uit
           icon: mdi:power
           show_icon: true
           show_name: true
@@ -106,7 +106,7 @@ cards:
   ###########
   # Stack in Card. See: https://github.com/custom-cards/stack-in-card
   - type: 'custom:stack-in-card'
-    title: local weather
+    title: plaatselijk weer
     style:
       << : *custom-header-style
     mode: 'horizontal'
@@ -124,7 +124,7 @@ cards:
   ############
   # Stack in Card. See: https://github.com/custom-cards/stack-in-card
   - type: 'custom:stack-in-card'
-    title: location
+    title: locaties
     style:
       << : *custom-header-style
     cards:
@@ -145,7 +145,12 @@ cards:
           # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
           - type: custom:template-entity-row
             entity: person.bas_van_wetten
-            state: "{{ states('person.bas_van_wetten') | capitalize }}"
+            state: |
+              {% set mapper =  {
+                'home'      : 'Thuis',
+                'not_home'  : 'Afwezig' } %}
+              {% set state =  states('person.bas_van_wetten') %}
+              {{ mapper[state] if state in mapper else 'Niet gevolgd' }}
             style: |
               .state {
                 font-weight:  {% if is_state('person.bas_van_wetten', 'home') %} bold;
@@ -155,7 +160,12 @@ cards:
           # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
           - type: custom:template-entity-row
             entity: person.vanessa_van_wetten
-            state: "{{ states('person.vanessa_van_wetten') | capitalize }}"
+            state: |
+              {% set mapper =  {
+                'home'      : 'Thuis',
+                'not_home'  : 'Afwezig' } %}
+              {% set state =  states('person.vanessa_van_wetten') %}
+              {{ mapper[state] if state in mapper else 'Niet gevolgd' }}
             style: |
               .state {
                 font-weight:  {% if is_state('person.vanessa_van_wetten', 'home') %} bold;
@@ -165,7 +175,12 @@ cards:
           # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
           - type: custom:template-entity-row
             entity: person.sophie_van_wetten
-            state: "{{ states('person.sophie_van_wetten') | capitalize }}"
+            state: |
+              {% set mapper =  {
+                'home'      : 'Thuis',
+                'not_home'  : 'Afwezig' } %}
+              {% set state =  states('person.sophie_van_wetten') %}
+              {{ mapper[state] if state in mapper else 'Niet gevolgd' }}
             style: |
               .state {
                 font-weight:  {% if is_state('person.sophie_van_wetten', 'home') %} bold;
@@ -175,7 +190,12 @@ cards:
           # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
           - type: custom:template-entity-row
             entity: person.eva_van_wetten
-            state: Not tracking
+            state: |
+              {% set mapper =  {
+                'home'      : 'Thuis',
+                'not_home'  : 'Afwezig' } %}
+              {% set state =  states('person.eva_van_wetten') %}
+              {{ mapper[state] if state in mapper else 'Niet gevolgd' }}
             style: |
               .state {
                 font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
@@ -187,49 +207,52 @@ cards:
   ###############
   # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
   - type: entities
-    title: power
+    title: energie
     style:
       << : *custom-header-style
     entities:
       - type: section
-        label: Current usage
+        label: Huidig verbruik
 
       - entity: sensor.dsmr_reading_electricity_currently_delivered_watts
-        name: Electricity
+        name: Elektriciteit
 
       - entity: sensor.dsmr_consumption_gas_currently_delivered_liters
         name: Gas
 
-      - label: Total usage (today)
+      - label: Verbruik (vandaag)
         type: section
 
       # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
       - type: custom:template-entity-row
         entity: sensor.dsmr_day_consumption_electricity_merged_watts
+        name: Elektriciteit
         state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_electricity_merged_watts') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_merged_watts', 'unit_of_measurement') }}"
 
       # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
       - type: custom:template-entity-row
         entity: sensor.dsmr_day_consumption_gas
+        name: Gas
         state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_gas') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas', 'unit_of_measurement') }}"
 
-      - label: Expenses (today)
+      - label: Kosten (vandaag)
         type: section
 
       # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
       - type: custom:template-entity-row
         entity: sensor.dsmr_day_consumption_electricity_cost_merged
+        name: Elektriciteit
         state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_electricity_cost_merged') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_cost_merged', 'unit_of_measurement') }}"
 
       # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
       - type: custom:template-entity-row
         entity: sensor.dsmr_day_consumption_gas_cost
-        state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_gas_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas_cost', 'unit_of_measurement') }}"
-        
+        name: Gas
+        state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_gas_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas_cost', 'unit_of_measurement') }}"        
       # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
       - type: custom:template-entity-row
-        name: Fixed cost
         entity: sensor.dsmr_day_consumption_total_fixed_cost
+        name: Vast
         state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_fixed_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_fixed_cost', 'unit_of_measurement') }}"
 
       - type: divider
@@ -237,6 +260,7 @@ cards:
       # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
       - type: custom:template-entity-row
         entity: sensor.dsmr_day_consumption_total_cost
+        name: Totaal
         state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_cost', 'unit_of_measurement') }}"
         style: |
           .state, .info {

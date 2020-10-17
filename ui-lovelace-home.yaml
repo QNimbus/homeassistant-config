@@ -1,5 +1,5 @@
 ---
-title: Home
+title: Scheidiuslaan 72
 views:
   - !include lovelace/view-home.yaml
   - !include lovelace/view-ground-floor.yaml
