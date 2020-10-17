@@ -137,6 +137,8 @@ Most integrations can be configured using YAML files. However some integration a
 - [Netatmo integration](https://www.home-assistant.io/integrations/netatmo/)
 - [Ubiquiti UniFi integration](https://www.home-assistant.io/integrations/unifi/)
 - [Plugwise integration](https://www.home-assistant.io/integrations/plugwise/)
+- [SONOS integration](https://www.home-assistant.io/integrations/sonos/)
+- [ZWave integration](https://www.home-assistant.io/integrations/zwave/)
 
 ## To do
 
