@@ -12,6 +12,7 @@
   - [SSH](#ssh)
   - [Network setup](#network-setup)
   - [Samba](#samba)
+  - [AppDaemon](#appdaemon)
   - [Clone config repository](#clone-config-repository)
 - [Integrations](#integrations)
 - [To do](#to-do)
@@ -104,6 +105,10 @@ To add a new interface/connection:
 
 Go to the [`Supervisor >> Add-on store`](http://homeassistant.local:8123/hassio/store) and install the `Samba share` add-on from the official repository.
 
+### AppDaemon
+
+Go to the [`Supervisor >> Add-on store`](http://homeassistant.local:8123/hassio/store) and install the `AppDaemon` add-on from the community repository.
+
 ### Clone config repository
 
 Prior to cloning the config repository, ensure that HA core is stopped.
@@ -112,7 +117,16 @@ Prior to cloning the config repository, ensure that HA core is stopped.
 
 Clone this [repository](https://github.com/QNimbus/homeassistant-config.git) in the config folder.
 
-After cloning the config repository, copy `secrets.example.yaml` to `secrets.yaml` and edit all the dummy values. Once this is done, start HA core again.
+- copy `secrets.example.yaml` to `secrets.yaml` and edit all the dummy values.
+- copy/install SSL certificates in the `/ssl` folder.
+- add the required `person` entities via the GUI. [`Configuration`](http://homeassistant.local:8123/config/person) *\**
+- install [HACS](https://hacs.xyz/docs/installation/manual).
+- install HACS integration [in the integrations config view](http://homeassistant.local:8123/config/integrations)
+- get a [GitHub access token](https://github.com/settings/tokens) to use with HACS.
+
+*\* Note: You can add profile images to the person profile via the GUI or via the YAML config in `customize/entities/person.<person_name>.yaml`*
+
+Finally, restart the HA core.
 
 `$ ha core start`
 
