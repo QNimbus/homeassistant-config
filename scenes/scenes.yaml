@@ -1,2 +1,14 @@
 ---
-  []
+  name: Beneden verlichting uit
+  icon: mdi:lightbulb-off-outline
+  entities:
+    light.gf_kitchen_dimmer_1_level_1:
+      state: 'off'
+    light.gf_kitchen_dimmer_2_level_1:
+      state: 'off'
+    light.gf_living_dimmer_1_level_1:
+      state: 'off'
+    light.gf_living_dimmer_2_level_1:
+      state: 'off'
+    light.gf_living_dimmer_3_level_1:
+      state: 'off'

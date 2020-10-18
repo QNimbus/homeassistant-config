@@ -1,5 +1,4 @@
 ---
 # Scenes integration. See: https://www.home-assistant.io/integrations/scene
 
-scene: !include ../../scenes/scenes.yaml
-scene split: !include_dir_list ../../scenes
+scene: !include_dir_merge_named ../../scenes
