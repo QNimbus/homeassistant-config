@@ -15,6 +15,7 @@
   - [AppDaemon](#appdaemon)
   - [Clone config repository](#clone-config-repository)
 - [Integrations](#integrations)
+- [ZWave](#zwave)
 - [To do](#to-do)
 - [Useful links](#useful-links)
   - [ZWave in Home Assistant](#zwave-in-home-assistant)
@@ -141,16 +142,30 @@ Most integrations can be configured using YAML files. However some integration a
 - [SONOS integration](https://www.home-assistant.io/integrations/sonos/)
 - [ZWave integration](https://www.home-assistant.io/integrations/zwave/)
 
+## ZWave
+
+Renaming the default discovered device names (not entity names, I'm referring to the device names specifically) allows for better organisation of the ZWave network in HA.
+
+- Ensure tha HA ZWave binding has correctly started the ZWave network previously and saved it's configuration to `zwcfg_0xe12deadbeaf.xml`
+- Make a backup copy of the config file. e.g. `zwcfg_0xe12deadbeaf.xml.bak`
+- Install the OZWCP add-on ([`Supervisor >> Add-on store`](http://homeassistant.local:8123/hassio/store))
+- Start the OZWCP add-on (this shuts down the HA core container on HASS.io)
+- Navigate to http://homeassistant.local:8090 (may take up to 2 minutes to start)
+- Start network discovery for your device. (e.g. `/dev/ttyACM0`)
+- Rename your ZWave devices as required.
+- When finished make sure to save your changes and verify last modified date of `zwcfg_0xe12deadbeaf.xml` file.
+
+*Note: For reference see [ZWave in Home Assistant](#zwave-in-home-assistant)*
+
 ## To do
 
-To do...
+- [ ] Add ZWave-to-MQTT via standalone device (e.g. Raspberry Pi 3+)
 
 ## Useful links
 
 ### ZWave in Home Assistant
 
-- [How to add ZWave devices in Home Assistant (community forum post) 1 of 2](https://community.home-assistant.io/t/aeon-labs-z-wave-door-window-sensor/403/27)
-- [How to add ZWave devices in Home Assistant (community forum post) 2 of 2](https://community.home-assistant.io/t/zwave-device-shows-10-entity-types-only-1-needed-to-show-best-way-to-hide/15755/8)
+- [How to add ZWave devices in Home Assistant (community forum post)](https://community.home-assistant.io/t/aeon-labs-z-wave-door-window-sensor/403/27)
 
 #### Reference
 
