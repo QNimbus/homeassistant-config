@@ -170,6 +170,7 @@ Renaming the default discovered device names (not entity names, I'm referring to
 #### Reference
 
 - [List of Home Assistant builtin icons](https://gist.github.com/QNimbus/5fb74d8ab5b68db3731f06eefedda3f7)
+- [Awesome Home Assistant](https://www.awesome-ha.com/)
 - [Home Assistant cookbook](https://www.home-assistant.io/cookbook/)
 - [Home Assistant cheatsheet](https://github.com/arsaboo/homeassistant-config/blob/master/HASS%20Cheatsheet.md)
 
