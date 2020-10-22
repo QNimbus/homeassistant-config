@@ -18,7 +18,6 @@
 - [ZWave](#zwave)
 - [To do](#to-do)
 - [Useful links](#useful-links)
-  - [ZWave in Home Assistant](#zwave-in-home-assistant)
 - [License](#license)
 
 ## Installation
@@ -163,7 +162,7 @@ Renaming the default discovered device names (not entity names, I'm referring to
 
 ## Useful links
 
-### ZWave in Home Assistant
+#### ZWave in Home Assistant
 
 - [How to add ZWave devices in Home Assistant (community forum post)](https://community.home-assistant.io/t/aeon-labs-z-wave-door-window-sensor/403/27)
 
