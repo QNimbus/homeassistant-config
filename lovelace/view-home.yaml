@@ -86,8 +86,8 @@ cards:
               message: "You pushed to 'away from home' button"
         # Button card. See: https://github.com/custom-cards/button-card
         - type: 'custom:button-card'
-          name: lighten uit
-          icon: mdi:power
+          name: alles uit
+          icon: mdi:lightbulb-off-outline
           show_icon: true
           show_name: true
           styles:
@@ -95,10 +95,9 @@ cards:
           tap_action:
             action: call-service
             haptic: success
-            service: persistent_notification.create
+            service: scene.turn_on
             service_data:
-              title: "All lights"
-              message: "You switched all lights off"
+              entity_id: scene.beneden_verlichting_uit
         - <<: *anchor-placeholder-card
         - <<: *anchor-placeholder-card
   ###########
@@ -106,7 +105,7 @@ cards:
   ###########
   # Stack in Card. See: https://github.com/custom-cards/stack-in-card
   - type: 'custom:stack-in-card'
-    title: plaatselijk weer
+    title: schaarsbergen
     style:
       << : *custom-header-style
     mode: 'horizontal'

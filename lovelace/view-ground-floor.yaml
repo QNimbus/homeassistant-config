@@ -1,4 +1,10 @@
 ---
+  actions:
+    default_slider_actions: &default_slider_actions
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: more-info
   anchors:
     # Empty placeholder for correct positioning
     placeholder-card: &anchor-placeholder-card
@@ -97,6 +103,8 @@
               service_data:
                 scene_id: groundfloor_scene
                 snapshot_entities:
+                  - light.gf_toilet_dimmer_1_level_1
+                  - light.gf_hallway_dimmer_1_level
                   - light.gf_kitchen_dimmer_1_level_1
                   - light.gf_kitchen_dimmer_2_level_1
                   - light.gf_living_dimmer_1_level_1
@@ -107,83 +115,91 @@
     ##########
     # Lights #
     ##########
-    # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
-    - type: entities
-      title: verlichting
-      style:
-        << : *custom-header-style
-      entities:
-        - type: section
-          label: Hal
-        # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: 'custom:slider-entity-row'
-          entity: light.gf_toilet_dimmer_1_level_1
-          secondary_info: brightness
-          toggle: true
-        # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: 'custom:slider-entity-row'
-          entity: light.gf_hallway_dimmer_1_level_1
-          secondary_info: brightness
-          toggle: true
-        - type: section
-          label: Keuken  
-        # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: 'custom:slider-entity-row'
-          entity: light.gf_kitchen_dimmer_1_level_1
-          secondary_info: brightness
-          toggle: true
-          secondary: >
-            It's {{ states('sensor.time') }}
-        # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: 'custom:slider-entity-row'
-          entity: light.gf_kitchen_dimmer_2_level_1
-          secondary_info: brightness
-          toggle: true
-        - type: section
-          label: Woonkamer  
-        # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: 'custom:slider-entity-row'
-          entity: light.gf_living_dimmer_1_level_1
-          secondary_info: brightness
-          toggle: true
-        # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: 'custom:slider-entity-row'
-          entity: light.gf_living_dimmer_2_level_1
-          secondary_info: brightness
-          toggle: true
-        # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: 'custom:slider-entity-row'
-          entity: light.gf_living_dimmer_3_level_1
-          secondary_info: brightness
-          toggle: true
+    - type: 'custom:stack-in-card'
+      cards:
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: verlichting
+        style:
+          << : *custom-header-style
+        entities:
+          - type: section
+            label: Hal
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.gf_toilet_dimmer_1_level_1
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.gf_hallway_dimmer_1_level
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+          - type: section
+            label: Keuken  
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.gf_kitchen_dimmer_1_level_1
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+            secondary: >
+              It's {{ states('sensor.time') }}
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.gf_kitchen_dimmer_2_level_1
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+          - type: section
+            label: Woonkamer  
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.gf_living_dimmer_1_level_1
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.gf_living_dimmer_2_level
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.gf_living_dimmer_3_level_1
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
     ###########
     # Climate #
     ###########
-    # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
-    - type: entities
+    # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+    - type: 'custom:stack-in-card'
+      mode: vertical
       title: klimaat
       style:
         << : *custom-header-style
-      entities:
-        # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-        - type: 'custom:stack-in-card'
-          mode: horizontal
+      cards:
+        - type: horizontal-stack
           cards:
             - type: entity
-              name: Temperatuur
+              name: temperatuur
               entity: sensor.netatmo_home_temperature
               secondary_info: last-changed
             - type: entity
-              name: Luchtvochtigheid
+              name: luchtvochtigheid
               entity: sensor.netatmo_home_humidity
               secondary_info: last-changed
-
-        # Multiple Entity Row. See: https://github.com/benct/lovelace-multiple-entity-row
-        - type: 'custom:multiple-entity-row'
-          name: Temperatuur
-          entity: sensor.netatmo_home_temperature
-          secondary_info: last-changed
-          entities:
+        - type: horizontal-stack
+          cards:
             - type: entity
-              name: Luchtvochtigheid
-              entity: sensor.netatmo_home_humidity
+              name: geluid
+              entity: sensor.netatmo_home_noise
+              secondary_info: last-changed
+            - type: entity
+              name: co2
+              entity: sensor.netatmo_home_co2
+              secondary_info: last-changed

@@ -1,14 +1,36 @@
 ---
-  name: Beneden verlichting uit
-  icon: mdi:lightbulb-off-outline
-  entities:
-    light.gf_kitchen_dimmer_1_level_1:
-      state: 'off'
-    light.gf_kitchen_dimmer_2_level_1:
-      state: 'off'
-    light.gf_living_dimmer_1_level_1:
-      state: 'off'
-    light.gf_living_dimmer_2_level_1:
-      state: 'off'
-    light.gf_living_dimmer_3_level_1:
-      state: 'off'
+  - name: Beneden verlichting uit
+    icon: mdi:lightbulb-off-outline
+    entities:
+      light.gf_toilet_dimmer_1_level_1:
+        state: 'off'
+      light.gf_hallway_dimmer_1_level:
+        state: 'off'
+      light.gf_kitchen_dimmer_1_level_1:
+        state: 'off'
+      light.gf_kitchen_dimmer_2_level_1:
+        state: 'off'
+      light.gf_living_dimmer_1_level_1:
+        state: 'off'
+      light.gf_living_dimmer_2_level:
+        state: 'off'
+      light.gf_living_dimmer_3_level_1:
+        state: 'off'
+  
+  - name: Eerste verdieping verlichting uit
+    icon: mdi:lightbulb-off-outline
+    entities:
+      light.ff_bathroom_dimmer_1_level_1:
+        state: 'off'
+      light.ff_toilet_dimmer_1_level_1:
+        state: 'off'
+      light.ff_hallway_dimmer_1_level:
+        state: 'off'
+      light.ff_bedroom_dimmer_1_level_1:
+        state: 'off'
+      light.ff_bedroom_dimmer_2_level_1:
+        state: 'off'
+      light.ff_bedroom_dimmer_3_level_1:
+        state: 'off'
+      light.ff_office_dimmer_1_level:
+        state: 'off'
