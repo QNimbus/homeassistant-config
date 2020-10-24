@@ -458,7 +458,7 @@
 
   # Node ID: 63
   # Device name: gf_living_switch_2
-  # 
+  # DSC06106 Smart Energy Switch by AEON Labs
   zwave.gf_living_switch_2: {}
   sensor.gf_living_switch_2_energy: {}
   sensor.gf_living_switch_2_exporting: {}
