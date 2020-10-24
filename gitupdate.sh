@@ -15,8 +15,9 @@ fi
 
 git status
 
-echo -n "Enter the Description for the Change: " [Minor Update]
+echo -n "Change description [minor update]: "
 read CHANGE_MSG
+CHANGE_MSG=${CHANGE_MSG:-"minor update"}
 
 git commit -m "${CHANGE_MSG}"
 git push github main
