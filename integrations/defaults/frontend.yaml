@@ -2,7 +2,7 @@
 # Home Assistant Frontend integration. See: https://www.home-assistant.io/integrations/frontend/
 frontend:
   # List of additional javascript modules to load in latest javascript mode.
-  extra_module_url: [/hacsfiles/custom-sidebar/custom-sidebar.js]
+  extra_module_url: []
 
   # We can define additional/custom themes for the frontend here.
   themes: !include_dir_merge_named ../themes
