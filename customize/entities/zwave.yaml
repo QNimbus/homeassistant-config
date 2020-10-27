@@ -602,7 +602,7 @@
   switch.gf_mc_switch_8_switch:
     friendly_name: Verlichting voortuin
 
-    # Node ID: 85 (ZWave+)
+  # Node ID: 85 (ZWave+)
   # Device name: gf_kitchen_dimmer_2
   # FGD212 Dimmer 2 by FIBARO System
   zwave.gf_kitchen_dimmer_2: {}
@@ -619,3 +619,8 @@
   sensor.gf_kitchen_dimmer_2_power_management: {}
   sensor.gf_kitchen_dimmer_2_source_node_id: {}
   sensor.gf_kitchen_dimmer_2_system: {}
+
+  # Node ID: 86
+  # Device name: ff_office_rgbw_1
+  # FGRGBWM441 RGBW Controller by FIBARO System
+  # zwave.ff_office_rgbw_1: {}
