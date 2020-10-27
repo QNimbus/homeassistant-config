@@ -4,13 +4,13 @@ mqtt:
   broker: !secret mqtt_broker
   port: !secret mqtt_broker_port
   client_id: homeassistant
+  discovery: true
+  discovery_prefix: homeassistant
   birth_message:
-    topic: 'hass/status'
+    topic: 'homeassistant/status'
     payload: 'online'
     qos: 0
-    retain: true
   will_message:
-    topic: 'hass/status'
+    topic: 'homeassistant/status'
     payload: 'offline'
     qos: 0
-    retain: true
