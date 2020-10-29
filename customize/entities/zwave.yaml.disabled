@@ -563,11 +563,6 @@
   sensor.sf_hallway_dimmer_1_source_node_id: {}
   sensor.sf_hallway_dimmer_1_system: {}
 
-  # Node ID: 82 (ZWave+)
-  # Device name: gf_kitchen_wallmote_1
-  # ZW130 WallMote Quad by AEON Labs
-  # zwave.gf_kitchen_wallmote_1: {}
-
   # Node ID: 83 (ZWave+)
   # Device name: gf_hallway_sensor_2
   # FGMS001-ZW5 Motion Sensor by FIBARO System
@@ -624,3 +619,8 @@
   # Device name: ff_office_rgbw_1
   # FGRGBWM441 RGBW Controller by FIBARO System
   # zwave.ff_office_rgbw_1: {}
+
+  # Node ID: 87 (ZWave+)
+  # Device name: gf_kitchen_wallmote_1
+  # ZW130 WallMote Quad by AEON Labs
+  # zwave.gf_kitchen_wallmote_1: {}

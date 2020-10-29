@@ -1,0 +1,21 @@
+---
+  light.gf_toilet_dimmer_1_dimmer:
+    friendly_name: Toilet
+
+  light.gf_hallway_dimmer_1_dimmer:
+    friendly_name: Hal
+
+  light.gf_kitchen_dimmer_1_dimmer:
+    friendly_name: Keuken
+
+  light.gf_kitchen_dimmer_2_dimmer:
+    friendly_name: Tafel
+
+  light.gf_living_dimmer_1_dimmer:
+    friendly_name: Midden
+
+  light.gf_living_dimmer_2_dimmer:
+    friendly_name: Zithoek
+
+  light.gf_living_dimmer_3_rgb_dimmer:
+    friendly_name: Schemer
