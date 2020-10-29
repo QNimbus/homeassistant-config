@@ -1,5 +1,5 @@
 ---
   zwave2mqtt:
-    title: Z-Wave to MQTT
+    title: Z-Wave
     icon: mdi:z-wave
     url: https://zwave2mqtt.home.apps

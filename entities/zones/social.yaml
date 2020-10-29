@@ -11,3 +11,9 @@
   latitude: !secret latitude_friends_chris_liesbeth
   longitude: !secret longtitude_friends_chris_liesbeth
   radius: 100
+
+- name: !secret school_name
+  icon: mdi:school
+  latitude: !secret latitude_school
+  longitude: !secret longtitude_school
+  radius: 100
