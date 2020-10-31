@@ -1,36 +1,74 @@
 ---
+  - name: Alle verlichting uit
+    icon: mdi:lightbulb-off-outline
+    entities:
+      group.house_lights:
+        state: 'off'
+  
   - name: Beneden verlichting uit
     icon: mdi:lightbulb-off-outline
     entities:
-      light.gf_toilet_dimmer_1_level_1:
+      light.gf_toilet_dimmer_1_dimmer:
         state: 'off'
-      light.gf_hallway_dimmer_1_level:
+      light.gf_hallway_dimmer_1_dimmer:
         state: 'off'
-      light.gf_kitchen_dimmer_1_level_1:
+      light.gf_kitchen_dimmer_1_dimmer:
         state: 'off'
-      light.gf_kitchen_dimmer_2_level_1:
+      light.gf_kitchen_dimmer_2_dimmer:
         state: 'off'
-      light.gf_living_dimmer_1_level_1:
+      light.gf_living_dimmer_1_dimmer:
         state: 'off'
-      light.gf_living_dimmer_2_level:
+      light.gf_living_dimmer_2_dimmer:
         state: 'off'
-      light.gf_living_dimmer_3_level_1:
+      light.gf_living_dimmer_3_rgb_dimmer:
         state: 'off'
   
   - name: Eerste verdieping verlichting uit
     icon: mdi:lightbulb-off-outline
     entities:
-      light.ff_bathroom_dimmer_1_level_1:
+      light.ff_toilet_dimmer_1_dimmer:
         state: 'off'
-      light.ff_toilet_dimmer_1_level_1:
+      light.ff_hallway_dimmer_1_dimmer:
         state: 'off'
-      light.ff_hallway_dimmer_1_level:
+      light.ff_bathroom_dimmer_1_dimmer:
         state: 'off'
-      light.ff_bedroom_dimmer_1_level_1:
+      light.ff_bedroom_dimmer_1_dimmer:
         state: 'off'
-      light.ff_bedroom_dimmer_2_level_1:
+      light.ff_bedroom_dimmer_2_dimmer:
         state: 'off'
-      light.ff_bedroom_dimmer_3_level_1:
+      light.ff_bedroom_dimmer_3_dimmer:
         state: 'off'
-      light.ff_office_dimmer_1_level:
+      light.ff_bedroom_rgbw_1_rgb_dimmer:
+        state: 'off'
+      light.ff_office_dimmer_1_dimmer:
+        state: 'off'
+      light.ff_office_rgbw_1_rgb_dimmer:
+        state: 'off'
+
+  - name: Tweede verdieping verlichting uit
+    icon: mdi:lightbulb-off-outline
+    entities:
+      light.sf_hallway_dimmer_1_dimmer:
+        state: 'off'
+      light.sf_bathroom_dimmer_1_dimmer:
+        state: 'off'
+      light.sf_bedroomsophie_dimmer_1_dimmer:
+        state: 'off'
+      light.sf_bedroomeva_dimmer_1_dimmer:
+        state: 'off'
+
+  - name: Buiten verlichting uit
+    icon: mdi:lightbulb-off-outline
+    entities:
+      switch.gf_living_switch_1_switch:
+        state: 'off'
+      switch.gf_garage_switch_2_switch:
+        state: 'off'
+      switch.gf_hallway_switch_1_switch:
+        state: 'off'
+      switch.gf_garage_switch_1_switch:
+        state: 'off'
+      switch.gf_mc_switch_5_switch:
+        state: 'off'
+      light.ou_porch_dimmer_1_dimmer:
         state: 'off'
