@@ -1,0 +1,4 @@
+---
+  # See: https://www.home-assistant.io/integrations/frontend/#defining-themes
+  default:
+    header-height: 44px

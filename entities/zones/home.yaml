@@ -1,7 +1,7 @@
 ---
 # Zone integration. See: https://www.home-assistant.io/integrations/zone/
-- name: Home
+- name: !secret zone_home_name
   icon: mdi:home
-  latitude: !secret latitude_home
-  longitude: !secret longitude_home
+  latitude: !secret zone_home_latitude
+  longitude: !secret zone_home_longitude
   radius: 100

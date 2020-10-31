@@ -1,19 +1,19 @@
 ---
 # Zone integration. See: https://www.home-assistant.io/integrations/zone/
-- name: Kaj & Els
+- name: !secret zone_friends_kaj_els_name
   icon: mdi:account-multiple
-  latitude: !secret latitude_friends_kaj_els
-  longitude: !secret longtitude_friends_kaj_els
+  latitude: !secret zone_friends_kaj_els_latitude
+  longitude: !secret zone_friends_kaj_els_longtitude
   radius: 100
   
-- name: Liesbeth & Chris
+- name: !secret zone_friends_chris_liesbeth_name
   icon: mdi:account-multiple
-  latitude: !secret latitude_friends_chris_liesbeth
-  longitude: !secret longtitude_friends_chris_liesbeth
+  latitude: !secret zone_friends_chris_liesbeth_latitude
+  longitude: !secret zone_friends_chris_liesbeth_longtitude
   radius: 100
 
-- name: !secret school_name
+- name: !secret zone_school_name
   icon: mdi:school
-  latitude: !secret latitude_school
-  longitude: !secret longtitude_school
+  latitude: !secret zone_school_latitude
+  longitude: !secret zone_school_longtitude
   radius: 100

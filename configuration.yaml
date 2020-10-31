@@ -4,9 +4,9 @@ homeassistant:
   name: Home
 
   # Location required to calculate the time the sun rises and sets
-  latitude: !secret latitude_home
-  longitude: !secret longitude_home
-  elevation: !secret elevation_home
+  latitude: !secret zone_home_latitude
+  longitude: !secret zone_home_longitude
+  elevation: !secret zone_home_elevation
   time_zone: Europe/Amsterdam
 
   unit_system: metric
