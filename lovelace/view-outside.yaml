@@ -1,30 +1,185 @@
 ---
-anchors:
-  style: &custom-header-style |
-    ha-card {
-    }
-    .card-header {
-      font-size: 16px;
-      font-weight: 500;
-      font-variant: small-caps;
-      padding-top: 16px;
-      line-height: 16px;
-    }
-  custom-button-style: &custom-button-style
-    icon:
-      - color: var(--primary-color)
-    name:              
-      - font-variant: small-caps
-        font-size: 14px
-        color: var(--primary-color)
-  # Empty placeholder for correct positioning
-  # Button card. See: https://github.com/custom-cards/button-card
-  placeholder-card: &anchor-placeholder-card
-    - type: 'custom:button-card'
-      show_icon: false
-      show_name: false
-title: Outside
-path: outside
-icon: "mdi:flower"
-badges: []
-cards: []
+  actions:
+    default_slider_actions: &default_slider_actions
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: more-info
+  anchors:
+    # Empty placeholder for correct positioning
+    placeholder-card: &anchor-placeholder-card
+      # Button card. See: https://github.com/custom-cards/button-card
+      - type: 'custom:button-card'
+        show_icon: false
+        show_name: false
+    custom-scenes-style: &custom-scenes-style
+      .: |
+        ha-card {
+          transition: background-color 1s ease 1s;
+          background-color: var(--accent-color, var(--accent-color, white) );
+        }
+        .card-header {
+          color: var(--text-primary-color);
+          font-size: 16px;
+          font-weight: 500;
+          font-variant: small-caps;
+          padding-top: 16px;
+          line-height: 16px;
+        }
+    custom-header-style: &custom-header-style
+      .: |
+        .card-header {
+          font-size: 16px;
+          font-weight: 500;
+          font-variant: small-caps;
+          padding-top: 16px;
+          line-height: 16px;
+        }
+    custom-button-style: &custom-button-style
+      icon:
+        - color: var(--text-primary-color)
+      name:              
+        - color: var(--text-primary-color)
+          font-variant: small-caps
+          font-size: 14px
+  
+  title: Buiten
+  path: outside
+  icon: mdi:flower
+  badges: []
+  cards:
+    ##########
+    # Scenes #
+    ##########
+    # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+    - type: custom:stack-in-card
+      title: scenes
+      style:
+        << : *custom-scenes-style
+      mode: 'vertical'
+      cards:
+      # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack/
+      - type: horizontal-stack
+        cards:
+          # Button card. See: https://github.com/custom-cards/button-card
+          - type: custom:button-card
+            name: alles uit
+            icon: mdi:lightbulb-off-outline
+            show_icon: true
+            show_name: true
+            styles:
+              << : *custom-button-style
+            tap_action:
+              action: call-service
+              haptic: success
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.buiten_verlichting_uit
+
+          # Button card. See: https://github.com/custom-cards/button-card
+          - type: custom:button-card
+            name: opslaan
+            icon: mdi:record-circle-outline
+            show_icon: true
+            show_name: true
+            styles:
+              << : *custom-button-style
+            tap_action:
+              action: call-service
+              haptic: success
+              service: scene.create
+              service_data:
+                scene_id: outside_scene
+                snapshot_entities:
+                  - switch.gf_living_switch_1_switch
+                  - switch.gf_garage_switch_2_switch
+                  - switch.gf_hallway_switch_1_switch
+                  - switch.gf_garage_switch_1_switch
+                  - switch.gf_mc_switch_5_switch
+                  - light.ou_porch_dimmer_1_dimmer
+
+          # Button card. See: https://github.com/custom-cards/button-card
+          - type: custom:button-card
+            name: afspelen
+            icon: mdi:play-circle-outline
+            show_icon: true
+            show_name: true
+            styles:
+              << : *custom-button-style
+            tap_action:
+              action: call-service
+              haptic: success
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.outside_scene
+          - <<: *anchor-placeholder-card
+          - <<: *anchor-placeholder-card
+    ##########
+    # Lights #
+    ##########
+    # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+    - type: custom:stack-in-card
+      cards:
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: huis verlichting
+        style:
+          << : *custom-header-style
+        entities:
+          # Fold Entity Row. See:https://github.com/thomasloven/lovelace-fold-entity-row
+          - type: custom:fold-entity-row
+            head: group.external_house_lights
+            group_config:
+              secondary_info: last-changed
+            entities:
+            # Entity. See https://www.home-assistant.io/lovelace/entity/
+            - entity: switch.gf_garage_switch_2_switch
+            # Entity. See https://www.home-assistant.io/lovelace/entity/
+            - entity: switch.gf_living_switch_1_switch
+
+          # Entity. See https://www.home-assistant.io/lovelace/entity/
+          - entity: switch.gf_hallway_switch_1_switch
+            secondary_info: last-changed
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: tuin
+        style:
+          << : *custom-header-style
+        entities:
+          # Entity. See https://www.home-assistant.io/lovelace/entity/
+          - entity: switch.gf_mc_switch_5_switch
+            secondary_info: last-changed
+          # Entity. See https://www.home-assistant.io/lovelace/entity/
+          - entity: switch.gf_garage_switch_1_switch
+            secondary_info: last-changed
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: veranda
+        style:
+          << : *custom-header-style
+        entities:
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: 'custom:slider-entity-row'
+            entity: light.ou_porch_dimmer_1_dimmer
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: apparaten
+        style:
+          << : *custom-header-style
+        show_header_toggle: false
+        entities:
+          # Entity. See https://www.home-assistant.io/lovelace/entity/
+          - entity: switch.gf_garage_switch_3_switch
+            secondary_info: last-changed
+          # Entity. See https://www.home-assistant.io/lovelace/entity/
+          - entity: switch.gf_garage_switch_3_switch_2
+            secondary_info: last-changed
+          # Entity. See https://www.home-assistant.io/lovelace/entity/
+          - entity: switch.gf_mc_switch_8_switch
+            secondary_info: last-changed

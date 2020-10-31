@@ -15,7 +15,8 @@
     custom-scenes-style: &custom-scenes-style
       .: |
         ha-card {
-          background: var(--accent-color);
+          transition: background-color 1s ease 1s;
+          background-color: var(--accent-color, var(--accent-color, white) );
         }
         .card-header {
           color: var(--text-primary-color);
@@ -44,14 +45,14 @@
   
   title: Begane grond
   path: groundfloor
-  icon: "mdi:home-floor-g"
+  icon: mdi:home-floor-g
   badges: []
   cards:
     ##########
     # Scenes #
     ##########
     # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-    - type: 'custom:stack-in-card'
+    - type: custom:stack-in-card
       title: scenes
       style:
         << : *custom-scenes-style
@@ -76,20 +77,6 @@
                 entity_id: scene.beneden_verlichting_uit
           # Button card. See: https://github.com/custom-cards/button-card
           - type: 'custom:button-card'
-            name: afspelen
-            icon: mdi:play-circle-outline
-            show_icon: true
-            show_name: true
-            styles:
-              << : *custom-button-style
-            tap_action:
-              action: call-service
-              haptic: success
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.groundfloor_scene
-          # Button card. See: https://github.com/custom-cards/button-card
-          - type: 'custom:button-card'
             name: opslaan
             icon: mdi:record-circle-outline
             show_icon: true
@@ -103,73 +90,97 @@
               service_data:
                 scene_id: groundfloor_scene
                 snapshot_entities:
-                  - light.gf_toilet_dimmer_1_level_1
-                  - light.gf_hallway_dimmer_1_level
-                  - light.gf_kitchen_dimmer_1_level_1
-                  - light.gf_kitchen_dimmer_2_level_1
-                  - light.gf_living_dimmer_1_level_1
-                  - light.gf_living_dimmer_2_level_1
-                  - light.gf_living_dimmer_3_level_1
+                  - light.gf_toilet_dimmer_1_dimmer
+                  - light.gf_hallway_dimmer_1_dimmer
+                  - light.gf_kitchen_dimmer_1_dimmer
+                  - light.gf_kitchen_dimmer_2_dimmer
+                  - light.gf_living_dimmer_1_dimmer
+                  - light.gf_living_dimmer_2_dimmer
+                  - light.gf_living_dimmer_3_rgb_dimmer
+          # Button card. See: https://github.com/custom-cards/button-card
+          - type: 'custom:button-card'
+            name: afspelen
+            icon: mdi:play-circle-outline
+            show_icon: true
+            show_name: true
+            styles:
+              << : *custom-button-style
+            tap_action:
+              action: call-service
+              haptic: success
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.groundfloor_scene
           - <<: *anchor-placeholder-card
           - <<: *anchor-placeholder-card
     ##########
     # Lights #
     ##########
-    - type: 'custom:stack-in-card'
+    - type: custom:stack-in-card
       cards:
       # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
       - type: entities
-        title: verlichting
+        title: hal
         style:
           << : *custom-header-style
         entities:
-          - type: section
-            label: Hal
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.gf_toilet_dimmer_1_level_1
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.gf_toilet_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.gf_hallway_dimmer_1_level
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.gf_hallway_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          - type: section
-            label: Keuken  
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.gf_kitchen_dimmer_1_level_1
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: keuken
+        style:
+          << : *custom-header-style
+        entities:
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.gf_kitchen_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-            secondary: >
-              It's {{ states('sensor.time') }}
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.gf_kitchen_dimmer_2_level_1
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.gf_kitchen_dimmer_2_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          - type: section
-            label: Woonkamer  
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.gf_living_dimmer_1_level_1
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: woonkamer
+        style:
+          << : *custom-header-style
+        entities:
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.gf_living_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.gf_living_dimmer_2_level
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.gf_living_dimmer_2_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.gf_living_dimmer_3_level_1
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.gf_living_dimmer_3_rgb_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
@@ -177,7 +188,7 @@
     # Climate #
     ###########
     # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-    - type: 'custom:stack-in-card'
+    - type: custom:stack-in-card
       mode: vertical
       title: klimaat
       style:
@@ -193,6 +204,7 @@
               name: luchtvochtigheid
               entity: sensor.netatmo_home_humidity
               secondary_info: last-changed
+
         - type: horizontal-stack
           cards:
             - type: entity

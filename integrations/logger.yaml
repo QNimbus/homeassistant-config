@@ -3,10 +3,7 @@
 logger:
   default: error
   logs:
-    # log level for HA core
     homeassistant.core: fatal
-
     homeassistant.loader: error
-
-    # Log level for Text-To-Speech
-    homeassistant.components.tts: debug
+    homeassistant.components.tts: error
+    homeassistant.components.websocket_api: error

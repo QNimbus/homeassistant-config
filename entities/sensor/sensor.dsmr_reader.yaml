@@ -1,3 +1,3 @@
 ---
-# DSMR Reader. See: https://www.home-assistant.io/integrations/dsmr_reader/
-platform: dsmr_reader
+  # DSMR Reader. See: https://www.home-assistant.io/integrations/dsmr_reader/
+  platform: dsmr_reader

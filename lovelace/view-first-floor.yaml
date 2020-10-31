@@ -15,7 +15,8 @@
     custom-scenes-style: &custom-scenes-style
       .: |
         ha-card {
-          background: var(--accent-color);
+          transition: background-color 1s ease 0.5s;
+          background-color: var(--accent-color, var(--accent-color, white) );
         }
         .card-header {
           color: var(--text-primary-color);
@@ -44,14 +45,14 @@
   
   title: 1e verdieping
   path: firstfloor
-  icon: "mdi:home-floor-1"
+  icon: mdi:home-floor-1
   badges: []
   cards:
     ##########
     # Scenes #
     ##########
     # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-    - type: 'custom:stack-in-card'
+    - type: custom:stack-in-card
       title: scenes
       style:
         << : *custom-scenes-style
@@ -74,20 +75,7 @@
               service: scene.turn_on
               service_data:
                 entity_id: scene.eerste_verdieping_verlichting_uit
-          # Button card. See: https://github.com/custom-cards/button-card
-          - type: 'custom:button-card'
-            name: afspelen
-            icon: mdi:play-circle-outline
-            show_icon: true
-            show_name: true
-            styles:
-              << : *custom-button-style
-            tap_action:
-              action: call-service
-              haptic: success
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.firstfloor_scene
+
           # Button card. See: https://github.com/custom-cards/button-card
           - type: 'custom:button-card'
             name: opslaan
@@ -103,74 +91,120 @@
               service_data:
                 scene_id: firstfloor_scene
                 snapshot_entities:
-                  - light.ff_bathroom_dimmer_1_level_1
-                  - light.ff_toilet_dimmer_1_level_1
-                  - light.ff_hallway_dimmer_1_level
-                  - light.ff_bedroom_dimmer_1_level_1
-                  - light.ff_bedroom_dimmer_2_level_1
-                  - light.ff_bedroom_dimmer_3_level_1
-                  - light.ff_office_dimmer_1_level
+                  - light.ff_toilet_dimmer_1_dimmer
+                  - light.ff_hallway_dimmer_1_dimmer
+                  - light.ff_bathroom_dimmer_1_dimmer
+                  - light.ff_bedroom_dimmer_1_dimmer
+                  - light.ff_bedroom_dimmer_2_dimmer
+                  - light.ff_bedroom_dimmer_3_dimmer
+                  - light.ff_bedroom_rgbw_1_rgb_dimmer
+                  - light.ff_office_dimmer_1_dimmer
+                  - light.ff_office_rgbw_1_rgb_dimmer
+
+          # Button card. See: https://github.com/custom-cards/button-card
+          - type: 'custom:button-card'
+            name: afspelen
+            icon: mdi:play-circle-outline
+            show_icon: true
+            show_name: true
+            styles:
+              << : *custom-button-style
+            tap_action:
+              action: call-service
+              haptic: success
+              service: scene.turn_on
+              service_data:
+                entity_id: scene.firstfloor_scene
           - <<: *anchor-placeholder-card
           - <<: *anchor-placeholder-card
     ##########
     # Lights #
     ##########
-    # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-    - type: 'custom:stack-in-card'
+    - type: custom:stack-in-card
       cards:
       # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
       - type: entities
-        title: verlichting
+        title: overloop
         style:
           << : *custom-header-style
         entities:
-          - type: section
-            label: Overloop
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.ff_toilet_dimmer_1_level_1
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_toilet_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.ff_hallway_dimmer_1_level
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_hallway_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          - type: section
-            label: Badkamer
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.ff_bathroom_dimmer_1_level_1
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: badkamer
+        style:
+          << : *custom-header-style
+        entities:
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_bathroom_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          - type: section
-            label: Slaapkamer
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.ff_bedroom_dimmer_1_level_1
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: slaapkamer
+        style:
+          << : *custom-header-style
+        entities:
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_bedroom_dimmer_1_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.ff_bedroom_dimmer_2_level_1
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_bedroom_dimmer_2_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.ff_bedroom_dimmer_3_level_1
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_bedroom_dimmer_3_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions
-          - type: section
-            label: Werkkamer
-          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-          - type: 'custom:slider-entity-row'
-            entity: light.ff_office_dimmer_1_level
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_bedroom_rgbw_1_rgb_dimmer
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+
+      # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+      - type: entities
+        title: werkkamer
+        style:
+          << : *custom-header-style
+        entities:
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_office_dimmer_1_dimmer
+            secondary_info: brightness
+            toggle: true
+            <<: *default_slider_actions
+
+          # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
+          - type: custom:slider-entity-row
+            entity: light.ff_office_rgbw_1_rgb_dimmer
             secondary_info: brightness
             toggle: true
             <<: *default_slider_actions

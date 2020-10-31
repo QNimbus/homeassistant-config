@@ -1,17 +1,17 @@
 ---
-# Buienradar Sensor. See: https://www.home-assistant.io/integrations/sensor.buienradar/
-platform: buienradar
-name: buienradar
-timeframe: 60
-monitored_conditions:
-  - stationname
-  - temperature
-  - feeltemperature
-  - windspeed
-  - winddirection
-  - visibility
-  - humidity
-  - pressure
-  - symbol
-  - conditiondetailed
-  - conditiondetailed_1d
+  # Buienradar Sensor. See: https://www.home-assistant.io/integrations/sensor.buienradar/
+  platform: buienradar
+  name: buienradar
+  timeframe: 60
+  monitored_conditions:
+    - stationname
+    - temperature
+    - feeltemperature
+    - windspeed
+    - winddirection
+    - visibility
+    - humidity
+    - pressure
+    - symbol
+    - conditiondetailed
+    - conditiondetailed_1d
