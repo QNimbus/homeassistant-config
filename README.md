@@ -5,22 +5,14 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/QNimbus/homeassistant-config?style=for-the-badge)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/QNimbus/homeassistant-config?style=for-the-badge)
 
-[![HA Version](https://img.shields.io/static/v1?label=HA%20current%20version&message=0.117.0&color=%23007ec6&style=for-the-badge)](https://github.com/home-assistant/home-assistant/releases/latest)
+[![HA Version](https://img.shields.io/static/v1?label=HA%20current%20version&message=0.117.5&color=%23007ec6&style=for-the-badge)](https://github.com/home-assistant/home-assistant/releases/latest)
 [![HA Version](https://img.shields.io/static/v1?label=HA%20initial%20version&message=0.116.0&color=%239f9f9f&style=for-the-badge)](https://github.com/home-assistant/core/releases/0.116.0)
 
 - [Installation](#installation)
-  - [SSH](#ssh)
-  - [Network setup](#network-setup)
-  - [Samba](#samba)
-  - [AppDaemon](#appdaemon)
-  - [Clone config repository](#clone-config-repository)
 - [Integrations](#integrations)
 - [ZWave](#zwave)
 - [To do](#to-do)
 - [Useful links](#useful-links)
-    - [ZWave in Home Assistant](#zwave-in-home-assistant)
-    - [Reference](#reference)
-    - [Add-ons & tools](#add-ons--tools)
 - [License](#license)
 
 ## Installation
