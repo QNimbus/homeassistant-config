@@ -1,0 +1,78 @@
+---
+  # See: https://www.home-assistant.io/integrations/group/
+  all_lights:
+    name: Alle verlichting
+    icon: mdi:lightbulb-group-outline
+    entities:
+      - group.house_lights_inside
+      - group.house_lights_outside
+
+  # See: https://www.home-assistant.io/integrations/group/
+  house_lights_inside:
+    name: Huis verlichting binnen
+    icon: mdi:lightbulb-group-outline
+    entities:
+      - group.house_lights_groundfloor
+      - group.house_lights_firstfloor
+      - group.house_lights_secondfloor
+
+  # See: https://www.home-assistant.io/integrations/group/
+  house_lights_groundfloor:
+    name: Huis verlichting begane grond
+    icon: mdi:lightbulb-group-outline
+    entities:
+      # Ground floor
+      - light.gf_toilet_dimmer_1_dimmer
+      - light.gf_hallway_dimmer_1_dimmer
+      - light.gf_kitchen_dimmer_1_dimmer
+      - light.gf_kitchen_dimmer_2_dimmer
+      - light.gf_living_dimmer_1_dimmer
+      - light.gf_living_dimmer_2_dimmer
+      - light.gf_living_dimmer_3_rgb_dimmer
+
+  # See: https://www.home-assistant.io/integrations/group/
+  house_lights_firstfloor:
+    name: Huis verlichting 1e verdieping
+    icon: mdi:lightbulb-group-outline
+    entities:
+      # First floor
+      - light.ff_toilet_dimmer_1_dimmer
+      - light.ff_hallway_dimmer_1_dimmer
+      - light.ff_bathroom_dimmer_1_dimmer
+      - light.ff_bedroom_dimmer_1_dimmer
+      - light.ff_bedroom_dimmer_2_dimmer
+      - light.ff_bedroom_dimmer_3_dimmer
+      - light.ff_bedroom_rgbw_1_rgb_dimmer
+      - light.ff_office_dimmer_1_dimmer
+      - light.ff_office_rgbw_1_rgb_dimmer
+
+  # See: https://www.home-assistant.io/integrations/group/
+  house_lights_secondfloor:
+    name: Huis verlichting 2e verdieping
+    icon: mdi:lightbulb-group-outline
+    entities:
+      # Second floor
+      - light.sf_hallway_dimmer_1_dimmer
+      - light.sf_bathroom_dimmer_1_dimmer
+      - light.sf_bedroomsophie_dimmer_1_dimmer
+      - light.sf_bedroomeva_dimmer_1_dimmer
+
+  # See: https://www.home-assistant.io/integrations/group/
+  house_lights_exterior:
+    name: Gevel verlichting
+    icon: mdi:lightbulb-group-outline
+    entities:
+      - switch.gf_living_switch_1_switch
+      - switch.gf_garage_switch_2_switch
+
+  # See: https://www.home-assistant.io/integrations/group/
+  house_lights_outside:
+    name: Huis verlichting buiten
+    icon: mdi:lightbulb-group-outline
+    entities:
+      # Outside
+      - group.house_lights_exterior
+      - light.ou_porch_dimmer_1_dimmer
+      - switch.gf_hallway_switch_1_switch
+      - switch.gf_garage_switch_1_switch
+      - switch.gf_mc_switch_5_switch

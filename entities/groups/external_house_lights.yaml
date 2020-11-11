@@ -1,8 +1,0 @@
----
-  # See: https://www.home-assistant.io/integrations/group/
-  external_house_lights:
-    name: Huis buiten verlichting
-    icon: mdi:lightbulb-group-outline
-    entities:
-      - switch.gf_living_switch_1_switch
-      - switch.gf_garage_switch_2_switch
