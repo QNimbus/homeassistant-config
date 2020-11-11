@@ -1,0 +1,16 @@
+---
+  - name: Sfeer verlichting begane grond
+    icon: mdi:palette-outline
+    entities:
+      light.gf_kitchen_dimmer_1_dimmer:
+        state: 'on'
+        brightness: 13    # 13/255 ~ 5%
+      light.gf_kitchen_dimmer_2_dimmer:
+        state: 'on'
+        brightness: 90    # 90/255 ~ 35%
+      light.gf_living_dimmer_2_dimmer:
+        state: 'on'
+        brightness: 77    # 77/255 ~ 30%
+      light.gf_living_dimmer_3_rgb_dimmer:
+        state: 'on'
+        brightness: 103    # 103/255 ~ 40%
