@@ -1,16 +1,16 @@
 ---
-# MQTT. See: https://www.home-assistant.io/integrations/mqtt/ & https://www.home-assistant.io/docs/mqtt/broker#run-your-own
-mqtt:
-  broker: !secret mqtt_broker
-  port: !secret mqtt_broker_port
-  client_id: homeassistant
-  discovery: true
-  discovery_prefix: homeassistant
-  birth_message:
-    topic: 'homeassistant/status'
-    payload: 'online'
-    qos: 0
-  will_message:
-    topic: 'homeassistant/status'
-    payload: 'offline'
-    qos: 0
+  # MQTT. See: https://www.home-assistant.io/integrations/mqtt/ & https://www.home-assistant.io/docs/mqtt/broker#run-your-own
+  mqtt:
+    broker: !secret mqtt_broker
+    port: !secret mqtt_broker_port
+    client_id: homeassistant
+    # discovery: true
+    # discovery_prefix: homeassistant
+    birth_message:
+      topic: 'homeassistant/status'
+      payload: 'online'
+      qos: 0
+    will_message:
+      topic: 'homeassistant/status'
+      payload: 'offline'
+      qos: 0

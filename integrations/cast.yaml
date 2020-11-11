@@ -1,3 +1,3 @@
 ---
-# Google Cast integration. See: https://www.home-assistant.io/integrations/cast/
-cast:
+  # Google Cast integration. See: https://www.home-assistant.io/integrations/cast/
+  cast:

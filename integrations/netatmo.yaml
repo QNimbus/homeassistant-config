@@ -1,8 +1,8 @@
 ---
-# Netatmo has to be configured from the frontend (see: https://www.home-assistant.io/integrations/netatmo/#extra-configuration-of-the-integration)
-# The only configurable options are the 'client_id' and 'client_secret' to allow the use of your own/existing API access with Netatmo
-#
-# Netatmo integration. See: https://www.home-assistant.io/integrations/netatmo/
-netatmo:
-  client_id: !secret netatmo_client_id
-  client_secret: !secret netatmo_client_secret
+  # Netatmo has to be configured from the frontend (see: https://www.home-assistant.io/integrations/netatmo/#extra-configuration-of-the-integration)
+  # The only configurable options are the 'client_id' and 'client_secret' to allow the use of your own/existing API access with Netatmo
+  #
+  # Netatmo integration. See: https://www.home-assistant.io/integrations/netatmo/
+  netatmo:
+    client_id: !secret netatmo_client_id
+    client_secret: !secret netatmo_client_secret

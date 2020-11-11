@@ -1,13 +1,13 @@
 ---
-# Lovelace integration. See: https://www.home-assistant.io/integrations/lovelace/
-lovelace:
-  mode: yaml
-  resources: !include ../lovelace/resources.yaml
-  dashboards:
-    lovelace-home:
-      mode: yaml
-      title: Home
-      icon: mdi:home
-      show_in_sidebar: true
-      require_admin: false
-      filename: ui-lovelace-home.yaml
+  # Lovelace integration. See: https://www.home-assistant.io/integrations/lovelace/
+  lovelace:
+    mode: yaml
+    resources: !include ../lovelace/resources.yaml
+    dashboards:
+      lovelace-home:
+        mode: yaml
+        title: Home
+        icon: mdi:home
+        show_in_sidebar: true
+        require_admin: false
+        filename: ui-lovelace-home.yaml

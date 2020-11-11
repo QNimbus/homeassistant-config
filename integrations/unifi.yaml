@@ -1,4 +1,4 @@
 ---
-# UniFi has to be configured from the frontend (see: https://www.home-assistant.io/integrations/unifi/#extra-configuration-of-the-integration)
-#
-# Ubiquiti UniFi integration. See: https://www.home-assistant.io/integrations/unifi
+  # UniFi has to be configured from the frontend (see: https://www.home-assistant.io/integrations/unifi/#extra-configuration-of-the-integration)
+  #
+  # Ubiquiti UniFi integration. See: https://www.home-assistant.io/integrations/unifi

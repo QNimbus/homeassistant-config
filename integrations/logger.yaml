@@ -1,9 +1,9 @@
 ---
-# Logger integration. See: https://www.home-assistant.io/integrations/logger/
-logger:
-  default: error
-  logs:
-    homeassistant.core: fatal
-    homeassistant.loader: error
-    homeassistant.components.tts: error
-    homeassistant.components.websocket_api: error
+  # Logger integration. See: https://www.home-assistant.io/integrations/logger/
+  logger:
+    default: error
+    logs:
+      homeassistant.core: fatal
+      homeassistant.loader: error
+      homeassistant.components.tts: error
+      homeassistant.components.websocket_api: error

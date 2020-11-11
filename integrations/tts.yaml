@@ -1,13 +1,13 @@
 ---
-# Text to speech integration. See: https://www.home-assistant.io/integrations/tts/
-tts:
-  - platform: amazon_polly # See: https://www.home-assistant.io/integrations/amazon_polly/
-    base_url: !secret tts_base_url
-    aws_access_key_id: !secret aws_access_key_id
-    aws_secret_access_key: !secret aws_secret_access_key
-    region_name: "eu-central-1"
-    text_type: text
-    voice: Ruben
-    cache: True
-  # - platform: google_translate
-  #   service_name: google_translate_say
+  # Text to speech integration. See: https://www.home-assistant.io/integrations/tts/
+  tts:
+    - platform: amazon_polly # See: https://www.home-assistant.io/integrations/amazon_polly/
+      base_url: !secret tts_base_url
+      aws_access_key_id: !secret aws_access_key_id
+      aws_secret_access_key: !secret aws_secret_access_key
+      region_name: "eu-central-1"
+      text_type: text
+      voice: Ruben
+      cache: True
+    # - platform: google_translate
+    #   service_name: google_translate_say
