@@ -1,0 +1,7 @@
+---
+  # Zone integration. See: https://www.home-assistant.io/integrations/zone/
+  - name: !secret zone_insula_dei_name
+    icon: mdi:office-building-marker-outline
+    latitude: !secret zone_insula_dei_latitude
+    longitude: !secret zone_insula_dei_longtitude
+    radius: 100
