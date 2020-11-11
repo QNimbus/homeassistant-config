@@ -2,3 +2,6 @@
   # Browser Mod integration. See: https://github.com/thomasloven/hass-browser_mod
   browser_mod:
     prefix: "browser_"
+    devices:
+      8fcf4272-cdfa01cc:
+        name: laptop_bas

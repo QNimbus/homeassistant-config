@@ -1,7 +1,7 @@
 ---
   # Logger integration. See: https://www.home-assistant.io/integrations/logger/
   logger:
-    default: error
+    default: warning
     logs:
       homeassistant.core: fatal
       homeassistant.loader: error
