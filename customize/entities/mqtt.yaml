@@ -9,37 +9,37 @@
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_toilet_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Toilet
+    friendly_name: Toilet spots
 
   # ZWave node ID: 2
   # FGS221 Double Relay Switch 2x1.5kW by FIBARO System
   light.gf_hallway_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Hal spots
 
   # ZWave node ID: 7
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_kitchen_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Keuken spots
 
   # ZWave node ID: 85
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_kitchen_dimmer_2_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Tafel
+    friendly_name: Tafel lampen
 
   # ZWave node ID: 10
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_living_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Midden
+    friendly_name: Midden spots
 
   # ZWave node ID: 47
   # FGD211 Universal Dimmer 500W by FIBARO System
   light.gf_living_dimmer_2_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Zithoek
+    friendly_name: Zithoek spots
 
   # ZWave node ID: 68
   # ZW099 Smart Dimmer 6 by AEON Labs
@@ -55,55 +55,55 @@
   # FGD212 Dimmer 2 by FIBARO System
   light.ff_toilet_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Toilet
+    friendly_name: Toilet spots
 
   # ZWave node ID: 19
   # FGD211 Universal Dimmer 500W by FIBARO System
   light.ff_hallway_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Overloop 1e verdieping spots
 
   # ZWave node ID: 58
   # FGD212 Dimmer 2 by FIBARO System
   light.ff_bathroom_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Badkamer spots
 
   # ZWave node ID: 20
   # FGD212 Dimmer 2 by FIBARO System
   light.ff_bedroom_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Slaapkamer spots
 
   # ZWave node ID: 21
   # FGD212 Dimmer 2 by FIBARO System
   light.ff_bedroom_dimmer_2_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Bed
+    friendly_name: Bed spots
 
   # ZWave node ID: 22
   # FGD212 Dimmer 2 by FIBARO System
   light.ff_bedroom_dimmer_3_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Inloopkast
+    friendly_name: Inloopkast spots
 
   # ZWave node ID: 28
   # FGRGBWM441 RGBW Controller by FIBARO System
   light.ff_bedroom_rgbw_1_rgb_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: RGB strip
+    friendly_name: RGB strip slaapkamer
 
   # ZWave node ID: 25
   # FGD211 Universal Dimmer 500W by FIBARO System
   light.ff_office_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Werkkamer spots
 
   # ZWave node ID: 86
   # FGRGBWM441 RGBW Controller by FIBARO System
   light.ff_office_rgbw_1_rgb_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: RGB strip
+    friendly_name: RGB strip werkkamer
 
   ################
   # Second floor #
@@ -113,25 +113,25 @@
   # FGD212 Dimmer 2 by FIBARO System
   light.sf_hallway_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Overloop zolder spots
 
   # ZWave node ID: 59
   # FGD212 Dimmer 2 by FIBARO System
   light.sf_bathroom_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Badkamer zolder spots
 
   # ZWave node ID: 72
   # FGD211 Universal Dimmer 500W by FIBARO System
   light.sf_bedroomsophie_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Slaapkamer Sophie spots
 
   # ZWave node ID: 39
   # FGD211 Universal Dimmer 500W by FIBARO System
   light.sf_bedroomeva_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Slaapkamer Eva spots
 
   ###########
   # Outside #
@@ -141,25 +141,25 @@
   # FGS221 Double Relay Switch 2x1.5kW by FIBARO System
   switch.gf_hallway_switch_1_switch:
     icon: mdi:lightbulb-outline
-    friendly_name: Voordeur
+    friendly_name: Voordeur verlichting
 
   # ZWave node ID: 75
   # FGWPE/F Wall Plug Gen5 by FIBARO System
   switch.gf_mc_switch_5_switch:
     icon: mdi:lightbulb-outline
-    friendly_name: Voortuin
+    friendly_name: Voortuin spots
 
   # ZWave node ID: 17
   # FGS221 Double Relay Switch 2x1.5kW
   switch.gf_garage_switch_1_switch:
     icon: mdi:lightbulb-outline
-    friendly_name: Achtertuin
+    friendly_name: Achtertuin spots
   
   # ZWave node ID: 11
   # FGS213 Switch by FIBARO System
   switch.gf_living_switch_1_switch:
     icon: mdi:lightbulb-outline
-    friendly_name: Woonkamer
+    friendly_name: Tuinverlichting woonkamer
 
   # ZWave node ID: 18
   # FGS221 Double Relay Switch 2x1.5kW by FIBARO System
@@ -171,7 +171,7 @@
   # FGD212 Dimmer 2 by FIBARO System
   light.ou_porch_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
-    friendly_name: Spots
+    friendly_name: Veranda spots
 
   # ZWave node ID: 46
   # FGS223 Double Relay by FIBARO System
