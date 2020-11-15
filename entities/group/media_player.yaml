@@ -1,0 +1,66 @@
+---
+  # See: https://www.home-assistant.io/integrations/group/
+
+  ##########################################################################
+  #                                                                        #
+  #                              Media players                             #
+  #                                                                        #
+  ##########################################################################
+
+  all_sonos_media_players:
+    name: Alle SONOS media spelers
+    icon: mdi:music
+    entities:
+      - media_player.kitchen
+      - media_player.bathroom
+      - media_player.livingroom
+      - media_player.office
+      - media_player.bedroom
+
+  ##########################################################################
+  #                                                                        #
+  #                          Media player switches                         #
+  #                                                                        #
+  ##########################################################################
+
+  all_media_player_switches:
+    name: Alle SONOS media speler schakelaars
+    icon: mdi:power-standby
+    entities:
+      - group.kitchen_media_player_switches
+      - group.bathroom_media_player_switches
+      - group.livingroom_media_player_switches
+      - group.bedroom_media_player_switches
+      - group.office_media_player_switches
+
+  livingroom_media_player_switches:
+    name: SONOS woonkamer schakelaar
+    icon: mdi:power-standby
+    entities:
+      - switch.gf_living_switch_3_switch
+      - switch.gf_living_switch_2_switch
+
+  kitchen_media_player_switches:
+    name: SONOS keuken schakelaar
+    icon: mdi:power-standby
+    entities:
+      - switch.gf_mc_switch_2_switch
+  
+  bathroom_media_player_switches:
+    name: SONOS badkamer schakelaar
+    icon: mdi:power-standby
+    entities:
+      - switch.gf_mc_switch_3_switch
+
+  office_media_player_switches:
+    name: SONOS werkkamer schakelaar
+    icon: mdi:power-standby
+    entities:
+      - switch.ff_office_switch_1_switch
+
+  bedroom_media_player_switches:
+    name: SONOS slaapkamer schakelaar
+    icon: mdi:power-standby
+    entities:
+      - switch.ff_bedroom_switch_1_switch
+      - switch.ff_bedroom_switch_2_switch

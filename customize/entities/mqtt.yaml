@@ -5,47 +5,65 @@
   # Ground floor #
   ################
 
-  # ZWave node ID: 56
+  # ZWave node ID: 35
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_toilet_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Toilet spots
 
-  # ZWave node ID: 2
+  # ZWave node ID: 19
   # FGS221 Double Relay Switch 2x1.5kW by FIBARO System
   light.gf_hallway_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Hal spots
 
-  # ZWave node ID: 7
+  # ZWave node ID: 4
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_kitchen_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Keuken spots
 
-  # ZWave node ID: 85
+  # ZWave node ID: 5
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_kitchen_dimmer_2_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Tafel lampen
 
-  # ZWave node ID: 10
+  # ZWave node ID: 6
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_living_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Midden spots
 
-  # ZWave node ID: 47
+  # ZWave node ID: 7
   # FGD211 Universal Dimmer 500W by FIBARO System
   light.gf_living_dimmer_2_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Zithoek spots
 
-  # ZWave node ID: 68
+  # ZWave node ID: 9
   # ZW099 Smart Dimmer 6 by AEON Labs
   light.gf_living_dimmer_3_rgb_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Schemerlampen
+
+  # ZWave node ID: 10
+  # FGWPE/F Wall Plug Gen5 by FIBARO System
+  switch.gf_living_switch_3_switch:
+    icon: mdi:music
+    friendly_name: SONOS Surround Woonkamer
+  
+  # ZWave node ID: 26
+  # FGWPE/F Wall Plug Gen5 by FIBARO System
+  switch.gf_living_switch_2_switch:
+    icon: mdi:music
+    friendly_name: SONOS BEAM + SUB Woonkamer
+
+  # ZWave node ID: 12
+  # FGWPE/F Wall Plug by FIBARO System
+  switch.gf_mc_switch_2_switch:
+    icon: mdi:music
+    friendly_name: SONOS AMP Keuken
 
   ###############
   # First floor #
@@ -104,6 +122,30 @@
   light.ff_office_rgbw_1_rgb_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: RGB strip werkkamer
+
+  # ZWave node ID: 13
+  # FGWPE/F Wall Plug by FIBARO System
+  switch.gf_mc_switch_3_switch:
+    icon: mdi:music
+    friendly_name: SONOS AMP Badkamer
+
+  # ZWave node ID: 36
+  # FGWPE/F Wall Plug Gen5 by FIBARO System
+  switch.ff_bedroom_switch_1_switch:
+    icon: mdi:music
+    friendly_name: SONOS Play:1 Links Slaapkamer
+
+  # ZWave node ID: 37
+  # FGWPE/F Wall Plug Gen5 by FIBARO System
+  switch.ff_bedroom_switch_2_switch:
+    icon: mdi:music
+    friendly_name: SONOS Play:1 Rechts Slaapkamer
+
+  # ZWave node ID: 38
+  # Power plug 12A by Shenzhen Neo Electronics Co Ltd
+  switch.ff_office_switch_1_switch:
+    icon: mdi:music
+    friendly_name: SONOS Play:3 Werkkamer
 
   ################
   # Second floor #
@@ -186,7 +228,7 @@
     friendly_name: Stopcontacten achtertuin
 
   # ZWave node ID: 84
-  # FGWPE/F Wall Plug Gen5
+  # FGWPE/F Wall Plug Gen5 by FIBARO System
   switch.gf_mc_switch_8_switch:
     icon: mdi:power
     friendly_name: Stopcontacten voortuin

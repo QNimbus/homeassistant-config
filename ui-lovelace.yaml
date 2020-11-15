@@ -1,5 +1,4 @@
 ---
-title: Home
-views:
-  - !include lovelace/view-home.yaml
-
+  title: Home
+  views:
+    - !include lovelace/view-home.yaml

@@ -1,30 +1,134 @@
 ---
+  ##########################################################################
+  #                                                                        #
+  #                                Settings                                #
+  #                                                                        #
+  ##########################################################################
+
   anchors:
-    style: &custom-header-style |
-      ha-card {
-      }
-      .card-header {
-        font-size: 16px;
-        font-weight: 500;
-        font-variant: small-caps;
-        padding-top: 16px;
-        line-height: 16px;
-      }
-    custom-button-style: &custom-button-style
-      icon:
-        - color: var(--primary-color)
-      name:              
-        - font-variant: small-caps
-          font-size: 14px
-          color: var(--primary-color)
     # Empty placeholder for correct positioning
-    # Button card. See: https://github.com/custom-cards/button-card
-    placeholder-card: &anchor-placeholder-card
-      - type: 'custom:button-card'
-        show_icon: false
-        show_name: false
-  title: Music
+    ⚓₁: &anchor-placeholder-card
+      # Button card. See: https://github.com/custom-cards/button-card
+      - type: custom:button-card
+        color_type: blank-card
+    ⚓₂: &custom-scenes-style
+      .: |
+        ha-card {
+          transition: background-color 0.2s ease 0.5s;
+          background-color: var(--accent-color, var(--accent-color, white) );
+        }
+        .card-header {
+          color: var(--text-primary-color);
+          font-size: 16px;
+          font-weight: 500;
+          font-variant: small-caps;
+          padding-top: 16px;
+          line-height: 16px;
+        }
+    ⚓₃: &custom-header-style
+      .: |
+        .card-header {
+          font-size: 16px;
+          font-weight: 500;
+          font-variant: small-caps;
+          padding-top: 16px;
+          line-height: 16px;
+        }
+    ⚓₄: &custom-scenes-style-mod-card
+      .: |
+        #root {
+          background-color: var(--accent-color, var(--accent-color, white) );
+        }
+    ⚓₅: &default_slider_actions
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: more-info
+
+  ##########################################################################
+  #                                                                        #
+  #                                Lovelace                                #
+  #                                                                        #
+  ##########################################################################
+
+  title: Media spelers
   path: music
-  icon: "mdi:music"
+  icon: mdi:music
   badges: []
-  cards: []
+  cards:
+    # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+    - type: vertical-stack
+      cards:
+
+        #############################
+        #                           #
+        #          Scenes           #
+        #                           #
+        #############################
+        # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+        - type: custom:stack-in-card
+          title: scenes
+          style:
+            << : *custom-scenes-style
+          mode: 'vertical'
+          cards:
+
+            # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack
+            - type: horizontal-stack
+              cards:
+
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  name: alles uit
+                  icon: mdi:music-off
+                  entity: scene.alle_mediaspelers_uit
+                  template: [ 'scene-button-confirm' ]
+
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  name: alles aan
+                  icon: mdi:music
+                  entity: scene.alle_mediaspelers_aan
+                  template: [ 'scene-button-playback' ]
+
+                - <<: *anchor-placeholder-card
+
+                - <<: *anchor-placeholder-card
+
+                - <<: *anchor-placeholder-card
+
+        #############################
+        #                           #
+        #          Lights           #
+        #                           #
+        #############################
+        - type: custom:stack-in-card
+          cards:
+
+            # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+            - type: entities
+              title: sonos
+              style:
+                << : *custom-header-style
+              show_header_toggle: false
+              entities:
+
+                # Entity. See https://www.home-assistant.io/lovelace/entity/
+                - entity: group.kitchen_media_player_switches
+                  secondary_info: last-changed
+
+                # Entity. See https://www.home-assistant.io/lovelace/entity/
+                - entity: group.bathroom_media_player_switches
+                  secondary_info: last-changed
+
+                # Entity. See https://www.home-assistant.io/lovelace/entity/
+                - entity: group.livingroom_media_player_switches
+                  secondary_info: last-changed
+
+                # Entity. See https://www.home-assistant.io/lovelace/entity/
+                - entity: group.bedroom_media_player_switches
+                  secondary_info: last-changed
+
+                # Entity. See https://www.home-assistant.io/lovelace/entity/
+                - entity: group.office_media_player_switches
+                  secondary_info: last-changed

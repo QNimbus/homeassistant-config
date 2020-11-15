@@ -2,7 +2,7 @@
   - name: Alle verlichting uit
     icon: mdi:lightbulb-off-outline
     entities:
-      group.house_lights:
+      group.all_lights:
         state: 'off'
   
   - name: Beneden verlichting uit

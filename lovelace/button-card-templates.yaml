@@ -1,0 +1,281 @@
+---
+  # See: https://github.com/custom-cards/button-card#configuration-templates
+
+  ##########################################################################
+  #                                                                        #
+  #                           Generic templates                            #
+  #                                                                        #
+  ##########################################################################
+
+  button-base:
+    aspect_ratio: 1/1
+    show_icon: true
+    show_name: true
+    variables:
+      disabled_color: rgba(219, 130, 0, 255)
+    styles:
+      name:
+        - color: var(--text-primary-color)
+        - font-variant: small-caps
+        - font-size: 0.9rem
+        - justify-self: center
+        - margin-bottom: 0.5rem
+      icon:
+        - color: "var(--text-primary-color)"
+      lock:
+        - color: var(--text-primary-color)
+        - webkit-animation-fill-mode: both
+        - animation-fill-mode: both
+        - margin: unset
+        - opacity: 1
+
+  button-base-action:
+    template: [ 'button-base' ]
+    tap_action:
+      haptic: success
+      action: call-service
+
+  scene-button-base:
+    template: [ 'button-base-action' ]
+    tap_action:
+      service: >
+        [[[
+          if (entity != undefined && entity.state == 'scening'  && !entity.attributes.entity_id.includes('sensor.placeholder'))
+            return 'scene.turn_on';
+          else
+            return 'none';
+        ]]]
+      action: >
+        [[[
+          if (entity != undefined && entity.state == 'scening' && !entity.attributes.entity_id.includes('sensor.placeholder'))
+            return 'call-service';
+          else
+            return 'none';
+        ]]]
+
+  scene-button-disabled:
+    template: [ 'button-base' ]
+    tap_action:
+      service: none
+      action: none
+    styles:
+      icon:
+        - color: &anchor-scene-button-color-disabled >
+            [[[
+              return variables.disabled_color;
+            ]]]
+      name:
+        - color: *anchor-scene-button-color-disabled
+
+  scene-button-playback:
+    template: [ 'scene-button-base', 'scene-button-conditional-style' ]
+    tap_action:
+      service_data:
+        entity_id: >
+          [[[
+            return entity != undefined ? entity.entity_id : '~';
+          ]]]
+
+  scene-button-record:
+    template: [ 'button-base-action' ]
+    tap_action:
+      service: scene.create
+      action: call-service
+      service_data:
+        scene_id: >
+          [[[
+            return entity != undefined ? entity.entity_id.split('.').pop() : undefined;
+          ]]]
+
+  scene-button-delete:
+    template: [ 'scene-button-base', 'scene-button-conditional-style' ]
+    tap_action:
+      service: scene.create
+      service_data:
+        scene_id: >
+          [[[
+            return entity != undefined ? entity.entity_id.split('.').pop() : undefined;
+          ]]]
+
+  scene-button-conditional-style:
+    styles:
+      icon:
+        - color: &anchor-scene-button-color >
+            [[[
+              if (entity != undefined && entity.state == 'scening' && !entity.attributes.entity_id.includes('sensor.placeholder'))
+                return "var(--text-primary-color)";
+              else
+                return variables.disabled_color;
+            ]]]
+      name:
+        - color: *anchor-scene-button-color
+
+  scene-button-locked:
+    template: [ 'scene-button-base' ]
+    lock:
+      enabled: true
+      unlock: double_tap
+
+  scene-button-confirm:
+    template: [ 'scene-button-base', 'scene-button-conditional-style' ]
+    confirmation:
+      text: >
+        [[[
+          return `Scene '${entity.attributes.friendly_name}' activeren?`
+        ]]]
+    tap_action:
+      service_data:
+        entity_id: >
+          [[[
+            return entity != undefined ? entity.entity_id : undefined;
+          ]]]
+
+  popup-button-open:
+    template: [ 'button-base-action' ]
+    icon: mdi:dots-horizontal
+    tap_action:
+      service: browser_mod.popup
+      service_data:
+        hide_header: true
+        deviceID: [ this ]
+
+  popup-button-close:
+    template: [ 'button-base-action' ]
+    icon: mdi:close
+    tap_action:
+      service: browser_mod.close_popup
+
+  light-group:
+    template: [ 'button-base-action' ]
+
+  ##########################################################################
+  #                                                                        #
+  #                           Specific templates                           #
+  #                                                                        #
+  ##########################################################################
+
+  groundfloor-scene-record:
+    name: opslaan
+    icon: mdi:record-circle-outline
+    entity: scene.groundfloor_scene
+    template: scene-button-record
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - light.gf_toilet_dimmer_1_dimmer
+          - light.gf_hallway_dimmer_1_dimmer
+          - light.gf_kitchen_dimmer_1_dimmer
+          - light.gf_kitchen_dimmer_2_dimmer
+          - light.gf_living_dimmer_1_dimmer
+          - light.gf_living_dimmer_2_dimmer
+          - light.gf_living_dimmer_3_rgb_dimmer
+
+  groundfloor-scene-playback:
+    name: uitvoeren
+    icon: mdi:play-circle-outline
+    entity: scene.groundfloor_scene
+    template: scene-button-playback
+
+  groundfloor-scene-delete:
+    name: wissen
+    icon: mdi:trash-can-outline
+    template: scene-button-delete
+    entity: scene.groundfloor_scene
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - sensor.placeholder
+
+  firstfloor-scene-record:
+    name: opslaan
+    icon: mdi:record-circle-outline
+    template: scene-button-record
+    entity: scene.firstfloor_scene
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - light.ff_toilet_dimmer_1_dimmer
+          - light.ff_hallway_dimmer_1_dimmer
+          - light.ff_bathroom_dimmer_1_dimmer
+          - light.ff_bedroom_dimmer_1_dimmer
+          - light.ff_bedroom_dimmer_2_dimmer
+          - light.ff_bedroom_dimmer_3_dimmer
+          - light.ff_bedroom_rgbw_1_rgb_dimmer
+          - light.ff_office_dimmer_1_dimmer
+          - light.ff_office_rgbw_1_rgb_dimmer
+
+  firstfloor-scene-playback:
+    name: uitvoeren
+    icon: mdi:play-circle-outline
+    entity: scene.firstfloor_scene
+    template: scene-button-playback
+
+  firstfloor-scene-delete:
+    name: wissen
+    icon: mdi:trash-can-outline
+    entity: scene.firstfloor_scene
+    template: scene-button-delete
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - sensor.placeholder
+
+  secondfloor-scene-record:
+    name: opslaan
+    icon: mdi:record-circle-outline
+    entity: scene.secondfloor_scene
+    template: scene-button-record
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - light.sf_hallway_dimmer_1_dimmer
+          - light.sf_bathroom_dimmer_1_dimmer
+          - light.sf_bedroomsophie_dimmer_1_dimmer
+          - light.sf_bedroomeva_dimmer_1_dimmer
+
+  secondfloor-scene-playback:
+    name: uitvoeren
+    icon: mdi:play-circle-outline
+    entity: scene.secondfloor_scene
+    template: scene-button-playback
+
+  secondfloor-scene-delete:
+    name: wissen
+    icon: mdi:trash-can-outline
+    entity: scene.secondfloor_scene
+    template: scene-button-delete
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - sensor.placeholder
+
+  outside-scene-record:
+    name: opslaan
+    icon: mdi:record-circle-outline
+    entity: scene.outside_scene
+    template: scene-button-record
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - switch.gf_living_switch_1_switch
+          - switch.gf_garage_switch_2_switch
+          - switch.gf_hallway_switch_1_switch
+          - switch.gf_garage_switch_1_switch
+          - switch.gf_mc_switch_5_switch
+          - light.ou_porch_dimmer_1_dimmer
+
+  outside-scene-playback:
+    name: uitvoeren
+    icon: mdi:play-circle-outline
+    entity: scene.outside_scene
+    template: scene-button-playback
+
+  outside-scene-delete:
+    name: wissen
+    icon: mdi:trash-can-outline
+    entity: scene.outside_scene
+    template: scene-button-delete
+    tap_action:
+      service_data:
+        snapshot_entities:
+          - sensor.placeholder

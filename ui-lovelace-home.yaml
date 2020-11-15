@@ -1,9 +1,11 @@
 ---
-title: Scheidiuslaan 72
-views:
-  - !include lovelace/view-home.yaml
-  - !include lovelace/view-ground-floor.yaml
-  - !include lovelace/view-first-floor.yaml
-  - !include lovelace/view-second-floor.yaml
-  - !include lovelace/view-outside.yaml
-  - !include lovelace/view-music.yaml
+  button_card_templates: !include lovelace/button-card-templates.yaml
+
+  title: Scheidiuslaan 72
+  views:
+    - !include lovelace/view-home.yaml
+    - !include lovelace/view-ground-floor.yaml
+    - !include lovelace/view-first-floor.yaml
+    - !include lovelace/view-second-floor.yaml
+    - !include lovelace/view-outside.yaml
+    - !include lovelace/view-music.yaml

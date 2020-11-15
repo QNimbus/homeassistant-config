@@ -2,6 +2,9 @@
   # Template. See: https://www.home-assistant.io/integrations/template/
   platform: template
   sensors:
+    placeholder:
+      value_template: ''
+
     dsmr_reading_electricity_currently_delivered_watts:
       friendly_name: 'Huidig stroom verbruik'
       unit_of_measurement: 'W'
@@ -37,5 +40,42 @@
       icon_template: mdi:lightbulb-group-outline
       unit_of_measurement: 'aan'
       value_template: >
-        {% set count = expand(['group.all_lights']) | selectattr('state','eq','on') | list | count %}
-        {{ 'Geen' if count == 0 else count }}{% if count == 1 %} lamp{% else %} lampen{% endif %} aan
+        {{ expand(['group.house_lights_inside']) | selectattr('state','eq','on') | list | count }}
+
+    house_lights_groundfloor_on:
+      icon_template: mdi:lightbulb-group-outline
+      unit_of_measurement: 'aan'
+      value_template: >
+        {{ expand(['group.house_lights_groundfloor']) | selectattr('state','eq','on') | list | count }}
+
+    house_lights_firstfloor_on:
+      icon_template: mdi:lightbulb-group-outline
+      unit_of_measurement: 'aan'
+      value_template: >
+        {{ expand(['group.house_lights_firstfloor']) | selectattr('state','eq','on') | list | count }}
+
+    house_lights_secondfloor_on:
+      icon_template: mdi:lightbulb-group-outline
+      unit_of_measurement: 'aan'
+      value_template: >
+        {{ expand(['group.house_lights_secondfloor']) | selectattr('state','eq','on') | list | count }}
+
+    house_lights_outside_on:
+      icon_template: mdi:lightbulb-group-outline
+      unit_of_measurement: 'aan'
+      value_template: >
+        {{ expand(['group.house_lights_outside']) | selectattr('state','eq','on') | list | count }}
+
+    media_players_online:
+      icon_template: mdi:music
+      unit_of_measurement: 'aan'
+      value_template: >
+        {{ expand('group.all_sonos_media_players') | rejectattr('state', 'in', 'unavailable') | list | count }}
+
+    media_players_on:
+      icon_template: mdi:power-standby
+      unit_of_measurement: 'aan'
+      value_template: >
+        {%- for group in state_attr('group.all_media_player_switches', 'entity_id') if is_state(group, 'on') -%}
+        {%- if loop.last -%}{{ loop.index }}{%- endif -%}
+        {%- endfor -%}
