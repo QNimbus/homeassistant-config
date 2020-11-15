@@ -14,3 +14,25 @@
       light.gf_living_dimmer_3_rgb_dimmer:
         state: 'on'
         brightness: 103    # 103/255 ~ 40%
+
+  - name: Diner verlichting begane grond
+    icon: mdi:silverware-fork-knife
+    entities:
+      light.gf_kitchen_dimmer_1_dimmer:
+        state: 'on'
+        brightness: 13    # 13/255 ~ 5%
+      light.gf_kitchen_dimmer_2_dimmer:
+        state: 'on'
+        brightness: 64    # 64/255 ~ 25%
+
+  - name: Avond verlichting tuin
+    icon: mdi:weather-night
+    entities:
+      switch.gf_living_switch_1_switch:
+        state: 'on'
+      switch.gf_garage_switch_2_switch:
+        state: 'on'
+      switch.gf_garage_switch_1_switch:
+        state: 'on'
+      switch.gf_mc_switch_5_switch:
+        state: 'on'

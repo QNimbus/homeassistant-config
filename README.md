@@ -153,7 +153,7 @@ Renaming the default discovered device names (not entity names, I'm referring to
 
 ## To do
 
-- [ ] Add ZWave-to-MQTT via standalone device (e.g. Raspberry Pi 3+)
+- [x] Add ZWave-to-MQTT via standalone device (e.g. Raspberry Pi 3+)
 
 ## Useful links
 

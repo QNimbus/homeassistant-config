@@ -29,259 +29,447 @@
           padding-top: 16px;
           line-height: 16px;
         }
-    custom-button-style: &custom-button-style
-      icon:
-        - color: var(--text-primary-color)
-      name:              
-        - color: var(--text-primary-color)
-          font-variant: small-caps
-          font-size: 14px
+    ⚓₄: &custom-scenes-style-mod-card
+      .: |
+        #root {
+          background-color: var(--accent-color, var(--accent-color, white) );
+        }
+    ⚓₅: &default_slider_actions
+      tap_action:
+        action: toggle
+      double_tap_action:
+        action: more-info
+
+##########################################################################
+#                                                                        #
+#                                Lovelace                                #
+#                                                                        #
+##########################################################################
 
   title: Thuis
   path: home
   icon: mdi:home
   badges: []
   cards:
-    ##########
-    # Scenes #
-    ##########
     # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-    - type: 'custom:stack-in-card'
-      title: huis scenes
-      style:
-        << : *custom-scenes-style
-      mode: 'vertical'
+    - type: vertical-stack
       cards:
-      # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack/
-      - type: horizontal-stack
-        cards:
-          # Button card. See: https://github.com/custom-cards/button-card
-          - type: 'custom:button-card'
-            name: thuis
-            icon: mdi:home-import-outline
-            show_icon: true
-            show_name: true
-            styles:
-              << : *custom-button-style
-            tap_action:
-              action: call-service
-              haptic: success
-              service: persistent_notification.create
-              service_data:
-                title: "Test button"
-                message: "You pushed the 'back home' button"
 
-          # Button card. See: https://github.com/custom-cards/button-card
-          - type: 'custom:button-card'
-            name: afwezig
-            icon: mdi:home-export-outline
-            show_icon: true
-            show_name: true
-            styles:
-              << : *custom-button-style
-            tap_action:
-              action: call-service
-              haptic: success
-              service: persistent_notification.create
-              service_data:
-                title: "Test button"
-                message: "You pushed to 'away from home' button"
+        #############################
+        #                           #
+        #          Scenes           #
+        #                           #
+        #############################
+        # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+        - type: custom:stack-in-card
+          title: scenes
+          style:
+            << : *custom-scenes-style
+          mode: 'vertical'
+          cards:
 
-          # Button card. See: https://github.com/custom-cards/button-card
-          - type: custom:button-card
-            name: alles uit
-            icon: mdi:lightbulb-off-outline
-            show_icon: true
-            show_name: true
-            styles:
-              << : *custom-button-style
-            tap_action:
-              action: call-service
-              haptic: success
-              service: scene.turn_on
-              service_data:
-                entity_id: scene.alle_verlichting_uit
+          # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack/
+          - type: horizontal-stack
+            cards:
 
-          - <<: *anchor-placeholder-card
-          - <<: *anchor-placeholder-card
-    ###########
-    # Weather #
-    ###########
-    # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-    - type: 'custom:stack-in-card'
-      title: schaarsbergen
-      style:
-        << : *custom-header-style
-      mode: 'horizontal'
-      cards:
-        # Lovelace anitmated weather card. See: https://github.com/bramkragten/weather-card
-        - type: 'custom:weather-card'
-          entity: weather.buienradar
-          current: true
-          details: false
-          forecast: true
-          hourly_forecast: false
-          number_of_forecasts: 3
-    ############
-    # Location #
-    ############
-    # Stack in Card. See: https://github.com/custom-cards/stack-in-card
-    - type: 'custom:stack-in-card'
-      title: locaties
-      style:
-        << : *custom-header-style
-      cards:
-        # Map Card. See: https://www.home-assistant.io/lovelace/map/
-        - type: map
-          aspect_ratio: '21:9'
-          default_zoom: 16
-          geo_location_sources: []
-          hours_to_show: 0
-          style: |
-            ha-card {
-              color: rgba(30, 30, 30, 0.5);
-            }
-          entities:
-            - entity: zone.home
-            - entity: person.bas_van_wetten
-            - entity: person.vanessa_van_wetten
-            - entity: person.sophie_van_wetten
+              # Button card. See: https://github.com/custom-cards/button-card
+              - type: custom:button-card
+                name: alles uit
+                icon: mdi:lightbulb-off-outline
+                entity: scene.alle_verlichting_uit
+                template: [ 'scene-button-confirm' ]
+
+              # Button card. See: https://github.com/custom-cards/button-card
+              - type: custom:button-card
+                name: alles uit
+                icon: mdi:music-off
+                entity: scene.alle_mediaspelers_uit
+                template: [ 'scene-button-confirm' ]
+
+              # Button card. See: https://github.com/custom-cards/button-card
+              - type: custom:button-card  
+                name: thuis
+                icon: mdi:home-import-outline
+                template: [ 'button-base' ]
+                tap_action:
+                  service: persistent_notification.create
+                  service_data:
+                    title: "Test button"
+                    message: "You pushed to 'back home' button"
+
+              # Button card. See: https://github.com/custom-cards/button-card
+              - type: custom:button-card
+                icon: mdi:home-export-outline
+                name: afwezig
+                template: [ 'button-base' ]
+                tap_action:
+                  service: persistent_notification.create
+                  service_data:
+                    title: "Test button"
+                    message: "You pushed to 'away from home' button"
+
+              # Button card. See: https://github.com/custom-cards/button-card
+              - type: custom:button-card
+                icon: mdi:dots-horizontal
+                template: [ 'scene-button-disabled' ]
+
+        #############################
+        #                           #
+        #           Weer            #
+        #                           #
+        #############################
+        # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+        - type: custom:stack-in-card
+          title: schaarsbergen
+          style:
+            << : *custom-header-style
+          mode: vertical
+          cards:
+            # Lovelace anitmated weather card. See: https://github.com/bramkragten/weather-card
+            - type: custom:weather-card
+              entity: weather.buienradar
+              current: true
+              details: false
+              forecast: true
+              hourly_forecast: false
+              number_of_forecasts: 3
+
+        #############################
+        #                           #
+        #           Lampen          #
+        #                           #
+        #############################
+        # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+        - type: custom:stack-in-card
+          mode: vertical
+          cards:
+            # Markdown Card. See: https://www.home-assistant.io/lovelace/markdown
+            - type: markdown
+              title: status
+              style:
+                << : *custom-header-style
+              content: >
+                {%- set count_inside = states('sensor.house_lights_inside_on') | int -%}
+                {%- set count_outside = states('sensor.house_lights_outside_on') | int -%}
+                {%- set count_sonos = states('sensor.media_players_online') | int -%}
+                - Er {% if count_inside == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_inside == 0 else count_inside }}**{% if count_inside == 1 %} lamp{% else %} lampen{% endif %} aan in huis.
+
+                - Buiten {% if count_outside == 1 %}is{% else %}zijn{% endif %} er **{{ 'geen' if count_outside == 0 else count_outside }}**{% if count_outside == 1 %} lamp{% else %} lampen{% endif %} aan.
+
+                - Er {% if count_sonos == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_sonos == 0 else count_sonos }}** SONOS media{% if count_sonos == 1 %} speler{% else %} spelers{% endif %} online ({{ states('sensor.media_players_on') | int }} ingeschakeld).
+
+            # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+            - type: custom:stack-in-card
+              mode: horizontal
+              cards:
+
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  entity: group.house_lights_groundfloor
+                  template: light-group
+                  icon: mdi:home-floor-g
+                  name: >
+                    [[[
+                      return states["sensor.house_lights_groundfloor_on"].state;
+                    ]]]
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-home/groundfloor
+                  state:
+                    - value: 'off'
+                      styles:
+                        icon:
+                          - color: "var(--disabled-text-color)"
+                    - value: 'on'
+                      styles:
+                        name:
+                          - color: var(--light-primary-color)
+                          - border: 1px solid var(--light-primary-color)
+                          - border-radius: 10px
+                          - padding: 2px 2px
+                          - width: 20px
+                        icon:
+                          - color: "var(--light-primary-color)"
+
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  entity: group.house_lights_firstfloor
+                  template: light-group
+                  icon: mdi:home-floor-1
+                  name: >
+                    [[[
+                      return states["sensor.house_lights_firstfloor_on"].state;
+                    ]]]
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-home/firstfloor
+                  state:
+                    - value: 'off'
+                      styles:
+                        icon:
+                          - color: "var(--disabled-text-color)"
+                    - value: 'on'
+                      styles:
+                        name:
+                          - color: var(--light-primary-color)
+                          - border: 1px solid var(--light-primary-color)
+                          - border-radius: 10px
+                          - padding: 2px 2px
+                          - width: 20px
+                        icon:
+                          - color: "var(--light-primary-color)"
+
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  entity: group.house_lights_secondfloor
+                  template: light-group
+                  icon: mdi:home-floor-2
+                  name: >
+                    [[[
+                      return states["sensor.house_lights_secondfloor_on"].state;
+                    ]]]
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-home/secondfloor
+                  state:
+                    - value: 'off'
+                      styles:
+                        icon:
+                          - color: "var(--disabled-text-color)"
+                    - value: 'on'
+                      styles:
+                        name:
+                          - color: var(--light-primary-color)
+                          - border: 1px solid var(--light-primary-color)
+                          - border-radius: 10px
+                          - padding: 2px 2px
+                          - width: 20px
+                        icon:
+                          - color: "var(--light-primary-color)"
+
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  entity: group.house_lights_outside
+                  template: light-group
+                  icon: mdi:flower
+                  name: >
+                    [[[
+                      return states["sensor.house_lights_outside_on"].state;
+                    ]]]
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-home/outside
+                  state:
+                    - value: 'off'
+                      styles:
+                        icon:
+                          - color: "var(--disabled-text-color)"
+                    - value: 'on'
+                      styles:
+                        name:
+                          - color: var(--light-primary-color)
+                          - border: 1px solid var(--light-primary-color)
+                          - border-radius: 10px
+                          - padding: 2px 2px
+                          - width: 20px
+                        icon:
+                          - color: "var(--light-primary-color)"
+
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  entity: group.all_sonos_media_players
+                  template: light-group
+                  icon: mdi:music
+                  name: >
+                    [[[
+                      return states["sensor.media_players_online"].state;
+                    ]]]
+                  tap_action:
+                    action: navigate
+                    navigation_path: /lovelace-home/music
+                  state:
+                    - value: 'off'
+                      styles:
+                        icon:
+                          - color: "var(--disabled-text-color)"
+                    - value: 'on'
+                      styles:
+                        name:
+                          - color: var(--light-primary-color)
+                          - border: 1px solid var(--light-primary-color)
+                          - border-radius: 10px
+                          - padding: 2px 2px
+                          - width: 20px
+                        icon:
+                          - color: "var(--light-primary-color)"
+
+        #############################
+        #                           #
+        #          Locatie          #
+        #                           #
+        #############################
+        # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+        - type: custom:stack-in-card
+          title: locatie
+          style:
+            << : *custom-header-style
+          cards:
+            # Map Card. See: https://www.home-assistant.io/lovelace/map/
+            - type: map
+              aspect_ratio: '21:9'
+              default_zoom: 16
+              geo_location_sources: []
+              hours_to_show: 0
+              dark_mode: false
+              style: |
+                ha-card {
+                  color: rgba(30, 30, 30, 0.5);
+                }
+              entities:
+                - entity: zone.home
+                - entity: person.bas_van_wetten
+                - entity: person.vanessa_van_wetten
+                - entity: person.sophie_van_wetten
+
+            # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+            - type: entities
+              entities:
+                # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  entity: person.bas_van_wetten
+                  secondary: '{{ state_attr("sensor.oneplus_a6003_geocoded_location", "Thoroughfare") }}, {{ state_attr("sensor.oneplus_a6003_geocoded_location", "Locality") }}'
+                  state: |
+                    {% set mapper =  {
+                      'home'      : 'Thuis',
+                      'not_home'  : 'Afwezig',
+                      'unknown'   : 'Onbekend' }
+                    %}
+                    {% set state =  states('person.bas_van_wetten') %}
+                    {{ mapper[state] if state in mapper else state }}
+                  style: |
+                    .state {
+                      font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
+                                    {% else %} light;
+                                    {% endif %}
+                    }
+                # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  entity: person.vanessa_van_wetten
+                  secondary: '{{ state_attr("sensor.AC2003_geocoded_location", "Thoroughfare") }}, {{ state_attr("sensor.AC2003_geocoded_location", "Locality") }}'
+                  state: |
+                    {% set mapper =  {
+                      'home'      : 'Thuis',
+                      'not_home'  : 'Afwezig',
+                      'unknown'   : 'Onbekend' }
+                    %}
+                    {% set state =  states('person.vanessa_van_wetten') %}
+                    {{ mapper[state] if state in mapper else state }}
+                  style: |
+                    .state {
+                      font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
+                                    {% else %} light;
+                                    {% endif %}
+                    }
+                # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  entity: person.sophie_van_wetten
+                  secondary: '{{ state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Thoroughfare") }}, {{ state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Locality") }}'
+                  state: |
+                    {% set mapper =  {
+                      'home'      : 'Thuis',
+                      'not_home'  : 'Afwezig',
+                      'unknown'   : 'Onbekend' }
+                    %}
+                    {% set state =  states('person.sophie_van_wetten') %}
+                    {{ mapper[state] if state in mapper else state }}
+                  style: |
+                    .state {
+                      font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
+                                    {% else %} light;
+                                    {% endif %}
+                    }
+                # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  entity: person.eva_van_wetten
+                  secondary: 'Niet gevolgd'
+                  state: |
+                    {% set mapper =  {
+                      'home'      : 'Thuis',
+                      'not_home'  : 'Afwezig',
+                      'unknown'   : 'Onbekend' }
+                    %}
+                    {% set state =  states('person.eva_van_wetten') %}
+                    {{ mapper[state] if state in mapper else state }}
+                  style: |
+                    .state {
+                      font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
+                                    {% else %} light;
+                                    {% endif %}
+                    }
+
+        #############################
+        #                           #
+        #      Stroom verbruik      #
+        #                           #
+        #############################
         # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
         - type: entities
+          title: energie
+          style:
+            << : *custom-header-style
           entities:
+            - type: section
+              label: Huidig verbruik
+
+            - entity: sensor.dsmr_reading_electricity_currently_delivered_watts
+              name: Elektriciteit
+
+            - entity: sensor.dsmr_consumption_gas_currently_delivered_liters
+              name: Gas
+
+            - label: Verbruik (vandaag)
+              type: section
+
             # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
             - type: custom:template-entity-row
-              entity: person.bas_van_wetten
-              secondary: '{{ state_attr("sensor.oneplus_a6003_geocoded_location", "Thoroughfare") }}, {{ state_attr("sensor.oneplus_a6003_geocoded_location", "Locality") }}'
-              state: |
-                {% set mapper =  {
-                  'home'      : 'Thuis',
-                  'not_home'  : 'Afwezig',
-                  'unknown'   : 'Onbekend' }
-                %}
-                {% set state =  states('person.bas_van_wetten') %}
-                {{ mapper[state] if state in mapper else state }}
-              style: |
-                .state {
-                  font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
-                                {% else %} light;
-                                {% endif %}
-                }
+              entity: sensor.dsmr_day_consumption_electricity_merged_watts
+              name: Elektriciteit
+              state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_electricity_merged_watts') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_merged_watts', 'unit_of_measurement') }}"
+
             # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
             - type: custom:template-entity-row
-              entity: person.vanessa_van_wetten
-              secondary: '{{ state_attr("sensor.AC2003_geocoded_location", "Thoroughfare") }}, {{ state_attr("sensor.AC2003_geocoded_location", "Locality") }}'
-              state: |
-                {% set mapper =  {
-                  'home'      : 'Thuis',
-                  'not_home'  : 'Afwezig',
-                  'unknown'   : 'Onbekend' }
-                %}
-                {% set state =  states('person.vanessa_van_wetten') %}
-                {{ mapper[state] if state in mapper else state }}
-              style: |
-                .state {
-                  font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
-                                {% else %} light;
-                                {% endif %}
-                }
+              entity: sensor.dsmr_day_consumption_gas
+              name: Gas
+              state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_gas') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas', 'unit_of_measurement') }}"
+
+            - label: Kosten (vandaag)
+              type: section
+
             # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
             - type: custom:template-entity-row
-              entity: person.sophie_van_wetten
-              secondary: '{{ state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Thoroughfare") }}, {{ state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Locality") }}'
-              state: |
-                {% set mapper =  {
-                  'home'      : 'Thuis',
-                  'not_home'  : 'Afwezig',
-                  'unknown'   : 'Onbekend' }
-                %}
-                {% set state =  states('person.sophie_van_wetten') %}
-                {{ mapper[state] if state in mapper else state }}
-              style: |
-                .state {
-                  font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
-                                {% else %} light;
-                                {% endif %}
-                }
+              entity: sensor.dsmr_day_consumption_electricity_cost_merged
+              name: Elektriciteit
+              state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_electricity_cost_merged') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_cost_merged', 'unit_of_measurement') }}"
+
             # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
             - type: custom:template-entity-row
-              entity: person.eva_van_wetten
-              secondary: 'Niet gevolgd'
-              state: |
-                {% set mapper =  {
-                  'home'      : 'Thuis',
-                  'not_home'  : 'Afwezig',
-                  'unknown'   : 'Onbekend' }
-                %}
-                {% set state =  states('person.eva_van_wetten') %}
-                {{ mapper[state] if state in mapper else state }}
+              entity: sensor.dsmr_day_consumption_gas_cost
+              name: Gas
+              state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_gas_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas_cost', 'unit_of_measurement') }}"        
+            # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+            - type: custom:template-entity-row
+              entity: sensor.dsmr_day_consumption_total_fixed_cost
+              name: Vast
+              state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_fixed_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_fixed_cost', 'unit_of_measurement') }}"
+
+            - type: divider
+
+            # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+            - type: custom:template-entity-row
+              entity: sensor.dsmr_day_consumption_total_cost
+              name: Totaal
+              state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_cost', 'unit_of_measurement') }}"
               style: |
-                .state {
-                  font-weight:  {% if is_state('person.eva_van_wetten', 'home') %} bold;
-                                {% else %} light;
-                                {% endif %}
+                .state, .info {
+                  font-weight: bold;
                 }
-    ###############
-    # Power usage #
-    ###############
-    # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
-    - type: entities
-      title: energie
-      style:
-        << : *custom-header-style
-      entities:
-        - type: section
-          label: Huidig verbruik
-
-        - entity: sensor.dsmr_reading_electricity_currently_delivered_watts
-          name: Elektriciteit
-
-        - entity: sensor.dsmr_consumption_gas_currently_delivered_liters
-          name: Gas
-
-        - label: Verbruik (vandaag)
-          type: section
-
-        # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: custom:template-entity-row
-          entity: sensor.dsmr_day_consumption_electricity_merged_watts
-          name: Elektriciteit
-          state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_electricity_merged_watts') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_merged_watts', 'unit_of_measurement') }}"
-
-        # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: custom:template-entity-row
-          entity: sensor.dsmr_day_consumption_gas
-          name: Gas
-          state: "{{ '%.1f' | format(states('sensor.dsmr_day_consumption_gas') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas', 'unit_of_measurement') }}"
-
-        - label: Kosten (vandaag)
-          type: section
-
-        # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: custom:template-entity-row
-          entity: sensor.dsmr_day_consumption_electricity_cost_merged
-          name: Elektriciteit
-          state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_electricity_cost_merged') | float) }} {{ state_attr('sensor.dsmr_day_consumption_electricity_cost_merged', 'unit_of_measurement') }}"
-
-        # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: custom:template-entity-row
-          entity: sensor.dsmr_day_consumption_gas_cost
-          name: Gas
-          state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_gas_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_gas_cost', 'unit_of_measurement') }}"        
-        # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: custom:template-entity-row
-          entity: sensor.dsmr_day_consumption_total_fixed_cost
-          name: Vast
-          state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_fixed_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_fixed_cost', 'unit_of_measurement') }}"
-
-        - type: divider
-
-        # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
-        - type: custom:template-entity-row
-          entity: sensor.dsmr_day_consumption_total_cost
-          name: Totaal
-          state: "{{ '%.2f' | format(states('sensor.dsmr_day_consumption_total_cost') | float) }} {{ state_attr('sensor.dsmr_day_consumption_total_cost', 'unit_of_measurement') }}"
-          style: |
-            .state, .info {
-              font-weight: bold;
-            }

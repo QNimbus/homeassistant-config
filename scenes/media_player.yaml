@@ -1,0 +1,12 @@
+---
+  - name: Alle mediaspelers uit
+    icon: mdi:music-off
+    entities:
+      group.all_media_player_switches:
+        state: 'off'
+
+  - name: Alle mediaspelers aan
+    icon: mdi:music
+    entities:
+      group.all_media_player_switches:
+        state: 'on'
