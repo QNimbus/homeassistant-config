@@ -1,0 +1,12 @@
+---
+  # See: https://www.home-assistant.io/integrations/automation/
+  - alias: Buitenverlichting in de avond
+    trigger:
+      platform: numeric_state
+      entity_id: sun.sun
+      attribute: elevation
+      below: -3.0
+    condition: []
+    action:
+      service: scene.turn_on
+      entity_id: scene.avond_verlichting_tuin
