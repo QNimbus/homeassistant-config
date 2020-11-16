@@ -5,6 +5,12 @@
   # Ground floor #
   ################
 
+  # ZWave node ID: 49
+  # SM103 Door/Window Sensor by Everspring
+  binary_sensor.gf_hallway_sensor_1_contact:
+    icon: mdi:door-closed
+    friendly_name: Voordeur
+
   # ZWave node ID: 35
   # FGD212 Dimmer 2 by FIBARO System
   light.gf_toilet_dimmer_1_dimmer:
@@ -64,6 +70,12 @@
   switch.gf_mc_switch_2_switch:
     icon: mdi:music
     friendly_name: SONOS AMP Keuken
+
+  # ZWave node ID: 61
+  # FGMS001-ZW5 Motion Sensor by FIBARO System
+  sensor.gf_hallway_sensor_2_alarm_home_security:
+    icon: mdi:alarm-light
+    friendly_name: Bewegings sensor hal
 
   ###############
   # First floor #
@@ -147,6 +159,12 @@
     icon: mdi:music
     friendly_name: SONOS Play:3 Werkkamer
 
+  # ZWave node ID: 61
+  # FGMS001-ZW5 Motion Sensor by FIBARO System
+  sensor.ff_hallway_sensor_1_alarm_home_security:
+    icon: mdi:alarm-light
+    friendly_name: Bewegings sensor overloop 1e verdieping
+
   ################
   # Second floor #
   ################
@@ -174,6 +192,18 @@
   light.sf_bedroomeva_dimmer_1_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Slaapkamer Eva spots
+
+  # ZWave node ID: 61
+  # FGMS001-ZW5 Motion Sensor by FIBARO System
+  sensor.sf_hallway_sensor_1_alarm_home_security:
+    icon: mdi:alarm-light
+    friendly_name: Bewegings sensor overloop 2e verdieping (trap)
+
+  # ZWave node ID: 58
+  # FGMS001-ZW5 Motion Sensor by FIBARO System
+  sensor.sf_hallway_sensor_2_alarm_home_security:
+    icon: mdi:alarm-light
+    friendly_name: Bewegings sensor overloop 2e verdieping (deur)
 
   ###########
   # Outside #
