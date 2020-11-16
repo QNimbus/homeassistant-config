@@ -145,8 +145,32 @@
     tap_action:
       service: browser_mod.close_popup
 
-  light-group:
+  status-group:
     template: [ 'button-base-action' ]
+    tap_action:
+      action: navigate
+      navigation_path: /lovelace-home/home
+    state:
+      - value: 'off'
+        styles:
+          name:
+            - color: var(--disabled-text-color)
+            - border: 1px solid var(--disabled-text-color)
+            - border-radius: 10px
+            - padding: 2px 2px
+            - width: 20px
+          icon:
+            - color: "var(--disabled-text-color)"
+      - value: 'on'
+        styles:
+          name:
+            - color: var(--accent-color)
+            - border: 1px solid var(--accent-color)
+            - border-radius: 10px
+            - padding: 2px 2px
+            - width: 20px
+          icon:
+            - color: "var(--accent-color)"
 
   ##########################################################################
   #                                                                        #

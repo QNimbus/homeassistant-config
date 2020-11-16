@@ -1,0 +1,32 @@
+---
+  # See: https://www.home-assistant.io/integrations/automation/
+  # Reload custom scenes for Lovelace UI when Home Assistant is started
+  # or when scenes are reloaded to ensure that custom scenes are always available
+  - alias: Create scenes for Lovelace interface @ startup
+    trigger:
+      - platform: homeassistant
+        event: start
+      - platform: event
+        event_type: scene_reloaded
+    condition: []
+    action:
+      - service: scene.create
+        data:
+          scene_id: groundfloor_scene
+          snapshot_entities:
+            - sensor.placeholder
+      - service: scene.create
+        data:
+          scene_id: firstfloor_scene
+          snapshot_entities:
+            - sensor.placeholder
+      - service: scene.create
+        data:
+          scene_id: secondfloor_scene
+          snapshot_entities:
+            - sensor.placeholder
+      - service: scene.create
+        data:
+          scene_id: outside_scene
+          snapshot_entities:
+            - sensor.placeholder

@@ -15,7 +15,7 @@
     secondary-text-color: "#727272"
     text-primary-color: "#ffffff"
     text-light-primary-color: "#212121"
-    disabled-text-color: "#bdbdbd"
+    disabled-text-color: "#D3D3D3"
 
     # Main Interface Colors
     primary-color: "#03a9f4"

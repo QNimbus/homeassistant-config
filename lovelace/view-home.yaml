@@ -23,6 +23,7 @@
     custom-header-style: &custom-header-style
       .: |
         .card-header {
+          color: var(--accent-color);
           font-size: 16px;
           font-weight: 500;
           font-variant: small-caps;
@@ -136,172 +137,95 @@
 
         #############################
         #                           #
-        #           Lampen          #
+        #           Status          #
         #                           #
         #############################
         # Stack in Card. See: https://github.com/custom-cards/stack-in-card
         - type: custom:stack-in-card
           mode: vertical
           cards:
-            # Markdown Card. See: https://www.home-assistant.io/lovelace/markdown
-            - type: markdown
-              title: status
-              style:
-                << : *custom-header-style
-              content: >
-                {%- set count_inside = states('sensor.house_lights_inside_on') | int -%}
-                {%- set count_outside = states('sensor.house_lights_outside_on') | int -%}
-                {%- set count_sonos = states('sensor.media_players_online') | int -%}
-                - Er {% if count_inside == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_inside == 0 else count_inside }}**{% if count_inside == 1 %} lamp{% else %} lampen{% endif %} aan in huis.
+            # # Markdown Card. See: https://www.home-assistant.io/lovelace/markdown
+            # - type: markdown
+            #   title: status
+            #   style:
+            #     << : *custom-header-style
+            #   content: >
+            #     {%- set count_inside = states('sensor.house_lights_inside_on') | int -%}
+            #     {%- set count_outside = states('sensor.house_lights_outside_on') | int -%}
+            #     {%- set count_sonos = states('sensor.media_players_online') | int -%}
+            #     - Er {% if count_inside == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_inside == 0 else count_inside }}**{% if count_inside == 1 %} lamp{% else %} lampen{% endif %} aan in huis.
 
-                - Buiten {% if count_outside == 1 %}is{% else %}zijn{% endif %} er **{{ 'geen' if count_outside == 0 else count_outside }}**{% if count_outside == 1 %} lamp{% else %} lampen{% endif %} aan.
+            #     - Buiten {% if count_outside == 1 %}is{% else %}zijn{% endif %} er **{{ 'geen' if count_outside == 0 else count_outside }}**{% if count_outside == 1 %} lamp{% else %} lampen{% endif %} aan.
 
-                - Er {% if count_sonos == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_sonos == 0 else count_sonos }}** SONOS media{% if count_sonos == 1 %} speler{% else %} spelers{% endif %} online ({{ states('sensor.media_players_on') | int }} ingeschakeld).
+            #     - Er {% if count_sonos == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_sonos == 0 else count_sonos }}** SONOS media{% if count_sonos == 1 %} speler{% else %} spelers{% endif %} online ({{ states('sensor.media_players_on') | int }} ingeschakeld).
 
             # Stack in Card. See: https://github.com/custom-cards/stack-in-card
             - type: custom:stack-in-card
+              title: status verlichting & media
+              style:
+                << : *custom-header-style
               mode: horizontal
               cards:
 
                 # Button card. See: https://github.com/custom-cards/button-card
                 - type: custom:button-card
                   entity: group.house_lights_groundfloor
-                  template: light-group
+                  template: status-group
                   icon: mdi:home-floor-g
+                  tap_action:
+                    navigation_path: /lovelace-home/groundfloor
                   name: >
                     [[[
                       return states["sensor.house_lights_groundfloor_on"].state;
                     ]]]
-                  tap_action:
-                    action: navigate
-                    navigation_path: /lovelace-home/groundfloor
-                  state:
-                    - value: 'off'
-                      styles:
-                        icon:
-                          - color: "var(--disabled-text-color)"
-                    - value: 'on'
-                      styles:
-                        name:
-                          - color: var(--light-primary-color)
-                          - border: 1px solid var(--light-primary-color)
-                          - border-radius: 10px
-                          - padding: 2px 2px
-                          - width: 20px
-                        icon:
-                          - color: "var(--light-primary-color)"
 
                 # Button card. See: https://github.com/custom-cards/button-card
                 - type: custom:button-card
                   entity: group.house_lights_firstfloor
-                  template: light-group
+                  template: status-group
                   icon: mdi:home-floor-1
+                  tap_action:
+                    navigation_path: /lovelace-home/firstfloor
                   name: >
                     [[[
                       return states["sensor.house_lights_firstfloor_on"].state;
                     ]]]
-                  tap_action:
-                    action: navigate
-                    navigation_path: /lovelace-home/firstfloor
-                  state:
-                    - value: 'off'
-                      styles:
-                        icon:
-                          - color: "var(--disabled-text-color)"
-                    - value: 'on'
-                      styles:
-                        name:
-                          - color: var(--light-primary-color)
-                          - border: 1px solid var(--light-primary-color)
-                          - border-radius: 10px
-                          - padding: 2px 2px
-                          - width: 20px
-                        icon:
-                          - color: "var(--light-primary-color)"
 
                 # Button card. See: https://github.com/custom-cards/button-card
                 - type: custom:button-card
                   entity: group.house_lights_secondfloor
-                  template: light-group
+                  template: status-group
                   icon: mdi:home-floor-2
+                  tap_action:
+                    navigation_path: /lovelace-home/secondfloor
                   name: >
                     [[[
                       return states["sensor.house_lights_secondfloor_on"].state;
                     ]]]
-                  tap_action:
-                    action: navigate
-                    navigation_path: /lovelace-home/secondfloor
-                  state:
-                    - value: 'off'
-                      styles:
-                        icon:
-                          - color: "var(--disabled-text-color)"
-                    - value: 'on'
-                      styles:
-                        name:
-                          - color: var(--light-primary-color)
-                          - border: 1px solid var(--light-primary-color)
-                          - border-radius: 10px
-                          - padding: 2px 2px
-                          - width: 20px
-                        icon:
-                          - color: "var(--light-primary-color)"
 
                 # Button card. See: https://github.com/custom-cards/button-card
                 - type: custom:button-card
                   entity: group.house_lights_outside
-                  template: light-group
+                  template: status-group
                   icon: mdi:flower
+                  tap_action:
+                    navigation_path: /lovelace-home/outside
                   name: >
                     [[[
                       return states["sensor.house_lights_outside_on"].state;
                     ]]]
-                  tap_action:
-                    action: navigate
-                    navigation_path: /lovelace-home/outside
-                  state:
-                    - value: 'off'
-                      styles:
-                        icon:
-                          - color: "var(--disabled-text-color)"
-                    - value: 'on'
-                      styles:
-                        name:
-                          - color: var(--light-primary-color)
-                          - border: 1px solid var(--light-primary-color)
-                          - border-radius: 10px
-                          - padding: 2px 2px
-                          - width: 20px
-                        icon:
-                          - color: "var(--light-primary-color)"
 
                 # Button card. See: https://github.com/custom-cards/button-card
                 - type: custom:button-card
                   entity: group.all_sonos_media_players
-                  template: light-group
+                  template: status-group
                   icon: mdi:music
+                  tap_action:
+                    navigation_path: /lovelace-home/music
                   name: >
                     [[[
                       return states["sensor.media_players_online"].state;
                     ]]]
-                  tap_action:
-                    action: navigate
-                    navigation_path: /lovelace-home/music
-                  state:
-                    - value: 'off'
-                      styles:
-                        icon:
-                          - color: "var(--disabled-text-color)"
-                    - value: 'on'
-                      styles:
-                        name:
-                          - color: var(--light-primary-color)
-                          - border: 1px solid var(--light-primary-color)
-                          - border-radius: 10px
-                          - padding: 2px 2px
-                          - width: 20px
-                        icon:
-                          - color: "var(--light-primary-color)"
 
         #############################
         #                           #
