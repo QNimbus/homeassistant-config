@@ -1,0 +1,29 @@
+---
+  # Template. See: https://www.home-assistant.io/integrations/template/
+  platform: template
+  sensors:
+    groundfloor_hallway_motion:
+      friendly_name: Beweging hal
+      icon_template: mdi:motion-sensor
+      value_template: >
+        {{
+          states('sensor.gf_hallway_sensor_2_alarm_home_security') == 'Motion Detected at Unknown Location'
+        }}
+
+    firstfloor_hallway_motion:
+      friendly_name: Beweging overloop 1e verdieping
+      icon_template: mdi:motion-sensor
+      value_template: >
+        {{
+          states('sensor.ff_hallway_sensor_1_alarm_home_security') == 'Motion Detected at Unknown Location'
+        }}
+
+    secondfloor_hallway_motion:
+      friendly_name: Beweging overloop 2e verdieping
+      icon_template: mdi:motion-sensor
+      value_template: >
+        {{
+          states('sensor.sf_hallway_sensor_1_alarm_home_security') == 'Motion Detected at Unknown Location'
+          or
+          states('sensor.sf_hallway_sensor_2_alarm_home_security') == 'Motion Detected at Unknown Location'
+        }}

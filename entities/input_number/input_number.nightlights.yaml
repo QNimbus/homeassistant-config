@@ -1,0 +1,22 @@
+---
+  # Template. See: https://www.home-assistant.io/integrations/input_number/
+  evening_light_groundfloor_hallway:
+    name: Automatische avond verlichting hal instelling
+    icon: mdi:lightbulb-outline
+    min: 1
+    max: 99
+    mode: slider
+
+  evening_light_firstfloor_hallway:
+    name: Automatische avond verlichting overloop 1e verieping instelling
+    icon: mdi:lightbulb-outline
+    min: 1
+    max: 99
+    mode: slider
+
+  evening_light_secondfloor_hallway:
+    name: Automatische avond verlichting overloop 2e verieping instelling
+    icon: mdi:lightbulb-outline
+    min: 1
+    max: 99
+    mode: slider

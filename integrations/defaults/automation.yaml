@@ -1,4 +1,5 @@
 ---
 # Automation integration. See: https://www.home-assistant.io/integrations/automation/
 
-automation: !include ../../automations/automations.yaml
+# automation: !include ../../automations/automations.yaml
+automation: !include_dir_merge_list ../../automations/

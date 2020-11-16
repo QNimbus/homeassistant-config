@@ -1,0 +1,25 @@
+---
+  # Template. See: https://www.home-assistant.io/integrations/input_datetime/
+  evening_light_cancel_timer_setting:
+    name: Automatische avond verlichting cancel timer instelling
+    icon: mdi:timer-sand
+    has_time: true
+    has_date: false
+
+  evening_light_groundfloor_hallway_timer_setting:
+    name: Automatische avond verlichting hal timer instelling
+    icon: mdi:timer-sand
+    has_time: true
+    has_date: false
+
+  evening_light_firstfloor_hallway_timer_setting:
+    name: Automatische avond verlichting overloop 1e verdieping timer instelling
+    icon: mdi:timer-sand
+    has_time: true
+    has_date: false
+
+  evening_light_secondfloor_hallway_timer_setting:
+    name: Automatische avond verlichting overloop 2e verdieping timer instelling
+    icon: mdi:timer-sand
+    has_time: true
+    has_date: false

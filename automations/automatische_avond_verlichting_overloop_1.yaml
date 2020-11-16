@@ -1,0 +1,162 @@
+---
+  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
+  # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
+  # Actions. See: https://www.home-assistant.io/docs/automation/action/
+
+  # Related entities:
+  #
+  # - light.ff_hallway_dimmer_1_dimmer                                   : Light
+  # - binary_sensor.firstfloor_hallway_motion                            : Motion sensor
+  # - timer.evening_light_firstfloor_hallway_timer                       : Timer
+  # - input_datetime.evening_light_firstfloor_hallway_timer_setting      : Timer setting
+  # - input_datetime.evening_light_cancel_timer_setting                  : Cancel imer setting
+  # - input_number.evening_light_firstfloor_hallway                      : Light setting
+  # - automation.aav_overloop_1e_verdieping_start
+  # - automation.aav_overloop_1e_verdieping_restart
+  # - automation.aav_overloop_1e_verdieping_cancel
+  # - automation.aav_overloop_1e_verdieping_finish
+
+  # Automation description:
+  #
+  # When motion is detected [start]:
+  #   - Light is switched on to target value
+  #   - Timer is started and runs for preset duration
+  #   - Wait for 1 second (to prevent instant trigger of [restart] and/or [cancel])
+  #   - Arm [restart] and [cancel] automations
+  # When motion is detected continiously until timer expires [restart]:
+  #   - Restart timer
+  # When motion is detected during period when timer is active [restart]:
+  #   - Restart timer
+  # When light is manually switched off or to another value when timer is active [cancel]:
+  #   - Cancel timer
+  #   - Disarm [start] and [restart]] automations
+  #   - Wait for preset cancel duration. (e.g. 60 seconds)
+  #   - Arm [start] and disarm [cancel] automations
+  # When timer expires and no motion is detected [finish]:
+  #   - Light is switched off
+  #   - Disarm [restart] and [cancel] automations
+
+  - alias: AAV Overloop 1e verdieping [start]
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.firstfloor_hallway_motion
+        from: 'off'
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: timer.evening_light_firstfloor_hallway_timer
+          state: 
+            - 'idle'
+        - condition: state
+          entity_id: light.ff_hallway_dimmer_1_dimmer
+          state:
+            - 'off'
+    action:
+      - service: light.turn_on
+        data:
+          entity_id: light.ff_hallway_dimmer_1_dimmer
+          brightness_pct: >
+            {{
+              states('input_number.evening_light_firstfloor_hallway')
+            }}
+      - service: timer.start
+        data:
+          entity_id: timer.evening_light_firstfloor_hallway_timer
+          duration: >
+            {{
+              states('input_datetime.evening_light_firstfloor_hallway_timer_setting')
+            }}
+      - delay:
+          seconds: 1
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_restart
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_cancel
+
+  - alias: AAV Overloop 1e verdieping [restart]
+    initial_state: false
+    trigger:
+      - platform: state
+        entity_id: binary_sensor.firstfloor_hallway_motion
+        from: 'off'
+        to: 'on'
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.evening_light_firstfloor_hallway_timer
+    condition:
+      condition: or
+      conditions:
+        - condition: state
+          entity_id: timer.evening_light_firstfloor_hallway_timer
+          state: 
+            - 'active'
+        - condition: state
+          entity_id: binary_sensor.firstfloor_hallway_motion
+          state:
+          - 'on'
+    action:
+      - service: timer.start
+        data:
+          entity_id: timer.evening_light_firstfloor_hallway_timer
+          duration: >
+            {{
+              states('input_datetime.evening_light_firstfloor_hallway_timer_setting')
+            }}
+
+  - alias: AAV Overloop 1e verdieping [cancel]
+    initial_state: false
+    trigger:
+      - platform: event
+        event_type: state_changed
+        event_data:
+          entity_id: light.ff_hallway_dimmer_1_dimmer
+    condition:
+      condition: state
+      entity_id: timer.evening_light_firstfloor_hallway_timer
+      state: 
+        - 'active'
+    action:
+      - service: timer.cancel
+        data:
+          entity_id: timer.evening_light_firstfloor_hallway_timer
+      - service: automation.turn_off
+        data:
+          entity_id: automation.automation.aav_overloop_1e_verdieping_start
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_restart
+      - delay: "{{ states('input_datetime.evening_light_cancel_timer_setting') }}"
+      - service: automation.turn_on
+        data:
+          entity_id: automation.automation.aav_overloop_1e_verdieping_start
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_cancel
+
+  - alias: AAV Overloop 1e verdieping [finish]
+    trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.evening_light_firstfloor_hallway_timer
+    condition:
+      - condition: state
+        entity_id: binary_sensor.firstfloor_hallway_motion
+        state:
+          - 'off'
+    action:
+      - service: light.turn_off
+        data:
+          entity_id: light.ff_hallway_dimmer_1_dimmer
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_restart
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_cancel

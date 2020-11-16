@@ -1,8 +1,8 @@
 ---
   # MQTT. See: https://www.home-assistant.io/integrations/sensor.mqtt/
   platform: mqtt
-  unique_id: "doorbird_motion"
   name: "DoorBird Motion"
+  unique_id: "doorbird_motion"
   state_topic: "doorbird/motion"
   payload_on : "motion"
   device_class: "motion"
