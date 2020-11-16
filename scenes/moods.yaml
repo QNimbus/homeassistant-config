@@ -25,7 +25,7 @@
         state: 'on'
         brightness: 64    # 64/255 ~ 25%
 
-  - name: Avond verlichting tuin
+  - name: Avond verlichting tuin aan
     icon: mdi:weather-night
     entities:
       switch.gf_living_switch_1_switch:
@@ -36,3 +36,15 @@
         state: 'on'
       switch.gf_mc_switch_5_switch:
         state: 'on'
+
+  - name: Avond verlichting tuin uit
+    icon: mdi:weather-night
+    entities:
+      switch.gf_living_switch_1_switch:
+        state: 'off'
+      switch.gf_garage_switch_2_switch:
+        state: 'off'
+      switch.gf_garage_switch_1_switch:
+        state: 'off'
+      switch.gf_mc_switch_5_switch:
+        state: 'off'
