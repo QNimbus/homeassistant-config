@@ -1,0 +1,13 @@
+---
+  # Doorbird integration. See: https://www.home-assistant.io/integrations/doorbird/
+  doorbird:
+    devices:
+      - name: DoorBird
+        host: !secret doorbird_host
+        token: !secret doorbird_token
+        username: !secret doorbird_user
+        password: !secret doorbird_password
+        hass_url_override: !secret doorbird_hass_url_override
+        events:
+          - motion
+          - somebody_pressed_the_button
