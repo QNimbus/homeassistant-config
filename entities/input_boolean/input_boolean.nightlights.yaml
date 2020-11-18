@@ -1,0 +1,7 @@
+---
+  # input_boolean. See: https://www.home-assistant.io/integrations/input_boolean/
+  nightlights_enable:
+    name: Avond verlichting inschakelen
+    icon: mdi:weather-night
+    initial: false
+

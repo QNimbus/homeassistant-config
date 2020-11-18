@@ -1,40 +1,40 @@
 ---
   # Template. See: https://www.home-assistant.io/integrations/template/
-  platform: template
-  sensors:
-    lights_on:
-      friendly_name: 'Actieve verlichting'
-      icon_template: mdi:lightbulb-group-outline
-      unit_of_measurement: 'aan'
-      value_template: >
-        {{ expand(['group.house_lights_inside']) | selectattr('state','eq','on') | list | count }}
+  - platform: template
+    sensors:
+      lights_on:
+        friendly_name: 'Actieve verlichting'
+        icon_template: mdi:lightbulb-group-outline
+        unit_of_measurement: 'aan'
+        value_template: >
+          {{ expand(['group.house_lights_inside']) | selectattr('state','eq','on') | list | count }}
 
-    house_lights_groundfloor_on:
-      icon_template: mdi:lightbulb-group-outline
-      unit_of_measurement: 'aan'
-      value_template: >
-        {{ expand(['group.house_lights_groundfloor']) | selectattr('state','eq','on') | list | count }}
+      house_lights_groundfloor_on:
+        icon_template: mdi:lightbulb-group-outline
+        unit_of_measurement: 'aan'
+        value_template: >
+          {{ expand(['group.house_lights_groundfloor']) | selectattr('state','eq','on') | list | count }}
 
-    house_lights_firstfloor_on:
-      icon_template: mdi:lightbulb-group-outline
-      unit_of_measurement: 'aan'
-      value_template: >
-        {{ expand(['group.house_lights_firstfloor']) | selectattr('state','eq','on') | list | count }}
+      house_lights_firstfloor_on:
+        icon_template: mdi:lightbulb-group-outline
+        unit_of_measurement: 'aan'
+        value_template: >
+          {{ expand(['group.house_lights_firstfloor']) | selectattr('state','eq','on') | list | count }}
 
-    house_lights_secondfloor_on:
-      icon_template: mdi:lightbulb-group-outline
-      unit_of_measurement: 'aan'
-      value_template: >
-        {{ expand(['group.house_lights_secondfloor']) | selectattr('state','eq','on') | list | count }}
+      house_lights_secondfloor_on:
+        icon_template: mdi:lightbulb-group-outline
+        unit_of_measurement: 'aan'
+        value_template: >
+          {{ expand(['group.house_lights_secondfloor']) | selectattr('state','eq','on') | list | count }}
 
-    house_lights_outside_on:
-      icon_template: mdi:lightbulb-group-outline
-      unit_of_measurement: 'aan'
-      value_template: >
-        {{ expand(['group.house_lights_outside']) | selectattr('state','eq','on') | list | count }}
+      house_lights_outside_on:
+        icon_template: mdi:lightbulb-group-outline
+        unit_of_measurement: 'aan'
+        value_template: >
+          {{ expand(['group.house_lights_outside']) | selectattr('state','eq','on') | list | count }}
 
-    media_players_online:
-      icon_template: mdi:music
-      unit_of_measurement: 'aan'
-      value_template: >
-        {{ expand('group.all_sonos_media_players') | rejectattr('state', 'in', 'unavailable') | list | count }}
+      media_players_online:
+        icon_template: mdi:music
+        unit_of_measurement: 'aan'
+        value_template: >
+          {{ expand('group.all_sonos_media_players') | rejectattr('state', 'in', 'unavailable') | list | count }}

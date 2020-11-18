@@ -15,3 +15,8 @@
       name: Automatische avond verlichting overloop 2e verdieping timer
       icon: mdi:timer-sand
       duration: '00:01:00'
+
+    evening_light_frontdoor_timer:
+      name: Automatische avond verlichting voordeur timer
+      icon: mdi:timer-sand
+      duration: '00:01:00'

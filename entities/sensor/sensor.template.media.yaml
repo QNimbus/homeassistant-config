@@ -1,11 +1,11 @@
 ---
   # Template. See: https://www.home-assistant.io/integrations/template/
-  platform: template
-  sensors:
-    media_players_on:
-      icon_template: mdi:power-standby
-      unit_of_measurement: 'aan'
-      value_template: >
-        {%- for group in state_attr('group.all_media_player_switches', 'entity_id') if is_state(group, 'on') -%}
-        {%- if loop.last -%}{{ loop.index }}{%- endif -%}
-        {%- endfor -%}
+  - platform: template
+    sensors:
+      media_players_on:
+        icon_template: mdi:power-standby
+        unit_of_measurement: 'aan'
+        value_template: >
+          {%- for group in state_attr('group.all_media_player_switches', 'entity_id') if is_state(group, 'on') -%}
+          {%- if loop.last -%}{{ loop.index }}{%- endif -%}
+          {%- endfor -%}

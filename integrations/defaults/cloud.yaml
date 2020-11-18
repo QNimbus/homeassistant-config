@@ -5,6 +5,7 @@ cloud:
     filter:
       include_entities:
         - scene.sfeer_verlichting_begane_grond
+        - scene.avond_verlichting_tuin_aan
 
         - light.gf_hallway_dimmer_1_dimmer
         - light.gf_kitchen_dimmer_1_dimmer
@@ -20,6 +21,10 @@ cloud:
         name: Sfeer verlichting begane grond
         room: Woonkamer
         aliases: [ 'Sfeer verlichting' ]
+      scene.avond_verlichting_tuin_aan:
+        name: Tuin verlichting aan
+        room: Tuin
+        aliases: [  ]
 
       light.gf_hallway_dimmer_1_dimmer:
         name: Hal spots

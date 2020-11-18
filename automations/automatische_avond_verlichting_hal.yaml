@@ -7,7 +7,8 @@
   # Related entities:
   #
   # - light.gf_hallway_dimmer_1_dimmer                                    : Light
-  # - binary_sensor.motion_sensor_1_groundfloor_hallway                            : Motion sensor
+  # - input_boolean.nightlights_enable                                    : Enable/Disable
+  # - binary_sensor.motion_sensor_1_groundfloor_hallway                   : Motion sensor
   # - binary_sensor.gf_hallway_sensor_1_contact                           : Door sensor
   # - timer.evening_light_groundfloor_hallway_timer                       : Timer
   # - input_datetime.evening_light_groundfloor_hallway_timer_setting      : Timer setting
@@ -16,7 +17,7 @@
   # - automation.aav_hal_start
   # - automation.aav_hal_restart
   # - automation.aav_hal_cancel
-  # - automation.aav_hal_finishq
+  # - automation.aav_hal_finish
 
   # Automation description:
   #
@@ -51,6 +52,9 @@
     condition:
       condition: and
       conditions:
+        - condition: state
+          entity_id: input_boolean.nightlights_enable
+          state: 'on'
         - condition: state
           entity_id: timer.evening_light_groundfloor_hallway_timer
           state: 

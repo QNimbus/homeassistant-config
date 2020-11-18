@@ -1,0 +1,88 @@
+---
+  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
+  # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
+  # Actions. See: https://www.home-assistant.io/docs/automation/action/
+
+  # Related entities:
+  #
+  # - switch.gf_hallway_switch_1_switch                                    : Light
+  # - input_boolean.nightlights_enable                                     : Enable/Disable
+  # - timer.evening_light_frontdoor_timer                                  : Timer
+  # - input_datetime.evening_light_frontdoor_timer_setting                 : Timer setting
+
+  # Automation description:
+  #
+
+  - alias: AAV Voordeur [start]
+    trigger:
+      - platform: event
+        event_type: doorbird_doorbird_motion
+      - platform: event
+        event_type: doorbird_doorbird_somebody_pressed_the_button
+      - platform: state
+        entity_id: binary_sensor.gf_hallway_sensor_1_contact
+        from: 'off'
+        to: 'on'
+    condition:
+      condition: and
+      conditions:
+        - condition: state
+          entity_id: input_boolean.nightlights_enable
+          state: 'on'
+        - condition: state
+          entity_id: timer.evening_light_frontdoor_timer
+          state: 
+            - 'idle'
+        - condition: state
+          entity_id: switch.gf_hallway_switch_1_switch
+          state:
+            - 'off'
+    action:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.gf_hallway_switch_1_switch
+      - service: timer.start
+        data:
+          entity_id: timer.evening_light_frontdoor_timer
+          duration: >
+            {{
+              states('input_datetime.evening_light_frontdoor_timer_setting')
+            }}
+
+  - alias: AAV Voordeur [restart]
+    trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.evening_light_frontdoor_timer
+    condition:
+      condition: state
+      entity_id: binary_sensor.gf_hallway_sensor_1_contact
+      state:
+      - 'on'
+    action:
+      - service: timer.start
+        data:
+          entity_id: timer.evening_light_frontdoor_timer
+          duration: >
+            {{
+              states('input_datetime.evening_light_frontdoor_timer_setting')
+            }}
+
+  - alias: AAV Voordeur [finish]
+    trigger:
+      - platform: event
+        event_type: timer.finished
+        event_data:
+          entity_id: timer.evening_light_frontdoor_timer
+    condition:
+      condition: state
+      entity_id: binary_sensor.gf_hallway_sensor_1_contact
+      state:
+      - 'off'
+    action:
+      - service: switch.turn_off
+        data:
+          entity_id: switch.gf_hallway_switch_1_switch
+

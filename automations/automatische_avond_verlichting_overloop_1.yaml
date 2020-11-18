@@ -7,7 +7,8 @@
   # Related entities:
   #
   # - light.ff_hallway_dimmer_1_dimmer                                   : Light
-  # - binary_sensor.motion_sensor_1_firstfloor_hallway                            : Motion sensor
+  # - input_boolean.nightlights_enable                                   : Enable/Disable
+  # - binary_sensor.motion_sensor_1_firstfloor_hallway                   : Motion sensor
   # - timer.evening_light_firstfloor_hallway_timer                       : Timer
   # - input_datetime.evening_light_firstfloor_hallway_timer_setting      : Timer setting
   # - input_datetime.evening_light_cancel_timer_setting                  : Cancel imer setting
@@ -46,6 +47,9 @@
     condition:
       condition: and
       conditions:
+        - condition: state
+          entity_id: input_boolean.nightlights_enable
+          state: 'on'
         - condition: state
           entity_id: timer.evening_light_firstfloor_hallway_timer
           state: 

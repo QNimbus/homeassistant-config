@@ -230,3 +230,4 @@
                   toggle: true
                   hide_when_off: true
                   <<: *default_slider_actions
+

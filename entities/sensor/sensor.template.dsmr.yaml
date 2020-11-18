@@ -1,36 +1,36 @@
 ---
   # Template. See: https://www.home-assistant.io/integrations/template/
-  platform: template
-  sensors:
-    placeholder:
-      value_template: ''
+  - platform: template
+    sensors:
+      placeholder:
+        value_template: ''
 
-    dsmr_reading_electricity_currently_delivered_watts:
-      friendly_name: 'Huidig stroom verbruik'
-      unit_of_measurement: 'W'
-      icon_template: mdi:flash
-      value_template: >
-        {{ (states('sensor.dsmr_reading_electricity_currently_delivered') | float * 1000) | int }}
+      dsmr_reading_electricity_currently_delivered_watts:
+        friendly_name: 'Huidig stroom verbruik'
+        unit_of_measurement: 'W'
+        icon_template: mdi:flash
+        value_template: >
+          {{ (states('sensor.dsmr_reading_electricity_currently_delivered') | float * 1000) | int }}
 
-    dsmr_consumption_gas_currently_delivered_liters:
-      friendly_name: 'Huidig gas verbruik'
-      unit_of_measurement: 'liters'
-      icon_template: mdi:fire
-      value_template: >
-        {{ (states('sensor.dsmr_consumption_gas_currently_delivered') | float * 1000) | int }}
+      dsmr_consumption_gas_currently_delivered_liters:
+        friendly_name: 'Huidig gas verbruik'
+        unit_of_measurement: 'liters'
+        icon_template: mdi:fire
+        value_template: >
+          {{ (states('sensor.dsmr_consumption_gas_currently_delivered') | float * 1000) | int }}
 
-    dsmr_day_consumption_electricity_merged_watts:
-      friendly_name: 'Stroom verbruik'
-      unit_of_measurement: 'kWh'
-      icon_template: mdi:counter
-      value_template: >
-        {{ states('sensor.dsmr_day_consumption_electricity_merged') | float }}
+      dsmr_day_consumption_electricity_merged_watts:
+        friendly_name: 'Stroom verbruik'
+        unit_of_measurement: 'kWh'
+        icon_template: mdi:counter
+        value_template: >
+          {{ states('sensor.dsmr_day_consumption_electricity_merged') | float }}
 
-    dsmr_day_consumption_total_fixed_cost:
-      friendly_name: 'Kosten'
-      unit_of_measurement: '€'
-      icon_template: mdi:currency-eur
-      value_template: >
-        {{ states('sensor.dsmr_day_consumption_total_cost') | float - 
-          states('sensor.dsmr_day_consumption_gas_cost') | float  - 
-          states('sensor.dsmr_day_consumption_electricity_cost_merged') | float }}
+      dsmr_day_consumption_total_fixed_cost:
+        friendly_name: 'Kosten'
+        unit_of_measurement: '€'
+        icon_template: mdi:currency-eur
+        value_template: >
+          {{ states('sensor.dsmr_day_consumption_total_cost') | float - 
+            states('sensor.dsmr_day_consumption_gas_cost') | float  - 
+            states('sensor.dsmr_day_consumption_electricity_cost_merged') | float }}

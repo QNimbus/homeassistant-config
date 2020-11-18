@@ -144,20 +144,6 @@
         - type: custom:stack-in-card
           mode: vertical
           cards:
-            # # Markdown Card. See: https://www.home-assistant.io/lovelace/markdown
-            # - type: markdown
-            #   title: status
-            #   style:
-            #     << : *custom-header-style
-            #   content: >
-            #     {%- set count_inside = states('sensor.house_lights_inside_on') | int -%}
-            #     {%- set count_outside = states('sensor.house_lights_outside_on') | int -%}
-            #     {%- set count_sonos = states('sensor.media_players_online') | int -%}
-            #     - Er {% if count_inside == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_inside == 0 else count_inside }}**{% if count_inside == 1 %} lamp{% else %} lampen{% endif %} aan in huis.
-
-            #     - Buiten {% if count_outside == 1 %}is{% else %}zijn{% endif %} er **{{ 'geen' if count_outside == 0 else count_outside }}**{% if count_outside == 1 %} lamp{% else %} lampen{% endif %} aan.
-
-            #     - Er {% if count_sonos == 1 %}is{% else %}zijn{% endif %} **{{ 'geen' if count_sonos == 0 else count_sonos }}** SONOS media{% if count_sonos == 1 %} speler{% else %} spelers{% endif %} online ({{ states('sensor.media_players_on') | int }} ingeschakeld).
 
             # Stack in Card. See: https://github.com/custom-cards/stack-in-card
             - type: custom:stack-in-card
@@ -261,7 +247,14 @@
                 # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
                 - type: custom:template-entity-row
                   entity: person.bas_van_wetten
-                  secondary: '{{ state_attr("sensor.oneplus_a6003_geocoded_location", "Thoroughfare") }}, {{ state_attr("sensor.oneplus_a6003_geocoded_location", "Locality") }}'
+                  secondary: |
+                    {%- set thoroughfare  = state_attr("sensor.oneplus_a6003_geocoded_location", "Thoroughfare") | string -%}
+                    {%- set locality      = state_attr("sensor.oneplus_a6003_geocoded_location", "Locality") | string -%}
+                    {%- if thoroughfare == 'None' or locality == 'None' -%}
+                    -
+                    {%- else -%}
+                    {{ thoroughfare }}, {{ locality }}
+                    {%- endif -%}
                   state: |
                     {% set mapper =  {
                       'home'      : 'Thuis',
@@ -279,7 +272,14 @@
                 # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
                 - type: custom:template-entity-row
                   entity: person.vanessa_van_wetten
-                  secondary: '{{ state_attr("sensor.AC2003_geocoded_location", "Thoroughfare") }}, {{ state_attr("sensor.AC2003_geocoded_location", "Locality") }}'
+                  secondary: |
+                    {%- set thoroughfare  = state_attr("sensor.ac2003_geocoded_location", "Thoroughfare") | string -%}
+                    {%- set locality      = state_attr("sensor.ac2003_geocoded_location", "Locality") | string -%}
+                    {%- if thoroughfare == 'None' or locality == 'None' -%}
+                    -
+                    {%- else -%}
+                    {{ thoroughfare }}, {{ locality }}
+                    {%- endif -%}
                   state: |
                     {% set mapper =  {
                       'home'      : 'Thuis',
@@ -297,7 +297,14 @@
                 # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
                 - type: custom:template-entity-row
                   entity: person.sophie_van_wetten
-                  secondary: '{{ state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Thoroughfare") }}, {{ state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Locality") }}'
+                  secondary: |
+                    {%- set thoroughfare  = state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Thoroughfare") | string -%}
+                    {%- set locality      = state_attr("sensor.oneplus_a5000_geocodeerde_locatie", "Locality") | string -%}
+                    {%- if thoroughfare == 'None' or locality == 'None' -%}
+                    -
+                    {%- else -%}
+                    {{ thoroughfare }}, {{ locality }}
+                    {%- endif -%}
                   state: |
                     {% set mapper =  {
                       'home'      : 'Thuis',

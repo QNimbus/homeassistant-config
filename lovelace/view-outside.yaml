@@ -140,7 +140,7 @@
                                 # Button card. See: https://github.com/custom-cards/button-card
                                 - type: custom:button-card
                                   name: avond
-                                  entity: scene.avond_verlichting_tuin
+                                  entity: scene.avond_verlichting_tuin_aan
                                   template: [ 'scene-button-playback' ]
 
                                 # Button card. See: https://github.com/custom-cards/button-card

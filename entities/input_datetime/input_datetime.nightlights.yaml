@@ -23,3 +23,9 @@
     icon: mdi:timer-sand
     has_time: true
     has_date: false
+
+  evening_light_frontdoor_timer_setting:
+    name: Automatische avond verlichting voordeur timer instelling
+    icon: mdi:timer-sand
+    has_time: true
+    has_date: false

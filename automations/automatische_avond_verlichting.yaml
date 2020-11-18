@@ -1,0 +1,22 @@
+---
+  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
+  # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
+  # Actions. See: https://www.home-assistant.io/docs/automation/action/
+
+  # Related entities:
+  #
+  
+  # Automation description:
+  #
+
+  - alias: AAV Avond [start]
+    trigger:
+      - platform: numeric_state
+        entity_id: sun.sun
+        attribute: elevation
+        below: -3.0
+    action:
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.nightlights_enable
