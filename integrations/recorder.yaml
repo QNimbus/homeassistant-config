@@ -2,7 +2,22 @@
   # Recorder integration. See: https://www.home-assistant.io/integrations/recorder/
   recorder:
     db_url: !secret postgres_url
-    purge_keep_days: 7
+    purge_keep_days: 1
     include:
       domains:
         - person
+        - light
+        - switch
+        - sensor
+    exclude:
+      domains:
+        - automation
+        - updater
+      entity_globs:
+        - sensor.weather_*
+      entities:
+        - sun.sun           # Don't record sun data
+        - sensor.last_boot  # Comes from 'systemmonitor' sensor platform
+        - sensor.date
+      event_types:
+        - call_service      # Don't record service calls
