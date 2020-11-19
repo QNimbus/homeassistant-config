@@ -35,7 +35,8 @@
         #root {
           background-color: var(--accent-color, var(--accent-color, white) );
         }
-    ⚓₅: &default_slider_actions
+    ⚓₅: &default_slider_options
+      step: 1
       tap_action:
         action: toggle
       double_tap_action:

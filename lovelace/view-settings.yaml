@@ -40,7 +40,6 @@
           background-color: var(--accent-color, var(--accent-color, white) );
         }
     ⚓₅: &default_slider_options
-      step: 1
       tap_action:
         action: toggle
       double_tap_action:
@@ -51,11 +50,13 @@
   #                                Lovelace                                #
   #                                                                        #
   ##########################################################################
-
-  title: Media spelers
-  path: music
-  icon: mdi:music
+  
+  title: Instellingen
+  path: settings
+  icon: mdi:cogs
   badges: []
+  visible:
+    - user: 66b3f3ae00d44e8287a631b636e599f5
   cards:
     # Stack in Card. See: https://github.com/custom-cards/stack-in-card
     - type: vertical-stack
@@ -78,58 +79,4 @@
             - type: horizontal-stack
               cards:
 
-                # Button card. See: https://github.com/custom-cards/button-card
-                - type: custom:button-card
-                  name: alles uit
-                  icon: mdi:music-off
-                  entity: scene.alle_mediaspelers_uit
-                  template: [ 'scene-button-confirm' ]
-
-                # Button card. See: https://github.com/custom-cards/button-card
-                - type: custom:button-card
-                  name: alles aan
-                  icon: mdi:music
-                  entity: scene.alle_mediaspelers_aan
-                  template: [ 'scene-button-playback' ]
-
-                - <<: *anchor-placeholder-card
-
-                - <<: *anchor-placeholder-card
-
-                - <<: *anchor-placeholder-card
-
-        #############################
-        #                           #
-        #          Lights           #
-        #                           #
-        #############################
-        - type: custom:stack-in-card
-          cards:
-
-            # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
-            - type: entities
-              title: sonos
-              style:
-                << : *custom-header-style
-              show_header_toggle: false
-              entities:
-
-                # Entity. See https://www.home-assistant.io/lovelace/entity/
-                - entity: group.kitchen_media_player_switches
-                  secondary_info: last-changed
-
-                # Entity. See https://www.home-assistant.io/lovelace/entity/
-                - entity: group.bathroom_media_player_switches
-                  secondary_info: last-changed
-
-                # Entity. See https://www.home-assistant.io/lovelace/entity/
-                - entity: group.livingroom_media_player_switches
-                  secondary_info: last-changed
-
-                # Entity. See https://www.home-assistant.io/lovelace/entity/
-                - entity: group.bedroom_media_player_switches
-                  secondary_info: last-changed
-
-                # Entity. See https://www.home-assistant.io/lovelace/entity/
-                - entity: group.office_media_player_switches
-                  secondary_info: last-changed
+                - << : *anchor-placeholder-card

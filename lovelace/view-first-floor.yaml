@@ -39,7 +39,8 @@
         #root {
           background-color: var(--accent-color, var(--accent-color, white) );
         }
-    ⚓₅: &default_slider_actions
+    ⚓₅: &default_slider_options
+      step: 1
       tap_action:
         action: toggle
       double_tap_action:
@@ -183,7 +184,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
@@ -192,7 +193,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
           # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
           - type: entities
@@ -207,7 +208,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
           # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
           - type: entities
@@ -222,7 +223,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
@@ -230,7 +231,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
@@ -238,7 +239,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
@@ -247,7 +248,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
           # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
           - type: entities
@@ -262,7 +263,7 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
 
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
@@ -271,4 +272,4 @@
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
-                <<: *default_slider_actions
+                <<: *default_slider_options
