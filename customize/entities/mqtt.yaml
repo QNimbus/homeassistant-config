@@ -65,6 +65,30 @@
     icon: mdi:lightbulb-outline
     friendly_name: Schemerlampen
 
+  # ZWave node ID: 18
+  # ZW ZS 3500 Plugin Switch by Popp / Duwi (Reitz-Group.de)
+  switch.gf_mc_switch_1_switch:
+    icon: mdi:video-input-antenna
+    friendly_name: Antenne versterker
+
+  # ZWave node ID: 14
+  # DSC06106 Smart Energy Switch by AEON Labs
+  switch.gf_mc_switch_6_switch:
+    icon: mdi:toggle-switch-outline
+    friendly_name: Meterkast schakelaar
+
+  # ZWave node ID: 11
+  # FGWPE/F Wall Plug Gen5 by FIBARO System
+  switch.gf_living_switch_4_switch:
+    icon: mdi:toggle-switch-outline
+    friendly_name: Woonkamer schakelaar
+
+  # ZWave node ID: 17
+  # FGWPE/F Wall Plug Gen5 by FIBARO System
+  switch.gf_mc_switch_7_switch:
+    icon: mdi:water-pump
+    friendly_name: Hydrofoorpomp
+
   # ZWave node ID: 10
   # FGWPE/F Wall Plug Gen5 by FIBARO System
   switch.gf_living_switch_3_switch:
@@ -88,6 +112,10 @@
   sensor.gf_hallway_sensor_2_alarm_home_security:
     icon: mdi:alarm-light
     friendly_name: Bewegings sensor hal
+
+  # # ZWave node ID: 67
+  # # ZW130 WallMote Quad by AEON Labs
+  # switch.gf_kitchen_wallmote_1
 
   ###############
   # First floor #
@@ -146,6 +174,18 @@
   light.ff_office_rgbw_1_rgb_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: RGB strip werkkamer
+
+  # ZWave node ID: 43
+  # ZW096 Smart Switch 6 by AEON Labs
+  light.ff_hallway_switch_1_rgb_switch:
+    icon: mdi:toggle-switch-outline
+    friendly_name: Overloop schakelaar 1
+
+  # ZWave node ID: 42
+  # ZW096 Smart Switch 6 by AEON Labs
+  light.ff_hallway_switch_2_rgb_switch:
+    icon: mdi:toggle-switch-outline
+    friendly_name: Overloop schakelaar 2
 
   # ZWave node ID: 13
   # FGWPE/F Wall Plug by FIBARO System
@@ -217,6 +257,18 @@
     icon: mdi:alarm-light
     friendly_name: Bewegings sensor overloop 2e verdieping (deur)
 
+  # ZWave node ID: 63
+  # FGWPE/F Wall Plug Gen5 by Fibaro
+  switch.sf_hallway_switch_1_switch:
+    icon: mdi:tumble-dryer
+    friendly_name: Wasdroger
+
+  # ZWave node ID: 64
+  # FGWPE/F Wall Plug Gen5 by Fibaro
+  switch.sf_hallway_switch_2_switch:
+    icon: mdi:washing-machine
+    friendly_name: Wasmachine
+
   ###########
   # Outside #
   ###########
@@ -233,7 +285,7 @@
     icon: mdi:lightbulb-outline
     friendly_name: Voortuin spots
 
-  # ZWave node ID: 17
+  # ZWave node ID: 22
   # FGS221 Double Relay Switch 2x1.5kW
   switch.gf_garage_switch_1_switch:
     icon: mdi:lightbulb-outline
@@ -245,11 +297,17 @@
     icon: mdi:lightbulb-outline
     friendly_name: Tuinverlichting woonkamer
 
-  # ZWave node ID: 18
+  # ZWave node ID: 21
   # FGS221 Double Relay Switch 2x1.5kW by FIBARO System
   switch.gf_garage_switch_2_switch:
     icon: mdi:lightbulb-outline
     friendly_name: Tuinverlichting garage
+
+  # ZWave node ID: 21
+  # FGS221 Double Relay Switch 2x1.5kW by FIBARO System
+  switch.gf_garage_switch_2_switch_2:
+    icon: mdi:lightbulb-outline
+    friendly_name: Garage verlichting
 
   # ZWave node ID: 48
   # FGD212 Dimmer 2 by FIBARO System
