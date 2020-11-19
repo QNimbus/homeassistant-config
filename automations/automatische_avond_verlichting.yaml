@@ -20,3 +20,14 @@
       - service: input_boolean.turn_on
         data:
           entity_id: input_boolean.nightlights_enable
+
+  - alias: AAV Avond [finish]
+    trigger:
+      - platform: numeric_state
+        entity_id: sun.sun
+        attribute: elevation
+        above: -3.0
+    action:
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.nightlights_enable
