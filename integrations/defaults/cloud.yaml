@@ -1,52 +1,59 @@
 ---
-# Home Assistant Cloud integration. See: https://www.home-assistant.io/integrations/cloud/
-cloud:
-  google_actions:
-    filter:
-      include_entities:
-        - scene.sfeer_verlichting_begane_grond
-        - scene.avond_verlichting_tuin_aan
+  # Home Assistant Cloud integration. See: https://www.home-assistant.io/integrations/cloud/
+  cloud:
+    google_actions:
+      filter:
+        include_entities:
+          - scene.sfeer_verlichting_begane_grond
+          - scene.avond_verlichting_tuin_aan
 
-        - light.gf_hallway_dimmer_1_dimmer
-        - light.gf_kitchen_dimmer_1_dimmer
-        - light.gf_kitchen_dimmer_2_dimmer
-        - light.gf_living_dimmer_1_dimmer
-        - light.gf_living_dimmer_2_dimmer
-        - light.gf_living_dimmer_3_rgb_dimmer
-      include_domains: []
-      exclude_entities: []
-      exclude_domains: []
-    entity_config:
-      scene.sfeer_verlichting_begane_grond:
-        name: Sfeer verlichting begane grond
-        room: Woonkamer
-        aliases: [ 'Sfeer verlichting' ]
-      scene.avond_verlichting_tuin_aan:
-        name: Tuin verlichting aan
-        room: Tuin
-        aliases: [  ]
+          - light.gf_hallway_dimmer_1_dimmer
+          - light.gf_kitchen_dimmer_1_dimmer
+          - light.gf_kitchen_dimmer_2_dimmer
+          - light.gf_living_dimmer_1_dimmer
+          - light.gf_living_dimmer_2_dimmer
+          - light.gf_living_dimmer_3_rgb_dimmer
 
-      light.gf_hallway_dimmer_1_dimmer:
-        name: Hal spots
-        room: Hal
-        aliases: [ 'Spots' ]
-      light.gf_kitchen_dimmer_1_dimmer:
-        name: Keuken spots
-        room: Keuken
-        aliases: [ 'Spots' ]
-      light.gf_kitchen_dimmer_2_dimmer:
-        name: Tafel lampen
-        room: Keuken
-      light.gf_living_dimmer_1_dimmer:
-        name: Midden spots
-        room: Woonkamer
-        aliases: [ 'Spots in het midden' ]
-      light.gf_living_dimmer_2_dimmer:
-        name: Zithoek spots
-        room: Woonkamer
-        aliases: [ 'Zithoek' ]
-      light.gf_living_dimmer_3_rgb_dimmer:
-        name: Zithoek schemerlampen
-        room: Woonkamer
-        aliases: [ 'Schemerlampen' ]
+          - light.ou_porch_dimmer_1_dimmer
+        include_domains: []
+        exclude_entities: []
+        exclude_domains: []
+      entity_config:
+        scene.sfeer_verlichting_begane_grond:
+          name: Sfeer verlichting begane grond
+          room: Woonkamer
+          aliases: [ 'Sfeer verlichting' ]
+        scene.avond_verlichting_tuin_aan:
+          name: Tuin verlichting aan
+          room: Tuin
+          aliases: [  ]
+
+        light.gf_hallway_dimmer_1_dimmer:
+          name: Hal spots
+          room: Hal
+          aliases: [ 'Hal verlichting' ]
+        light.gf_kitchen_dimmer_1_dimmer:
+          name: Keuken spots
+          room: Keuken
+          aliases: [ 'Keuken verlichting' ]
+        light.gf_kitchen_dimmer_2_dimmer:
+          name: Tafel lampen
+          room: Keuken
+        light.gf_living_dimmer_1_dimmer:
+          name: Midden spots
+          room: Woonkamer
+          aliases: [ 'Spots in het midden', 'Midden verlichting' ]
+        light.gf_living_dimmer_2_dimmer:
+          name: Zithoek spots
+          room: Woonkamer
+          aliases: [ 'Zithoek verlichting' ]
+        light.gf_living_dimmer_3_rgb_dimmer:
+          name: Zithoek schemerlampen
+          room: Woonkamer
+          aliases: [ 'Schemerlampen' ]
+
+        light.ou_porch_dimmer_1_dimmer:
+          name: Veranda spots
+          room: Veranda
+          aliases: [ 'Veranda verlichting' ]
 

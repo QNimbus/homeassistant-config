@@ -1,0 +1,97 @@
+---
+  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
+  # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
+  # Actions. See: https://www.home-assistant.io/docs/automation/action/
+
+  # Related entities:
+  #
+  # - switch.gf_mc_switch_7_switch                                   : Pump switch
+  # - sensor.gf_mc_switch_7_electricity_power                                   : Pump switch power usage
+  # - input_boolean.nightlights_enable                                    : Enable/Disable
+  # - binary_sensor.motion_sensor_1_groundfloor_hallway                   : Motion sensor
+  # - binary_sensor.gf_hallway_sensor_1_contact                           : Door sensor
+  # - timer.evening_light_groundfloor_hallway_timer                       : Timer
+  # - input_datetime.evening_light_groundfloor_hallway_timer_setting      : Timer setting
+  # - input_datetime.evening_light_cancel_timer_setting                   : Cancel imer setting
+  # - input_number.evening_light_groundfloor_hallway                      : Light setting
+  # - automation.aav_hal_start
+  # - automation.aav_hal_restart
+  # - automation.aav_hal_cancel
+  # - automation.aav_hal_finish
+
+  # Automation description:
+  #
+  # Automation is manually triggered - it will also timeout after 2 hours as a failsafe
+  # If hydroforpump is 'on':
+  #   - If power usage is below 9 watts, switch 'off' hydrofor pump
+  #   - Else wait until power usage is below 9 watts for at least 5 minutes and switch 'off' hydrofor pump
+
+  - alias: Hydrofoor pomp uitschakelen
+    trigger: []
+    condition:
+      condition: state
+      entity_id: switch.gf_mc_switch_7_switch
+      state: 'on'
+    action:
+      - choose:
+          - conditions:
+            - condition: numeric_state
+              entity_id: sensor.gf_mc_switch_7_electricity_power
+              below: 9
+            sequence:
+              - service: switch.turn_off
+                data:
+                  entity_id: switch.gf_mc_switch_7_switch
+        default:
+        - wait_for_trigger:
+          - platform: numeric_state
+            entity_id: sensor.gf_mc_switch_7_electricity_power
+            below: 9
+            for:
+              minutes: 1
+          timeout:
+            minutes: 120
+          continue_on_timeout: false
+        - service: switch.turn_off
+          data:
+            entity_id: switch.gf_mc_switch_7_switch
+
+  - alias: Hydrofoor pomp automatisch inschakelen
+    trigger:
+      - platform: state
+        entity_id: light.ff_bathroom_dimmer_1_dimmer
+        from: 'off'
+        to: 'on'
+      - platform: state
+        entity_id: light.sf_bathroom_dimmer_1_dimmer
+        from: 'off'
+        to: 'on'
+    condition:
+      - condition: or
+        conditions:
+          - condition: time
+            after: '07:00:00'
+            before: '10:30:00'
+          - condition: time
+            after: '19:00:00'
+            before: '23:30:00'
+    action:
+      - service: switch.turn_on
+        data:
+          entity_id: switch.gf_mc_switch_7_switch
+
+  - alias: Hydrofoor pomp automatisch uitschakelen
+    trigger:
+      - platform: state
+        entity_id: light.ff_bathroom_dimmer_1_dimmer
+        from: 'on'
+        to: 'off'
+      - platform: state
+        entity_id: light.sf_bathroom_dimmer_1_dimmer
+        from: 'on'
+        to: 'off'
+    action:
+      - service: automation.trigger
+        data:
+          entity_id: automation.hydrofoor_pomp_uitschakelen

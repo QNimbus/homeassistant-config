@@ -1,4 +1,10 @@
 ---
+  # These are the actual motions sensors. The 'alarm_home_security' property of the Fibaro ZWave motion sensor
+  # is used to indicate 'motion' or 'tampering' ("Clear","Tampering -  Cover Removed","Motion Detected at Unknown Location")
+  # The HA binary sensors below are used to sanitize and convert these values in a basic 'true' or 'false' binary sensor.
+  #
+  # Each motion sensor also has a seperate 'arm'/'disarm' toggle for use in automations.
+
   # Template. See: https://www.home-assistant.io/integrations/template/
   - platform: template
     sensors:

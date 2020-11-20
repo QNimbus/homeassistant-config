@@ -6,16 +6,27 @@
 
   # Related entities:
   #
+  # - sun.sun                                 : To determine sun elevation
+  # - input_boolean.nightlights_enable        : Logic switch to enable/disable night light automations
   
   # Automation description:
   #
+  # When the sun elevatin goes below a preset value (e.g. -0.5) the input_boolean.nightlights_enable switches 'on'
+  # Inversely, when the sun rises above a preset value (e.g. -0.5) the input_boolean.nightlights_enable witches 'off'
+  # These automations are also triggered at startup of HA and a condition clause is used to determine whether to
+  # switch input_boolean.nightlights_enable 'on' or 'off' in this case.
 
   - alias: AAV Avond [start]
     trigger:
       - platform: numeric_state
         entity_id: sun.sun
         attribute: elevation
-        below: -3.0
+        below: -0.5
+      - platform: homeassistant
+        event: start
+    condition:
+      condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') < -0.5 }}"
     action:
       - service: input_boolean.turn_on
         data:
@@ -26,7 +37,12 @@
       - platform: numeric_state
         entity_id: sun.sun
         attribute: elevation
-        above: -3.0
+        above: -0.5
+      - platform: homeassistant
+        event: start
+    condition:
+      condition: template
+      value_template: "{{ state_attr('sun.sun', 'elevation') > -0.5 }}"
     action:
       - service: input_boolean.turn_off
         data:

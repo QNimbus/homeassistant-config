@@ -1,0 +1,10 @@
+---
+  # RESTFul switch. See: https://www.home-assistant.io/integrations/switch.rest/
+  - platform: rest
+    resource: http://magicmirror.lan.besqua.red/led_endpoint
+    body_on: '{"active": "true"}'
+    body_off: '{"active": "false"}'
+    is_on_template: '{{ value_json.is_active }}'
+    headers:
+      Content-Type: application/json
+    verify_ssl: true

@@ -67,16 +67,148 @@
         #          Scenes           #
         #                           #
         #############################
-        # Stack in Card. See: https://github.com/custom-cards/stack-in-card
+        # Grid Card. See: https://www.home-assistant.io/lovelace/grid/
         - type: custom:stack-in-card
           title: scenes
           style:
             << : *custom-scenes-style
-          mode: 'vertical'
           cards:
 
-            # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack
-            - type: horizontal-stack
+            # Grid Card. See: https://www.home-assistant.io/lovelace/grid/
+            - type: grid
+              square: true
+              columns: 5
               cards:
 
-                - << : *anchor-placeholder-card
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  template: popup-button-open
+                  tap_action:
+                    service_data:
+                      card:
+
+                        # Custom Mod card. See: https://github.com/thomasloven/lovelace-card-mod
+                        type: custom:mod-card
+                        style:
+                          << : *custom-scenes-style
+                        card:
+
+                          # Stack in card. See: https://github.com/custom-cards/stack-in-card
+                          type: custom:stack-in-card
+                          title: overige scenes
+                          style:
+                            << : *custom-scenes-style
+                          mode: 'vertical'
+                          cards:
+
+                            # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack
+                            - type: horizontal-stack
+                              style:
+                                << : *custom-scenes-style-mod-card
+                              cards:
+
+                                - <<: *anchor-placeholder-card
+                                - <<: *anchor-placeholder-card
+
+                                # Button card. See: https://github.com/custom-cards/button-card
+                                - type: custom:button-card
+                                  template: popup-button-close
+
+                                - <<: *anchor-placeholder-card
+                                - <<: *anchor-placeholder-card
+
+                            - type: horizontal-stack
+                              style:
+                                << : *custom-scenes-style-mod-card
+                              cards:
+                                # Button card. See: https://github.com/custom-cards/button-card
+                                - type: custom:button-card
+                                  name: sfeer
+                                  entity: scene.sfeer_verlichting_begane_grond
+                                  template: [ 'scene-button-playback' ]
+
+                                # Button card. See: https://github.com/custom-cards/button-card
+                                - type: custom:button-card
+                                  name: avondeten
+                                  entity: scene.diner_verlichting_begane_grond
+                                  template: [ 'scene-button-playback' ]
+
+                                # Button card. See: https://github.com/custom-cards/button-card
+                                - type: custom:button-card
+                                  name: tv kijken
+                                  icon: mdi:television
+                                  entity: scene.sfeer_verlichting_begane_grond
+                                  template: [ 'scene-button-playback' ]
+
+                                # Button card. See: https://github.com/custom-cards/button-card
+                                - type: custom:button-card
+                                  icon: mdi:lightbulb-group-off-outline
+                                  template: [ 'scene-button-disabled' ]
+
+                                # Button card. See: https://github.com/custom-cards/button-card
+                                - type: custom:button-card
+                                  icon: mdi:lightbulb-group-off-outline
+                                  template: [ 'scene-button-disabled' ]
+
+        #############################
+        #                           #
+        #      Motion sensors       #
+        #                           #
+        #############################
+        - type: custom:stack-in-card
+          title: bewegings sensoren
+          style:
+            << : *custom-header-style
+          cards:
+
+            # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
+            - type: entities
+              entities:
+
+                # Fold Entity Row. See:https://github.com/thomasloven/lovelace-fold-entity-row
+                - type: custom:fold-entity-row
+                  head:
+                    # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
+                    type: custom:template-entity-row
+                    name: Begane grond hal
+                    entity: group.motion_groundfloor_hallway
+                    secondary: "{{ relative_time(states.group.motion_groundfloor_hallway.last_changed) }}"
+                    active: >
+                      {{
+                        is_state('group.motion_groundfloor_hallway', 'on')
+                      }}
+                  group_config:
+                    secondary_info: last-changed
+                  entities:
+                    # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
+                    - type: custom:template-entity-row
+                      name: Voordeur
+                      entity: binary_sensor.gf_hallway_sensor_1_contact
+                      active: >
+                        {{
+                          is_state('binary_sensor.gf_hallway_sensor_1_contact', 'on')
+                        }}
+
+                    # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
+                    - type: custom:template-entity-row
+                      name: Begane grond hal
+                      entity: binary_sensor.motion_sensor_1_groundfloor_hallway
+                      active: >
+                        {{
+                          is_state('binary_sensor.motion_sensor_1_groundfloor_hallway', 'on')
+                        }}
+
+                # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  name: Overloop 1e verdieping
+                  entity: binary_sensor.motion_sensor_1_firstfloor_hallway
+
+                # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  name: Overloop 2e verdieping (trap)
+                  entity: binary_sensor.motion_sensor_1_secondfloor_hallway
+
+                # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  name: Overloop 2e verdieping (slaapkamer Eva)
+                  entity: binary_sensor.motion_sensor_2_secondfloor_hallway

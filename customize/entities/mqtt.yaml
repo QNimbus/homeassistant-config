@@ -87,7 +87,7 @@
   # FGWPE/F Wall Plug Gen5 by FIBARO System
   switch.gf_mc_switch_7_switch:
     icon: mdi:water-pump
-    friendly_name: Hydrofoorpomp
+    friendly_name: Hydrofoor pomp
 
   # ZWave node ID: 10
   # FGWPE/F Wall Plug Gen5 by FIBARO System

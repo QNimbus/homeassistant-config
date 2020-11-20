@@ -9,6 +9,8 @@
         - light
         - switch
         - sensor
+        - binary_sensor
+        - group
     exclude:
       domains:
         - automation

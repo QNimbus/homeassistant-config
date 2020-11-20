@@ -1,0 +1,8 @@
+---
+  # See: https://www.home-assistant.io/integrations/group/
+  motion_groundfloor_hallway:
+    name: Beweging begane grond hall
+    icon: mdi:motion-sensor
+    entities:
+      - binary_sensor.gf_hallway_sensor_1_contact
+      - binary_sensor.motion_sensor_1_groundfloor_hallway
