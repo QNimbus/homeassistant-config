@@ -165,50 +165,66 @@
             - type: entities
               entities:
 
-                # Fold Entity Row. See:https://github.com/thomasloven/lovelace-fold-entity-row
-                - type: custom:fold-entity-row
-                  head:
-                    # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
-                    type: custom:template-entity-row
-                    name: Begane grond hal
-                    entity: group.motion_groundfloor_hallway
-                    secondary: "{{ relative_time(states.group.motion_groundfloor_hallway.last_changed) }}"
-                    active: >
-                      {{
-                        is_state('group.motion_groundfloor_hallway', 'on')
-                      }}
-                  group_config:
-                    secondary_info: last-changed
+                # Multiple Entity Row. See. https://github.com/benct/lovelace-multiple-entity-row
+                - type: custom:multiple-entity-row
+                  name: Beweging oprit
+                  entity: group.motion_driveway
+                  secondary_info: last-changed
+                  state_color: true
+                  show_state: false
                   entities:
-                    # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
-                    - type: custom:template-entity-row
+                    - entity: binary_sensor.gf_hallway_sensor_1_contact
                       name: Voordeur
-                      entity: binary_sensor.gf_hallway_sensor_1_contact
-                      active: >
-                        {{
-                          is_state('binary_sensor.gf_hallway_sensor_1_contact', 'on')
-                        }}
+                      icon: true
+                      state_color: true
+                    - entity: input_boolean.motion_sensor_1_driveway
+                      name: Oprit
+                      icon: mdi:motion-sensor
+                      state_color: true
 
-                    # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
-                    - type: custom:template-entity-row
-                      name: Begane grond hal
-                      entity: binary_sensor.motion_sensor_1_groundfloor_hallway
-                      active: >
-                        {{
-                          is_state('binary_sensor.motion_sensor_1_groundfloor_hallway', 'on')
-                        }}
+                # Multiple Entity Row. See. https://github.com/benct/lovelace-multiple-entity-row
+                - type: custom:multiple-entity-row
+                  name: Beweging begane grond
+                  entity: group.motion_groundfloor_hallway
+                  secondary_info: last-changed
+                  state_color: true
+                  show_state: false
+                  entities:
+                    - entity: binary_sensor.gf_hallway_sensor_1_contact
+                      name: Voordeur
+                      icon: true
+                      state_color: true
+                    - entity: binary_sensor.gf_hallway_sensor_2_motion
+                      name: Hal
+                      icon: mdi:motion-sensor
+                      state_color: true
 
-                # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
-                - type: custom:template-entity-row
-                  name: Overloop 1e verdieping
-                  entity: binary_sensor.motion_sensor_1_firstfloor_hallway
+                # Multiple Entity Row. See. https://github.com/benct/lovelace-multiple-entity-row
+                - type: custom:multiple-entity-row
+                  name: Beweging overloop 1e verdieping
+                  entity: group.motion_firstfloor_hallway
+                  secondary_info: last-changed
+                  state_color: true
+                  show_state: false
+                  entities:
+                    - entity: binary_sensor.ff_hallway_sensor_1_motion
+                      name: Overloop
+                      icon: mdi:motion-sensor
+                      state_color: true
 
-                # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
-                - type: custom:template-entity-row
-                  name: Overloop 2e verdieping (trap)
-                  entity: binary_sensor.motion_sensor_1_secondfloor_hallway
-
-                # Template Entity Row Card. See: https://github.com/thomasloven/lovelace-template-entity-row
-                - type: custom:template-entity-row
-                  name: Overloop 2e verdieping (slaapkamer Eva)
-                  entity: binary_sensor.motion_sensor_2_secondfloor_hallway
+                # Multiple Entity Row. See. https://github.com/benct/lovelace-multiple-entity-row
+                - type: custom:multiple-entity-row
+                  name: Beweging overloop 2e verdieping
+                  entity: group.motion_secondfloor_hallway
+                  secondary_info: last-changed
+                  state_color: true
+                  show_state: false
+                  entities:
+                    - entity: binary_sensor.sf_hallway_sensor_1_motion
+                      name: Overloop
+                      icon: mdi:motion-sensor
+                      state_color: true
+                    - entity: binary_sensor.sf_hallway_sensor_2_motion
+                      name: Overloop
+                      icon: mdi:motion-sensor
+                      state_color: true

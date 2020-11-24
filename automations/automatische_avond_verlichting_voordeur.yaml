@@ -21,7 +21,7 @@
       - platform: event
         event_type: doorbird_doorbird_somebody_pressed_the_button
       - platform: state
-        entity_id: binary_sensor.gf_hallway_sensor_1_contact
+        entity_id: binary_sensor.motion_sensor_1_groundfloor_hallway
         from: 'off'
         to: 'on'
     condition:

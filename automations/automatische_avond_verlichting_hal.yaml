@@ -46,7 +46,7 @@
         from: 'off'
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.gf_hallway_sensor_1_contact
+        entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
         from: 'off'
         to: 'on'
     condition:
@@ -95,7 +95,7 @@
         from: 'off'
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.gf_hallway_sensor_1_contact
+        entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
         from: 'off'
         to: 'on'
       - platform: event
@@ -114,7 +114,7 @@
           state:
           - 'on'
         - condition: state
-          entity_id: binary_sensor.gf_hallway_sensor_1_contact
+          entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
           state:
           - 'on'
     action:
@@ -170,7 +170,7 @@
           state:
             - 'off'
         - condition: state
-          entity_id: binary_sensor.gf_hallway_sensor_1_contact
+          entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
           state:
             - 'off'
     action:

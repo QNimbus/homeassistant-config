@@ -1,0 +1,26 @@
+---
+  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
+  # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
+  # Actions. See: https://www.home-assistant.io/docs/automation/action/
+
+  # Related entities:
+  #
+
+  # Automation description:
+  #
+
+  - alias: Doorbird motion
+    mode: restart
+    trigger:
+      - platform: event
+        event_type: doorbird_doorbird_motion
+    action:
+      - service: input_boolean.turn_on
+        data:
+          entity_id: input_boolean.motion_sensor_1_driveway
+      - delay:
+          seconds: 30
+      - service: input_boolean.turn_off
+        data:
+          entity_id: input_boolean.motion_sensor_1_driveway

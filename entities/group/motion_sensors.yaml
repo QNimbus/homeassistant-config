@@ -1,8 +1,28 @@
 ---
   # See: https://www.home-assistant.io/integrations/group/
-  motion_groundfloor_hallway:
-    name: Beweging begane grond hall
+  motion_driveway:
+    name: Beweging oprit
     icon: mdi:motion-sensor
     entities:
-      - binary_sensor.gf_hallway_sensor_1_contact
       - binary_sensor.motion_sensor_1_groundfloor_hallway
+      - input_boolean.motion_sensor_1_driveway
+
+  motion_groundfloor_hallway:
+    name: Beweging begane grond hal
+    icon: mdi:motion-sensor
+    entities:
+      - binary_sensor.motion_sensor_1_groundfloor_hallway
+      - binary_sensor.motion_sensor_2_groundfloor_hallway
+
+  motion_firstfloor_hallway:
+    name: Beweging overloop 1e verdieping
+    icon: mdi:motion-sensor
+    entities:
+      - binary_sensor.motion_sensor_1_firstfloor_hallway
+
+  motion_secondfloor_hallway:
+    name: Beweging overloop 2e verdieping
+    icon: mdi:motion-sensor
+    entities:
+      - binary_sensor.motion_sensor_1_secondfloor_hallway
+      - binary_sensor.motion_sensor_2_secondfloor_hallway
