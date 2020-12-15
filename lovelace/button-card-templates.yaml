@@ -192,7 +192,7 @@
           - light.gf_kitchen_dimmer_2_dimmer
           - light.gf_living_dimmer_1_dimmer
           - light.gf_living_dimmer_2_dimmer
-          - light.gf_living_dimmer_3_rgb_dimmer
+          - light.gf_living_dimmer_3_dimmer
 
   groundfloor-scene-playback:
     name: uitvoeren
@@ -287,6 +287,8 @@
           - switch.gf_garage_switch_1_switch
           - switch.gf_mc_switch_5_switch
           - light.ou_porch_dimmer_1_dimmer
+          - switch.gf_garage_switch_3_switch_2
+          - switch.gf_mc_switch_8_switch
 
   outside-scene-playback:
     name: uitvoeren

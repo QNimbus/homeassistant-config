@@ -7,7 +7,6 @@
   # Related entities:
   #
   # - switch.gf_hallway_switch_1_switch                                    : Light
-  # - input_boolean.nightlights_enable                                     : Enable/Disable
   # - timer.evening_light_frontdoor_timer                                  : Timer
   # - input_datetime.evening_light_frontdoor_timer_setting                 : Timer setting
 
@@ -21,15 +20,12 @@
       - platform: event
         event_type: doorbird_doorbird_somebody_pressed_the_button
       - platform: state
-        entity_id: binary_sensor.motion_sensor_1_groundfloor_hallway
+        entity_id: binary_sensor.gf_hallway_sensor_1_contact
         from: 'off'
         to: 'on'
     condition:
       condition: and
       conditions:
-        - condition: state
-          entity_id: input_boolean.nightlights_enable
-          state: 'on'
         - condition: state
           entity_id: timer.evening_light_frontdoor_timer
           state: 

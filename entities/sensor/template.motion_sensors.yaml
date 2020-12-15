@@ -1,0 +1,9 @@
+---
+  # Template. See: https://www.home-assistant.io/integrations/template/
+  - platform: template
+    sensors:
+      motion_sensors:
+        icon_template: mdi:motion-sensor
+        unit_of_measurement: 'aan'
+        value_template: >
+          {{ expand('group.all_motion_sensors') | rejectattr('state', 'in', 'off') | list | count }}

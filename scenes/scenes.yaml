@@ -20,7 +20,7 @@
         state: 'off'
       light.gf_living_dimmer_2_dimmer:
         state: 'off'
-      light.gf_living_dimmer_3_rgb_dimmer:
+      light.gf_living_dimmer_3_dimmer:
         state: 'off'
   
   - name: Eerste verdieping verlichting uit

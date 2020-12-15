@@ -7,8 +7,7 @@
   # Related entities:
   #
   # - light.ff_hallway_dimmer_1_dimmer                                   : Light
-  # - input_boolean.nightlights_enable                                   : Enable/Disable
-  # - binary_sensor.motion_sensor_1_firstfloor_hallway                   : Motion sensor
+  # - binary_sensor.ff_hallway_sensor_1_contact                          : Motion sensor
   # - timer.evening_light_firstfloor_hallway_timer                       : Timer
   # - input_datetime.evening_light_firstfloor_hallway_timer_setting      : Timer setting
   # - input_datetime.evening_light_cancel_timer_setting                  : Cancel imer setting
@@ -41,15 +40,12 @@
   - alias: AAV Overloop 1e verdieping [start]
     trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_1_firstfloor_hallway
+        entity_id: binary_sensor.ff_hallway_sensor_1_contact
         from: 'off'
         to: 'on'
     condition:
       condition: and
       conditions:
-        - condition: state
-          entity_id: input_boolean.nightlights_enable
-          state: 'on'
         - condition: state
           entity_id: timer.evening_light_firstfloor_hallway_timer
           state: 
@@ -86,7 +82,7 @@
     initial_state: false
     trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_1_firstfloor_hallway
+        entity_id: binary_sensor.ff_hallway_sensor_1_contact
         from: 'off'
         to: 'on'
       - platform: event
@@ -101,7 +97,7 @@
           state: 
             - 'active'
         - condition: state
-          entity_id: binary_sensor.motion_sensor_1_firstfloor_hallway
+          entity_id: binary_sensor.ff_hallway_sensor_1_contact
           state:
           - 'on'
     action:
@@ -151,7 +147,7 @@
           entity_id: timer.evening_light_firstfloor_hallway_timer
     condition:
       - condition: state
-        entity_id: binary_sensor.motion_sensor_1_firstfloor_hallway
+        entity_id: binary_sensor.ff_hallway_sensor_1_contact
         state:
           - 'off'
     action:

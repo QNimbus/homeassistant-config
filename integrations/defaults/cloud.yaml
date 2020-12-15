@@ -12,7 +12,8 @@
           - light.gf_kitchen_dimmer_2_dimmer
           - light.gf_living_dimmer_1_dimmer
           - light.gf_living_dimmer_2_dimmer
-          - light.gf_living_dimmer_3_rgb_dimmer
+          - light.gf_living_dimmer_3_dimmer
+          - switch.gf_living_switch_4_switch
 
           - light.ou_porch_dimmer_1_dimmer
         include_domains: []
@@ -47,10 +48,14 @@
           name: Zithoek spots
           room: Woonkamer
           aliases: [ 'Zithoek verlichting' ]
-        light.gf_living_dimmer_3_rgb_dimmer:
+        light.gf_living_dimmer_3_dimmer:
           name: Zithoek schemerlampen
           room: Woonkamer
           aliases: [ 'Schemerlampen' ]
+        switch.gf_living_switch_4_switch:
+          name: Kerstboom verlichting
+          room: Woonkamer
+          aliases: [ 'Kerst verlichting', 'Kerstboom' ]
 
         light.ou_porch_dimmer_1_dimmer:
           name: Veranda spots

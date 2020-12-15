@@ -1,30 +1,30 @@
 ---
   # input_boolean. See: https://www.home-assistant.io/integrations/input_boolean/
-  motion_sensor_1_driveway:
+  ou_driveway_sensor_1_motion:
     name: Oprit beweging
     icon: mdi:motion-sensor
     initial: false
 
-  motion_sensor_1_driveway_armed:
-    name: Oprit beweging
-    icon: mdi:motion-sensor-off
+  # motion_sensor_1_driveway_armed:
+  #   name: Oprit beweging
+  #   icon: mdi:motion-sensor-off
 
-  motion_sensor_1_groundfloor_hallway_armed:
-    name: Voordeur
-    icon: mdi:motion-sensor-off
+  # motion_sensor_1_groundfloor_hallway_armed:
+  #   name: Voordeur
+  #   icon: mdi:motion-sensor-off
 
-  motion_sensor_2_groundfloor_hallway_armed:
-    name: Beweging hal
-    icon: mdi:motion-sensor-off
+  # motion_sensor_2_groundfloor_hallway_armed:
+  #   name: Beweging hal
+  #   icon: mdi:motion-sensor-off
 
-  motion_sensor_1_firstfloor_hallway_armed:
-    name: Beweging hal
-    icon: mdi:motion-sensor-off
+  # motion_sensor_1_firstfloor_hallway_armed:
+  #   name: Beweging hal
+  #   icon: mdi:motion-sensor-off
 
-  motion_sensor_1_secondfloor_armed:
-    name: Beweging hal
-    icon: mdi:motion-sensor-off
+  # motion_sensor_1_secondfloor_armed:
+  #   name: Beweging hal
+  #   icon: mdi:motion-sensor-off
 
-  motion_sensor_2_secondfloor_hallway_armed:
-    name: Beweging hal
-    icon: mdi:motion-sensor-off
+  # motion_sensor_2_secondfloor_hallway_armed:
+  #   name: Beweging hal
+  #   icon: mdi:motion-sensor-off

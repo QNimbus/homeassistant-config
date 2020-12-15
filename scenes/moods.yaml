@@ -11,9 +11,11 @@
       light.gf_living_dimmer_2_dimmer:
         state: 'on'
         brightness: 77    # 77/255 ~ 30%
-      light.gf_living_dimmer_3_rgb_dimmer:
+      light.gf_living_dimmer_3_dimmer:
         state: 'on'
         brightness: 103    # 103/255 ~ 40%
+      switch.gf_living_switch_4_switch:
+        state: 'on'
 
   - name: Diner verlichting begane grond
     icon: mdi:silverware-fork-knife

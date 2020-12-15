@@ -61,7 +61,7 @@
 
   # ZWave node ID: 9
   # ZW099 Smart Dimmer 6 by AEON Labs
-  light.gf_living_dimmer_3_rgb_dimmer:
+  light.gf_living_dimmer_3_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: Schemerlampen
 
@@ -77,11 +77,11 @@
     icon: mdi:toggle-switch-outline
     friendly_name: Meterkast schakelaar
 
-  # ZWave node ID: 11
+  # ZWave node ID: 74
   # FGWPE/F Wall Plug Gen5 by FIBARO System
   switch.gf_living_switch_4_switch:
-    icon: mdi:toggle-switch-outline
-    friendly_name: Woonkamer schakelaar
+    icon: mdi:pine-tree #mdi:toggle-switch-outline
+    friendly_name: Kerstboom # Woonkamer schakelaar
 
   # ZWave node ID: 17
   # FGWPE/F Wall Plug Gen5 by FIBARO System
@@ -109,9 +109,9 @@
 
   # ZWave node ID: 68
   # FGMS001-ZW5 Motion Sensor by FIBARO System
-  binary_sensor.gf_hallway_sensor_2_motion:
+  binary_sensor.gf_hallway_sensor_2_contact:
     icon: mdi:motion-sensor
-    friendly_name: Bewegings begane grond hal
+    friendly_name: Beweging begane grond hal
 
   # # ZWave node ID: 67
   # # ZW130 WallMote Quad by AEON Labs
@@ -213,9 +213,9 @@
 
   # ZWave node ID: 62
   # FGMS001-ZW5 Motion Sensor by FIBARO System
-  sensor.ff_hallway_sensor_1_alarm_home_security:
-    icon: mdi:alarm-light
-    friendly_name: Bewegings overloop 1e verdieping
+  binary_sensor.ff_hallway_sensor_1_contact:
+    icon: mdi:motion-sensor
+    friendly_name: Beweging overloop 1e verdieping
 
   ################
   # Second floor #
@@ -245,17 +245,17 @@
     icon: mdi:lightbulb-outline
     friendly_name: Slaapkamer Eva spots
 
-  # ZWave node ID: 61
+  # ZWave node ID: 79
   # FGMS001-ZW5 Motion Sensor by FIBARO System
-  sensor.sf_hallway_sensor_1_alarm_home_security:
-    icon: mdi:alarm-light
-    friendly_name: Bewegings overloop 2e verdieping (trap)
+  binary_sensor.sf_hallway_sensor_2_contact:
+    icon: mdi:motion-sensor
+    friendly_name: Beweging overloop 2e verdieping (trap)
 
-  # ZWave node ID: 58
+  # ZWave node ID: 78
   # FGMS001-ZW5 Motion Sensor by FIBARO System
-  sensor.sf_hallway_sensor_2_alarm_home_security:
-    icon: mdi:alarm-light
-    friendly_name: Bewegings overloop 2e verdieping (deur)
+  binary_sensor.sf_hallway_sensor_2_contact:
+    icon: mdi:motion-sensor
+    friendly_name: Beweging overloop 2e verdieping (deur)
 
   # ZWave node ID: 63
   # FGWPE/F Wall Plug Gen5 by Fibaro

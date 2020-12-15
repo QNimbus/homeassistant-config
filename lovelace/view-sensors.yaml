@@ -51,104 +51,15 @@
   #                                                                        #
   ##########################################################################
   
-  title: Instellingen
-  path: settings
-  icon: mdi:cogs
+  title: Sensoren
+  path: sensors
+  icon: mdi:motion-sensor
   badges: []
-  visible:
-    - user: 66b3f3ae00d44e8287a631b636e599f5
+  visible: []
   cards:
     # Stack in Card. See: https://github.com/custom-cards/stack-in-card
     - type: vertical-stack
       cards:
-
-        #############################
-        #                           #
-        #          Scenes           #
-        #                           #
-        #############################
-        # Grid Card. See: https://www.home-assistant.io/lovelace/grid/
-        - type: custom:stack-in-card
-          title: scenes
-          style:
-            << : *custom-scenes-style
-          cards:
-
-            # Grid Card. See: https://www.home-assistant.io/lovelace/grid/
-            - type: grid
-              square: true
-              columns: 5
-              cards:
-
-                # Button card. See: https://github.com/custom-cards/button-card
-                - type: custom:button-card
-                  template: popup-button-open
-                  tap_action:
-                    service_data:
-                      card:
-
-                        # Custom Mod card. See: https://github.com/thomasloven/lovelace-card-mod
-                        type: custom:mod-card
-                        style:
-                          << : *custom-scenes-style
-                        card:
-
-                          # Stack in card. See: https://github.com/custom-cards/stack-in-card
-                          type: custom:stack-in-card
-                          title: overige scenes
-                          style:
-                            << : *custom-scenes-style
-                          mode: 'vertical'
-                          cards:
-
-                            # Horizontal stack card. See: https://www.home-assistant.io/lovelace/horizontal-stack
-                            - type: horizontal-stack
-                              style:
-                                << : *custom-scenes-style-mod-card
-                              cards:
-
-                                - <<: *anchor-placeholder-card
-                                - <<: *anchor-placeholder-card
-
-                                # Button card. See: https://github.com/custom-cards/button-card
-                                - type: custom:button-card
-                                  template: popup-button-close
-
-                                - <<: *anchor-placeholder-card
-                                - <<: *anchor-placeholder-card
-
-                            - type: horizontal-stack
-                              style:
-                                << : *custom-scenes-style-mod-card
-                              cards:
-                                # Button card. See: https://github.com/custom-cards/button-card
-                                - type: custom:button-card
-                                  name: sfeer
-                                  entity: scene.sfeer_verlichting_begane_grond
-                                  template: [ 'scene-button-playback' ]
-
-                                # Button card. See: https://github.com/custom-cards/button-card
-                                - type: custom:button-card
-                                  name: avondeten
-                                  entity: scene.diner_verlichting_begane_grond
-                                  template: [ 'scene-button-playback' ]
-
-                                # Button card. See: https://github.com/custom-cards/button-card
-                                - type: custom:button-card
-                                  name: tv kijken
-                                  icon: mdi:television
-                                  entity: scene.sfeer_verlichting_begane_grond
-                                  template: [ 'scene-button-playback' ]
-
-                                # Button card. See: https://github.com/custom-cards/button-card
-                                - type: custom:button-card
-                                  icon: mdi:lightbulb-group-off-outline
-                                  template: [ 'scene-button-disabled' ]
-
-                                # Button card. See: https://github.com/custom-cards/button-card
-                                - type: custom:button-card
-                                  icon: mdi:lightbulb-group-off-outline
-                                  template: [ 'scene-button-disabled' ]
 
         #############################
         #                           #
@@ -177,7 +88,7 @@
                       name: Voordeur
                       icon: true
                       state_color: true
-                    - entity: input_boolean.motion_sensor_1_driveway
+                    - entity: input_boolean.ou_driveway_sensor_1_motion
                       name: Oprit
                       icon: mdi:motion-sensor
                       state_color: true
@@ -194,7 +105,7 @@
                       name: Voordeur
                       icon: true
                       state_color: true
-                    - entity: binary_sensor.gf_hallway_sensor_2_motion
+                    - entity: binary_sensor.gf_hallway_sensor_2_contact
                       name: Hal
                       icon: mdi:motion-sensor
                       state_color: true
@@ -207,7 +118,7 @@
                   state_color: true
                   show_state: false
                   entities:
-                    - entity: binary_sensor.ff_hallway_sensor_1_motion
+                    - entity: binary_sensor.ff_hallway_sensor_1_contact
                       name: Overloop
                       icon: mdi:motion-sensor
                       state_color: true
@@ -220,11 +131,11 @@
                   state_color: true
                   show_state: false
                   entities:
-                    - entity: binary_sensor.sf_hallway_sensor_1_motion
+                    - entity: binary_sensor.sf_hallway_sensor_1_contact
                       name: Overloop
                       icon: mdi:motion-sensor
                       state_color: true
-                    - entity: binary_sensor.sf_hallway_sensor_2_motion
+                    - entity: binary_sensor.sf_hallway_sensor_2_contact
                       name: Overloop
                       icon: mdi:motion-sensor
                       state_color: true

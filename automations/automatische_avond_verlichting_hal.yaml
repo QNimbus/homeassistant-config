@@ -7,12 +7,11 @@
   # Related entities:
   #
   # - light.gf_hallway_dimmer_1_dimmer                                    : Light
-  # - input_boolean.nightlights_enable                                    : Enable/Disable
-  # - binary_sensor.motion_sensor_1_groundfloor_hallway                   : Motion sensor
+  # - binary_sensor.gf_hallway_sensor_2_contacty                          : Motion sensor
   # - binary_sensor.gf_hallway_sensor_1_contact                           : Door sensor
   # - timer.evening_light_groundfloor_hallway_timer                       : Timer
   # - input_datetime.evening_light_groundfloor_hallway_timer_setting      : Timer setting
-  # - input_datetime.evening_light_cancel_timer_setting                   : Cancel imer setting
+  # - input_datetime.evening_light_cancel_timer_setting                   : Cancel timer setting
   # - input_number.evening_light_groundfloor_hallway                      : Light setting
   # - automation.aav_hal_start
   # - automation.aav_hal_restart
@@ -42,19 +41,16 @@
   - alias: AAV Hal [start]
     trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_1_groundfloor_hallway
+        entity_id: binary_sensor.gf_hallway_sensor_1_contact
         from: 'off'
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
+        entity_id: binary_sensor.gf_hallway_sensor_2_contact
         from: 'off'
         to: 'on'
     condition:
       condition: and
       conditions:
-        - condition: state
-          entity_id: input_boolean.nightlights_enable
-          state: 'on'
         - condition: state
           entity_id: timer.evening_light_groundfloor_hallway_timer
           state: 
@@ -91,11 +87,11 @@
     initial_state: false
     trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_1_groundfloor_hallway
+        entity_id: binary_sensor.gf_hallway_sensor_1_contact
         from: 'off'
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
+        entity_id: binary_sensor.gf_hallway_sensor_2_contact
         from: 'off'
         to: 'on'
       - platform: event
@@ -110,11 +106,11 @@
           state: 
             - 'active'
         - condition: state
-          entity_id: binary_sensor.motion_sensor_1_groundfloor_hallway
+          entity_id: binary_sensor.gf_hallway_sensor_1_contact
           state:
           - 'on'
         - condition: state
-          entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
+          entity_id: binary_sensor.gf_hallway_sensor_2_contact
           state:
           - 'on'
     action:
@@ -166,11 +162,11 @@
       condition: and
       conditions:
         - condition: state
-          entity_id: binary_sensor.motion_sensor_1_groundfloor_hallway
+          entity_id: binary_sensor.gf_hallway_sensor_1_contact
           state:
             - 'off'
         - condition: state
-          entity_id: binary_sensor.motion_sensor_2_groundfloor_hallway
+          entity_id: binary_sensor.gf_hallway_sensor_2_contact
           state:
             - 'off'
     action:

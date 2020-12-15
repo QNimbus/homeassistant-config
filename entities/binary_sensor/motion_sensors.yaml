@@ -6,64 +6,64 @@
   # Each motion sensor also has a seperate 'arm'/'disarm' toggle for use in automations.
 
   # Template. See: https://www.home-assistant.io/integrations/template/
-  - platform: template
-    sensors:
-      motion_sensor_1_driveway:
-        friendly_name: Beweging oprit
-        icon_template: mdi:motion-sensor
-        value_template: >
-          {{
-            is_state('input_boolean.motion_sensor_1_driveway', 'on')
-            and
-            is_state('input_boolean.motion_sensor_1_driveway_armed', 'on')
-          }}
+  # - platform: template
+  #   sensors:
+  #     motion_sensor_1_driveway:
+  #       friendly_name: Beweging oprit
+  #       icon_template: mdi:motion-sensor
+  #       value_template: >
+  #         {{
+  #           is_state('input_boolean.motion_sensor_1_driveway', 'on')
+  #           and
+  #           is_state('input_boolean.motion_sensor_1_driveway_armed', 'on')
+  #         }}
 
-      motion_sensor_1_groundfloor_hallway:
-        friendly_name: Voordeur open
-        icon_template: mdi:door-open
-        value_template: >
-          {{
-            is_state('binary_sensor.gf_hallway_sensor_1_contact', 'on')
-            and
-            is_state('input_boolean.motion_sensor_1_groundfloor_hallway_armed', 'on')
-          }}
+  #     motion_sensor_1_groundfloor_hallway:
+  #       friendly_name: Voordeur open
+  #       icon_template: mdi:door-open
+  #       value_template: >
+  #         {{
+  #           is_state('binary_sensor.gf_hallway_sensor_1_contact', 'on')
+  #           and
+  #           is_state('input_boolean.motion_sensor_1_groundfloor_hallway_armed', 'on')
+  #         }}
 
-      motion_sensor_2_groundfloor_hallway:
-        friendly_name: Beweging hal
-        icon_template: mdi:motion-sensor
-        value_template: >
-          {{
-            is_state('binary_sensor.gf_hallway_sensor_2_motion', 'on')
-            and
-            is_state('input_boolean.motion_sensor_2_groundfloor_hallway_armed', 'on')
-          }}
+  #     motion_sensor_2_groundfloor_hallway:
+  #       friendly_name: Beweging hal
+  #       icon_template: mdi:motion-sensor
+  #       value_template: >
+  #         {{
+  #           is_state('binary_sensor.gf_hallway_sensor_2_contact', 'on')
+  #           and
+  #           is_state('input_boolean.motion_sensor_2_groundfloor_hallway_armed', 'on')
+  #         }}
 
-      motion_sensor_1_firstfloor_hallway:
-        friendly_name: Beweging overloop 1e verdieping
-        icon_template: mdi:motion-sensor
-        value_template: >
-          {{
-            states('sensor.ff_hallway_sensor_1_alarm_home_security') == 'Motion Detected at Unknown Location'
-            and
-            is_state('input_boolean.motion_sensor_1_firstfloor_hallway_armed', 'on')
-          }}
+  #     motion_sensor_1_firstfloor_hallway:
+  #       friendly_name: Beweging overloop 1e verdieping
+  #       icon_template: mdi:motion-sensor
+  #       value_template: >
+  #         {{
+  #           states('sensor.ff_hallway_sensor_1_alarm_home_security') == 'Motion Detected at Unknown Location'
+  #           and
+  #           is_state('input_boolean.motion_sensor_1_firstfloor_hallway_armed', 'on')
+  #         }}
 
-      motion_sensor_1_secondfloor_hallway:
-        friendly_name: Beweging overloop 2e verdieping (sensor trap)
-        icon_template: mdi:motion-sensor
-        value_template: >
-          {{
-            states('sensor.sf_hallway_sensor_1_alarm_home_security') == 'Motion Detected at Unknown Location'
-            and
-            is_state('input_boolean.motion_sensor_1_secondfloor_armed', 'on')
-          }}
+  #     motion_sensor_1_secondfloor_hallway:
+  #       friendly_name: Beweging overloop 2e verdieping (sensor trap)
+  #       icon_template: mdi:motion-sensor
+  #       value_template: >
+  #         {{
+  #           states('sensor.sf_hallway_sensor_1_alarm_home_security') == 'Motion Detected at Unknown Location'
+  #           and
+  #           is_state('input_boolean.motion_sensor_1_secondfloor_armed', 'on')
+  #         }}
 
-      motion_sensor_2_secondfloor_hallway:
-        friendly_name: Beweging overloop 2e verdieping (sensor deur)
-        icon_template: mdi:motion-sensor
-        value_template: >
-          {{
-            states('sensor.sf_hallway_sensor_2_alarm_home_security') == 'Motion Detected at Unknown Location'
-            and
-            is_state('input_boolean.motion_sensor_2_secondfloor_armed', 'on')
-          }}
+  #     motion_sensor_2_secondfloor_hallway:
+  #       friendly_name: Beweging overloop 2e verdieping (sensor deur)
+  #       icon_template: mdi:motion-sensor
+  #       value_template: >
+  #         {{
+  #           states('sensor.sf_hallway_sensor_2_alarm_home_security') == 'Motion Detected at Unknown Location'
+  #           and
+  #           is_state('input_boolean.motion_sensor_2_secondfloor_armed', 'on')
+  #         }}

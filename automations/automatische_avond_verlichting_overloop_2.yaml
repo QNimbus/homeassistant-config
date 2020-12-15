@@ -7,7 +7,6 @@
   # Related entities:
   #
   # - light.sf_hallway_dimmer_1_dimmer                                    : Light
-  # - input_boolean.nightlights_enable                                    : Enable/Disable
   # - binary_sensor.motion_sensor_1_secondfloor_hallway                   : Motion sensor
   # - binary_sensor.motion_sensor_2_secondfloor_hallway                   : Motion sensor
   # - timer.evening_light_secondfloor_hallway_timer                       : Timer
@@ -52,9 +51,6 @@
     condition:
       condition: and
       conditions:
-        - condition: state
-          entity_id: input_boolean.nightlights_enable
-          state: 'on'
         - condition: state
           entity_id: timer.evening_light_secondfloor_hallway_timer
           state: 

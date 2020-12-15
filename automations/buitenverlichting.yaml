@@ -1,21 +1,22 @@
 ---
   # See: https://www.home-assistant.io/integrations/automation/
-  - alias: Buitenverlichting in de avond aan
-    trigger:
-      - platform: state
-        entity_id: input_boolean.nightlights_enable
-        from: 'off'
-        to: 'on'
-    condition: []
-    action:
-      service: scene.turn_on
-      entity_id: scene.avond_verlichting_tuin_aan
+  # - alias: Buitenverlichting in de avond aan
+  #   trigger:
+  #     - platform: state
+  #       entity_id: input_boolean.nightlights_enable
+  #       from: 'off'
+  #       to: 'on'
+  #   condition: []
+  #   action:
+  #     service: scene.turn_on
+  #     entity_id: scene.avond_verlichting_tuin_aan
 
-  - alias: Buitenverlichting in de avond uit
-    trigger:
-      platform: time
-      at: "23:30:00"
-    condition: []
-    action:
-      service: scene.turn_on
-      entity_id: scene.avond_verlichting_tuin_uit
+  # - alias: Buitenverlichting in de avond uit
+  #   trigger:
+  #     platform: time
+  #     at: "23:30:00"
+  #   condition: []
+  #   action:
+  #     service: scene.turn_on
+  #     data:
+  #       - entity_id: scene.avond_verlichting_tuin_uit

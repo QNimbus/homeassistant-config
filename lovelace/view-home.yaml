@@ -214,6 +214,18 @@
                       return states["sensor.media_players_online"].state;
                     ]]]
 
+                # Button card. See: https://github.com/custom-cards/button-card
+                - type: custom:button-card
+                  entity: group.all_motion_sensors
+                  template: status-group
+                  icon: mdi:motion-sensor
+                  tap_action:
+                    navigation_path: /lovelace-home/sensors
+                  name: >
+                    [[[
+                      return states["sensor.motion_sensors"].state;
+                    ]]]
+
         #############################
         #                           #
         #          Locatie          #
@@ -241,6 +253,8 @@
                 - entity: person.bas_van_wetten
                 - entity: person.vanessa_van_wetten
                 - entity: person.sophie_van_wetten
+                - entity: device_tracker.volvo_s60
+                - entity: device_tracker.mini_cooper
 
             # Entities Card. See: https://www.home-assistant.io/lovelace/entities/
             - type: entities
@@ -338,6 +352,42 @@
                                     {% else %} light;
                                     {% endif %}
                     }
+                # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  entity: device_tracker.volvo_s60
+                  secondary: |
+                    {%- set address  = state_attr("device_tracker.volvo_s60", "address") | string -%}
+                    {%- if address == 'None' -%}
+                    -
+                    {%- else -%}
+                    {{ address }}
+                    {%- endif -%}
+                  state: |
+                    {% set mapper =  {
+                      'home'      : 'Thuis',
+                      'not_home'  : 'Afwezig',
+                      'unknown'   : 'Onbekend' }
+                    %}
+                    {% set state =  states('device_tracker.volvo_s60') %}
+                    {{ mapper[state] if state in mapper else state }}
+                # Entity :: Template Entity Row. See: https://github.com/thomasloven/lovelace-template-entity-row
+                - type: custom:template-entity-row
+                  entity: device_tracker.mini_cooper
+                  secondary: |
+                    {%- set address  = state_attr("device_tracker.mini_cooper", "address") | string -%}
+                    {%- if address == 'None' -%}
+                    -
+                    {%- else -%}
+                    {{ address }}
+                    {%- endif -%}
+                  state: |
+                    {% set mapper =  {
+                      'home'      : 'Thuis',
+                      'not_home'  : 'Afwezig',
+                      'unknown'   : 'Onbekend' }
+                    %}
+                    {% set state =  states('device_tracker.mini_cooper') %}
+                    {{ mapper[state] if state in mapper else state }}
 
         #############################
         #                           #

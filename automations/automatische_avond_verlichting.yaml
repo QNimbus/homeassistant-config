@@ -7,14 +7,13 @@
   # Related entities:
   #
   # - sun.sun                                 : To determine sun elevation
-  # - input_boolean.nightlights_enable        : Logic switch to enable/disable night light automations
   
   # Automation description:
   #
-  # When the sun elevatin goes below a preset value (e.g. -0.5) the input_boolean.nightlights_enable switches 'on'
-  # Inversely, when the sun rises above a preset value (e.g. -0.5) the input_boolean.nightlights_enable witches 'off'
+  # When the sun elevatin goes below a preset value (e.g. -0.5) the 'automation.aav_avond_start' switches 'on'
+  # Inversely, when the sun rises above a preset value (e.g. -0.5) the 'automation.aav_avond_start' witches 'off'
   # These automations are also triggered at startup of HA and a condition clause is used to determine whether to
-  # switch input_boolean.nightlights_enable 'on' or 'off' in this case.
+  # switch 'automation.aav_avond_start' 'on' or 'off' in this case.
 
   - alias: AAV Avond [start]
     trigger:
@@ -28,9 +27,21 @@
       condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') < -0.5 }}"
     action:
-      - service: input_boolean.turn_on
+      - service: automation.turn_on
         data:
-          entity_id: input_boolean.nightlights_enable
+          entity_id: automation.aav_hal_start
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_start
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_overloop_2e_verdieping_start
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_voordeur_start
+      - service: scene.turn_on
+        data:
+          entity_id: scene.avond_verlichting_tuin_aan
 
   - alias: AAV Avond [finish]
     trigger:
@@ -44,6 +55,25 @@
       condition: template
       value_template: "{{ state_attr('sun.sun', 'elevation') > -0.5 }}"
     action:
-      - service: input_boolean.turn_off
+      - service: automation.turn_off
         data:
-          entity_id: input_boolean.nightlights_enable
+          entity_id: automation.aav_hal_start
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_start
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_2e_verdieping_start
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_voordeur_start
+
+  - alias: Buitenverlichting in de avond uit
+    trigger:
+      platform: time
+      at: "23:30:00"
+    condition: []
+    action:
+      service: scene.turn_on
+      data:
+        entity_id: scene.avond_verlichting_tuin_uit

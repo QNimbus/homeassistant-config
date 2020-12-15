@@ -246,11 +246,15 @@
 
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
-                entity: light.gf_living_dimmer_3_rgb_dimmer
+                entity: light.gf_living_dimmer_3_dimmer
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
                 <<: *default_slider_options
+
+              # Entity. See https://www.home-assistant.io/lovelace/entity/
+              - entity: switch.gf_living_switch_4_switch
+                secondary_info: last-changed
 
         #############################
         #                           #
