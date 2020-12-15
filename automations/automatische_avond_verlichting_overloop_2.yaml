@@ -1,5 +1,5 @@
 ---
-  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Automation. See: https://www.home-assistant.io/integrations/automation/yaml/
   # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
   # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
   # Actions. See: https://www.home-assistant.io/docs/automation/action/
@@ -7,8 +7,8 @@
   # Related entities:
   #
   # - light.sf_hallway_dimmer_1_dimmer                                    : Light
-  # - binary_sensor.motion_sensor_1_secondfloor_hallway                   : Motion sensor
-  # - binary_sensor.motion_sensor_2_secondfloor_hallway                   : Motion sensor
+  # - binary_sensor.sf_hallway_sensor_1_contact                           : Motion sensor
+  # - binary_sensor.sf_hallway_sensor_2_contact                           : Motion sensor
   # - timer.evening_light_secondfloor_hallway_timer                       : Timer
   # - input_datetime.evening_light_secondfloor_hallway_timer_setting      : Timer setting
   # - input_datetime.evening_light_cancel_timer_setting                   : Cancel imer setting
@@ -41,11 +41,11 @@
   - alias: AAV Overloop 2e verdieping [start]
     trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_1_secondfloor_hallway
+        entity_id: binary_sensor.sf_hallway_sensor_1_contact
         from: 'off'
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.motion_sensor_2_secondfloor_hallway
+        entity_id: binary_sensor.sf_hallway_sensor_2_contact
         from: 'off'
         to: 'on'
     condition:
@@ -87,11 +87,11 @@
     initial_state: false
     trigger:
       - platform: state
-        entity_id: binary_sensor.motion_sensor_1_secondfloor_hallway
+        entity_id: binary_sensor.sf_hallway_sensor_1_contact
         from: 'off'
         to: 'on'
       - platform: state
-        entity_id: binary_sensor.motion_sensor_2_secondfloor_hallway
+        entity_id: binary_sensor.sf_hallway_sensor_2_contact
         from: 'off'
         to: 'on'
       - platform: event
@@ -106,11 +106,11 @@
           state: 
             - 'active'
         - condition: state
-          entity_id: binary_sensor.motion_sensor_1_secondfloor_hallway
+          entity_id: binary_sensor.sf_hallway_sensor_1_contact
           state:
           - 'on'
         - condition: state
-          entity_id: binary_sensor.motion_sensor_2_secondfloor_hallway
+          entity_id: binary_sensor.sf_hallway_sensor_2_contact
           state:
           - 'on'
     action:
@@ -140,14 +140,14 @@
           entity_id: timer.evening_light_secondfloor_hallway_timer
       - service: automation.turn_off
         data:
-          entity_id: automation.automation.aav_overloop_2e_verdieping_start
+          entity_id: automation.aav_overloop_2e_verdieping_start
       - service: automation.turn_off
         data:
           entity_id: automation.aav_overloop_2e_verdieping_restart
       - delay: "{{ states('input_datetime.evening_light_cancel_timer_setting') }}"
       - service: automation.turn_on
         data:
-          entity_id: automation.automation.aav_overloop_2e_verdieping_start
+          entity_id: automation.aav_overloop_2e_verdieping_start
       - service: automation.turn_off
         data:
           entity_id: automation.aav_overloop_2e_verdieping_cancel

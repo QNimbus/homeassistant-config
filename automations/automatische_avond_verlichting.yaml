@@ -39,6 +39,18 @@
       - service: automation.turn_on
         data:
           entity_id: automation.aav_voordeur_start
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_hal_finish
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_finish
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_overloop_2e_verdieping_finish
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_voordeur_finish
       - service: scene.turn_on
         data:
           entity_id: scene.avond_verlichting_tuin_aan
@@ -67,11 +79,26 @@
       - service: automation.turn_off
         data:
           entity_id: automation.aav_voordeur_start
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_hal_finish
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_1e_verdieping_finish
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_overloop_2e_verdieping_finish
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_voordeur_finish
+      - service: scene.turn_on
+        data:
+          entity_id: scene.avond_verlichting_tuin_uit
 
   - alias: Buitenverlichting in de avond uit
     trigger:
-      platform: time
-      at: "23:30:00"
+    - platform: time
+      at: "00:30:00"
     condition: []
     action:
       service: scene.turn_on

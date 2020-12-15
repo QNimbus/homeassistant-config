@@ -1,5 +1,5 @@
 ---
-  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Automation. See: https://www.home-assistant.io/integrations/automation/yaml/
   # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
   # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
   # Actions. See: https://www.home-assistant.io/docs/automation/action/
@@ -10,7 +10,7 @@
   # - binary_sensor.ff_hallway_sensor_1_contact                          : Motion sensor
   # - timer.evening_light_firstfloor_hallway_timer                       : Timer
   # - input_datetime.evening_light_firstfloor_hallway_timer_setting      : Timer setting
-  # - input_datetime.evening_light_cancel_timer_setting                  : Cancel imer setting
+  # - input_datetime.evening_light_cancel_timer_setting                  : Cancel timer setting
   # - input_number.evening_light_firstfloor_hallway                      : Light setting
   # - automation.aav_overloop_1e_verdieping_start
   # - automation.aav_overloop_1e_verdieping_restart
@@ -127,14 +127,14 @@
           entity_id: timer.evening_light_firstfloor_hallway_timer
       - service: automation.turn_off
         data:
-          entity_id: automation.automation.aav_overloop_1e_verdieping_start
+          entity_id: automation.aav_overloop_1e_verdieping_start
       - service: automation.turn_off
         data:
           entity_id: automation.aav_overloop_1e_verdieping_restart
       - delay: "{{ states('input_datetime.evening_light_cancel_timer_setting') }}"
       - service: automation.turn_on
         data:
-          entity_id: automation.automation.aav_overloop_1e_verdieping_start
+          entity_id: automation.aav_overloop_1e_verdieping_start
       - service: automation.turn_off
         data:
           entity_id: automation.aav_overloop_1e_verdieping_cancel

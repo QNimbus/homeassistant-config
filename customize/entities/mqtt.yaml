@@ -157,9 +157,9 @@
     icon: mdi:lightbulb-outline
     friendly_name: Inloopkast spots
 
-  # ZWave node ID: 28
+  # ZWave node ID: 66
   # FGRGBWM441 RGBW Controller by FIBARO System
-  light.ff_bedroom_rgbw_1_rgb_dimmer:
+  light.ff_bedroom_rgbw_1_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: RGB strip slaapkamer
 
@@ -169,9 +169,9 @@
     icon: mdi:lightbulb-outline
     friendly_name: Werkkamer spots
 
-  # ZWave node ID: 86
+  # ZWave node ID: 65
   # FGRGBWM441 RGBW Controller by FIBARO System
-  light.ff_office_rgbw_1_rgb_dimmer:
+  light.ff_office_rgbw_1_dimmer:
     icon: mdi:lightbulb-outline
     friendly_name: RGB strip werkkamer
 
@@ -247,7 +247,7 @@
 
   # ZWave node ID: 79
   # FGMS001-ZW5 Motion Sensor by FIBARO System
-  binary_sensor.sf_hallway_sensor_2_contact:
+  binary_sensor.sf_hallway_sensor_1_contact:
     icon: mdi:motion-sensor
     friendly_name: Beweging overloop 2e verdieping (trap)
 

@@ -1,5 +1,5 @@
 ---
-  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Automation. See: https://www.home-assistant.io/integrations/automation/yaml/
   # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
   # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
   # Actions. See: https://www.home-assistant.io/docs/automation/action/
@@ -45,8 +45,14 @@
             {{
               states('input_datetime.evening_light_frontdoor_timer_setting')
             }}
+      - delay:
+          seconds: 1
+      - service: automation.turn_on
+        data:
+          entity_id: automation.aav_voordeur_restart
 
   - alias: AAV Voordeur [restart]
+    initial_state: false
     trigger:
       - platform: event
         event_type: timer.finished
@@ -81,4 +87,7 @@
       - service: switch.turn_off
         data:
           entity_id: switch.gf_hallway_switch_1_switch
+      - service: automation.turn_off
+        data:
+          entity_id: automation.aav_voordeur_restart
 

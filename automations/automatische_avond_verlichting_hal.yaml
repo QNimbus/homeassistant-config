@@ -1,5 +1,5 @@
 ---
-  # Automation. See: https://www.home-assistant.io/integrations/automation/
+  # Automation. See: https://www.home-assistant.io/integrations/automation/yaml/
   # Trigger. See: https://www.home-assistant.io/docs/automation/trigger/
   # Conditions. See: https://www.home-assistant.io/docs/automation/condition/
   # Actions. See: https://www.home-assistant.io/docs/automation/action/

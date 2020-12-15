@@ -244,7 +244,7 @@
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
                 name: RGBW LED strip
-                entity: light.ff_bedroom_rgbw_1_rgb_dimmer
+                entity: light.ff_bedroom_rgbw_1_dimmer
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
@@ -268,7 +268,7 @@
               # Slider Entity Row. See: https://github.com/thomasloven/lovelace-slider-entity-row
               - type: custom:slider-entity-row
                 name: RGBW LED strip
-                entity: light.ff_office_rgbw_1_rgb_dimmer
+                entity: light.ff_office_rgbw_1_dimmer
                 secondary_info: brightness
                 toggle: true
                 hide_when_off: true
