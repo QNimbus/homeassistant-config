@@ -1,0 +1,5 @@
+---
+  # Device tracker integration. See: https://www.home-assistant.io/integrations/device_tracker/
+  device_tracker.mini_cooper:
+    friendly_name: Mini Cooper
+    entity_picture: /local/images/entity/mini_cooper.png

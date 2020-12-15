@@ -1,0 +1,14 @@
+
+volvo_s60:
+  name: volvo_s60
+  mac:
+  icon:
+  picture:
+  track: true
+
+mini_cooper:
+  name: mini_cooper
+  mac:
+  icon:
+  picture:
+  track: true

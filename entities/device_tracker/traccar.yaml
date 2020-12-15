@@ -1,0 +1,8 @@
+---
+  # TracCar. See: https://www.home-assistant.io/integrations/traccar/
+  - platform: traccar
+    host: !secret traccar_host
+    port: 443
+    ssl: true
+    username: !secret traccar_username
+    password: !secret traccar_password

@@ -1,0 +1,5 @@
+---
+  # Device tracker integration. See: https://www.home-assistant.io/integrations/device_tracker/
+  device_tracker.volvo_s60:
+    friendly_name: Volvo S60
+    entity_picture: /local/images/entity/volvo_s60.png
