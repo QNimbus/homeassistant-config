@@ -3,7 +3,9 @@
   browser_mod:
     prefix: "browser_"
     devices:
-      9f7ec0dc-471250c7:
+      a5c5ef15-f81905e3:
         name: Bas Laptop
       3c299dc8-027b5895:
         name: Bas OnePlus
+      e91b28fa-a9b6ece4:
+        name: Vanessa OnePlus

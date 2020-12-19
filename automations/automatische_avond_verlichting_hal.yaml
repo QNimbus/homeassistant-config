@@ -7,7 +7,7 @@
   # Related entities:
   #
   # - light.gf_hallway_dimmer_1_dimmer                                    : Light
-  # - binary_sensor.gf_hallway_sensor_2_contacty                          : Motion sensor
+  # - binary_sensor.gf_hallway_sensor_2_contact                           : Motion sensor
   # - binary_sensor.gf_hallway_sensor_1_contact                           : Door sensor
   # - timer.evening_light_groundfloor_hallway_timer                       : Timer
   # - input_datetime.evening_light_groundfloor_hallway_timer_setting      : Timer setting

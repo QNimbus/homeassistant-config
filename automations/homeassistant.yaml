@@ -1,0 +1,4 @@
+---
+  # See: https://www.home-assistant.io/integrations/automation/
+  # Include automations created via Home Assistant web ui.
+  !include ../automations.yaml

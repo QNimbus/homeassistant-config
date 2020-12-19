@@ -72,3 +72,7 @@
         state: 'off'
       light.ou_porch_dimmer_1_dimmer:
         state: 'off'
+      switch.gf_mc_switch_8_switch:
+        state: 'off'
+      switch.gf_garage_switch_3_switch_2:
+        state: 'off'

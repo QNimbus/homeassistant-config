@@ -1,0 +1,65 @@
+blueprint:
+  name: Smart Motion-activated Light
+  description: Turn on a light when motion is detected
+  domain: automation
+  source_url: https://gist.github.com/d7384358e6078e9d3add226d1c54ed87
+  input:
+    motion_entity:
+      name: Motion Sensor
+      selector:
+        entity:
+          domain: binary_sensor
+    light_target:
+      name: Light
+      selector:
+        target:
+          entity:
+            domain: light
+    no_motion_wait:
+      name: Wait time
+      description: Time to leave the light on after last motion is detected.
+      default: 120
+      selector:
+        number:
+          min: 10
+          max: 3600
+          step: 10
+          unit_of_measurement: seconds
+
+# If motion is detected within the delay,
+# we restart the script.
+mode: restart
+max_exceeded: silent
+
+trigger:
+  - platform: state
+    entity_id: !input motion_entity
+    from: "off"
+    to: "on"
+  - platform: state
+    entity_id: !input motion_entity
+    from: "on"
+    to: "off"
+    for: !input no_motion_wait
+
+action:
+  - choose:
+      - conditions:
+          condition: and
+          conditions:
+            - condition: state
+              entity_id: !input motion_entity
+              state: 'on'
+            - condition: state
+              entity_id: !input light_target
+              state: 'off'
+        sequence:
+          - service: light.turn_on
+            target: !input light_target
+      - conditions:
+          - condition: state
+            entity_id: !input motion_entity
+            state: 'off'
+        sequence:
+          - service: light.turn_off
+            target: !input light_target

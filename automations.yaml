@@ -1,0 +1,9 @@
+- id: '1608122615100'
+  alias: Automated Daily Snapshot
+  description: ''
+  use_blueprint:
+    path: vorion/create-automated-backups-every-day.yaml
+    input:
+      trigger_time: '12:00:00'
+      send_notification: true
+      notify_device: 20ca3c81106311ebbb954de0d7553a42

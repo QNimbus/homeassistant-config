@@ -38,6 +38,10 @@
         state: 'on'
       switch.gf_mc_switch_5_switch:
         state: 'on'
+      switch.gf_mc_switch_8_switch:
+        state: 'on'
+      switch.gf_garage_switch_3_switch_2:
+        state: 'on'
 
   - name: Avond verlichting tuin uit
     icon: mdi:weather-night
@@ -49,4 +53,8 @@
       switch.gf_garage_switch_1_switch:
         state: 'off'
       switch.gf_mc_switch_5_switch:
+        state: 'off'
+      switch.gf_mc_switch_8_switch:
+        state: 'off'
+      switch.gf_garage_switch_3_switch_2:
         state: 'off'
